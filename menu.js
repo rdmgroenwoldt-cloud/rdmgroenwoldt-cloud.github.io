@@ -52,7 +52,7 @@ const BEREICHE = {
       { titel: "Übersicht", url: "tierschutz.html" },
       { titel: "Die Tiere", url: "tiere.html" },
       { titel: "Tiere in Gaza", url: "tiere-in-gaza.html" },
-      { titel: "Patenschaft & Namensgebung", url: "patenschaft.html" },
+      { titel: "Patenschaften", url: "patenschaft.html" },
       { titel: "Unterstützen", url: "spenden.html#catrescue" }
     ],
     sozial: [
@@ -244,7 +244,7 @@ const BEREICHE = {
   };
   const zu = () => { gb.classList.remove("offen"); document.body.style.overflow = ""; if (zuletzt) zuletzt.focus(); };
   mosaike.forEach((m) => {
-    const knoepfe = [...m.querySelectorAll("button")];
+    const knoepfe = [...m.querySelectorAll("button")].filter((b) => b.querySelector("img"));
     knoepfe.forEach((b) => b.addEventListener("click", () => {
       if (b.classList.contains("sensibel") && !b.classList.contains("frei")) { b.classList.add("frei"); return; }
       liste = knoepfe.filter((x) => !x.classList.contains("sensibel") || x.classList.contains("frei"));
