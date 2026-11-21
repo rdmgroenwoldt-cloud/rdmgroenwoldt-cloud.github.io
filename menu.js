@@ -307,3 +307,107 @@ const BEREICHE = {
   }), { threshold: 0.5 });
   teile.forEach((t) => io.observe(t.el));
 })();
+
+// ---------- Sternenhimmel (Hintergrund aller Seiten + Nachthimmel-Bereiche) ----------
+(function () {
+  const ruhig = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function himmel(canvas, opt) {
+    const ctx = canvas.getContext("2d");
+    let w = 0, h = 0, dpr = 1, sterne = [], schnuppen = [], eigene = [], laeuft = true;
+    const farben = opt.farben;
+    const neu = () => {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const r = canvas.getBoundingClientRect();
+      w = r.width; h = r.height;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      const anzahl = Math.round((w * h) / opt.dichte);
+      sterne = Array.from({ length: anzahl }, () => ({
+        x: Math.random() * w, y: Math.random() * h,
+        r: Math.random() < 0.08 ? 1.4 + Math.random() * 1.2 : 0.4 + Math.random() * 0.9,
+        p: Math.random() * Math.PI * 2, s: 0.4 + Math.random() * 1.4,
+        f: farben[Math.floor(Math.random() * farben.length)]
+      }));
+    };
+    const funkeln = (x, y, r, a, f) => {
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r * 6);
+      g.addColorStop(0, `rgba(${f},${a * 0.55})`); g.addColorStop(1, `rgba(${f},0)`);
+      ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r * 6, 0, Math.PI * 2); ctx.fill();
+      ctx.strokeStyle = `rgba(${f},${a * 0.7})`; ctx.lineWidth = 0.6;
+      ctx.beginPath(); ctx.moveTo(x - r * 5, y); ctx.lineTo(x + r * 5, y); ctx.moveTo(x, y - r * 5); ctx.lineTo(x, y + r * 5); ctx.stroke();
+    };
+    const zeichne = (t) => {
+      ctx.clearRect(0, 0, w, h);
+      if (opt.milchstrasse) {
+        const g = ctx.createLinearGradient(w * 0.15, h, w * 0.85, 0);
+        g.addColorStop(0, "rgba(140,170,255,0)"); g.addColorStop(0.5, "rgba(150,175,255,0.10)"); g.addColorStop(1, "rgba(140,170,255,0)");
+        ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+      }
+      for (const s of sterne) {
+        const a = ruhig ? 0.8 : 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(t / 1000 * s.s + s.p));
+        ctx.fillStyle = `rgba(${s.f},${a})`;
+        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+        if (s.r > 1.4) funkeln(s.x, s.y, s.r, a, s.f);
+      }
+      for (const e of eigene) {
+        const alter = (t - e.t0) / 1000, a = Math.min(1, alter * 2);
+        const puls = 0.75 + 0.25 * Math.sin(t / 400 + e.p);
+        ctx.fillStyle = `rgba(255,214,120,${a})`;
+        ctx.beginPath(); ctx.arc(e.x, e.y, 2.2 * puls, 0, Math.PI * 2); ctx.fill();
+        funkeln(e.x, e.y, 2.4 * puls, a, "255,214,120");
+      }
+      if (!ruhig && Math.random() < opt.schnuppe) {
+        schnuppen.push({ x: Math.random() * w * 0.8 + w * 0.2, y: Math.random() * h * 0.4, vx: -(4 + Math.random() * 4), vy: 1.6 + Math.random() * 1.6, l: 1 });
+      }
+      schnuppen = schnuppen.filter((s) => s.l > 0);
+      for (const s of schnuppen) {
+        const g = ctx.createLinearGradient(s.x, s.y, s.x - s.vx * 14, s.y - s.vy * 14);
+        g.addColorStop(0, `rgba(255,255,255,${s.l})`); g.addColorStop(1, "rgba(255,255,255,0)");
+        ctx.strokeStyle = g; ctx.lineWidth = 1.4;
+        ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(s.x - s.vx * 14, s.y - s.vy * 14); ctx.stroke();
+        s.x += s.vx; s.y += s.vy; s.l -= 0.012;
+      }
+      if (laeuft && !ruhig) requestAnimationFrame(zeichne);
+    };
+    neu();
+    window.addEventListener("resize", () => { neu(); if (ruhig) zeichne(0); });
+    document.addEventListener("visibilitychange", () => {
+      const vorher = laeuft; laeuft = !document.hidden;
+      if (laeuft && !vorher && !ruhig) requestAnimationFrame(zeichne);
+    });
+    requestAnimationFrame(zeichne);
+    return {
+      stern(x, y) { eigene.push({ x, y, t0: performance.now(), p: Math.random() * 6 }); if (ruhig) zeichne(performance.now() + 1000); return eigene.length; }
+    };
+  }
+
+  // 1) Dezenter Sternenhimmel hinter allen Seiten
+  const hg = document.createElement("canvas");
+  hg.className = "sternenhimmel";
+  hg.setAttribute("aria-hidden", "true");
+  document.body.prepend(hg);
+  himmel(hg, { dichte: 4000, schnuppe: 0.0025, milchstrasse: false, farben: ["255,255,255", "255,236,190", "240,207,122"] });
+
+  // 2) Nachthimmel-Bereiche (z. B. Kids4Hope): <div class="nachthimmel"><canvas></canvas>…</div>
+  document.querySelectorAll(".nachthimmel").forEach((bereich) => {
+    const c = bereich.querySelector("canvas");
+    if (!c) return;
+    const hm = himmel(c, { dichte: 2600, schnuppe: 0.008, milchstrasse: true, farben: ["255,255,255", "210,225,255", "255,236,190"] });
+    const zaehler = bereich.querySelector("[data-sterne]");
+    let anzahl = 0;
+    c.addEventListener("click", (ev) => {
+      const r = c.getBoundingClientRect();
+      hm.stern(ev.clientX - r.left, ev.clientY - r.top);
+      anzahl++;
+      if (zaehler) zaehler.textContent = anzahl;
+    });
+    const knopf = bereich.querySelector("[data-stern-knopf]");
+    if (knopf) knopf.addEventListener("click", () => {
+      const r = c.getBoundingClientRect();
+      hm.stern(r.width * (0.15 + Math.random() * 0.7), r.height * (0.08 + Math.random() * 0.35));
+      anzahl++;
+      if (zaehler) zaehler.textContent = anzahl;
+    });
+  });
+})();
