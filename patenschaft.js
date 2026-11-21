@@ -30,32 +30,38 @@ const PATENKATZEN = [
     karte.dataset.gruppe = k.gruppe.join(" ");
     const stufen = [5, 10, 20].filter((b) => b < k.bedarf);
     karte.innerHTML = `
-      <div class="kopf">
-        <button type="button" data-gross="assets/katzen/${k.id}-gross.jpg" data-text="${k.name}"><img src="assets/katzen/${k.id}.jpg" alt="${k.name}" loading="lazy"></button>
-        <div><span class="status">${k.schon > 0 ? "teilweise mit Paten" : "noch ohne Paten"}</span><h3>${k.name}</h3><div class="zeile">${k.zeile}</div></div>
-      </div>
-      <p>${k.text}</p>
-      <div class="fortschritt" aria-hidden="true"><i style="width:${Math.min(100, (k.schon / k.bedarf) * 100)}%"></i></div>
-      <div class="fortschritt-text"><span>${euro(k.schon)} von ${euro(k.bedarf)} im Monat</span><span>${k.schon > 0 ? "" : "noch kein Pate"}</span></div>
-      <div class="betraege" role="group" aria-label="Monatsbetrag für ${k.name}">
-        ${stufen.map((b) => `<button type="button" data-b="${b}" aria-pressed="${b === 10}">${b} €</button>`).join("")}
-        <button type="button" class="voll" data-b="${k.bedarf}" aria-pressed="false">Vollpatenschaft · ${euro(k.bedarf)} mtl.</button>
-      </div>
-      <div class="wahl-text"><b data-betrag>10 €</b> / Monat <small data-rest>· danach fehlen noch ${euro(k.bedarf - k.schon - 10)}</small></div>
-      <button type="button" class="btn voll" data-waehlen>Pate werden →</button>`;
-    let betrag = 10;
+      <button type="button" class="bild" data-gross="assets/katzen/${k.id}-gross.jpg" data-text="${k.name} – ${k.text}"><img src="assets/katzen/${k.id}.jpg" alt="${k.name}" loading="lazy"></button>
+      <div class="inhalt">
+        <span class="status">${k.schon > 0 ? "teilweise mit Paten" : "sucht Paten"}</span>
+        <h3>${k.name}</h3>
+        <div class="zeile">${k.zeile}</div>
+        <div class="fortschritt" aria-hidden="true"><i style="width:${Math.min(100, (k.schon / k.bedarf) * 100)}%"></i></div>
+        <div class="fortschritt-text">${euro(k.schon)} von ${euro(k.bedarf)} im Monat</div>
+        <div class="wahl" hidden>
+          <div class="betraege" role="group" aria-label="Monatsbetrag für ${k.name}">
+            ${stufen.map((b) => `<button type="button" data-b="${b}" aria-pressed="${b === 10}">${b} €</button>`).join("")}
+            <button type="button" data-b="${k.bedarf}" aria-pressed="false">${euro(k.bedarf)} (ganz)</button>
+          </div>
+          <div class="wahl-text"><b data-betrag>10 €</b> im Monat <small data-rest></small></div>
+        </div>
+        <button type="button" class="btn" data-waehlen>Pate werden</button>
+      </div>`;
+    let betrag = 10, offen = false;
+    const wahl = karte.querySelector(".wahl");
+    const knopf = karte.querySelector("[data-waehlen]");
     const zeigeBetrag = () => {
       karte.querySelector("[data-betrag]").textContent = euro(betrag);
       const rest = k.bedarf - k.schon - betrag;
-      karte.querySelector("[data-rest]").textContent = rest > 0 ? "· danach fehlen noch " + euro(rest) : "· damit ist der Bedarf gedeckt";
+      karte.querySelector("[data-rest]").textContent = rest > 0 ? "· es fehlen dann noch " + euro(rest) : "· damit ist alles gedeckt";
       karte.querySelectorAll(".betraege button").forEach((b) => b.setAttribute("aria-pressed", String(+b.dataset.b === betrag)));
-      if (auswahl[k.id] !== undefined) { auswahl[k.id] = betrag; aktualisieren(); }
+      if (auswahl[k.id] !== undefined) { auswahl[k.id] = betrag; knopf.textContent = "Ausgewählt · " + euro(betrag) + " – entfernen"; aktualisieren(); }
     };
+    zeigeBetrag();
     karte.querySelectorAll(".betraege button").forEach((b) => b.addEventListener("click", () => { betrag = +b.dataset.b; zeigeBetrag(); }));
-    const knopf = karte.querySelector("[data-waehlen]");
     knopf.addEventListener("click", () => {
-      if (auswahl[k.id] === undefined) { auswahl[k.id] = betrag; karte.classList.add("gewaehlt"); knopf.textContent = "Ausgewählt ✓ (entfernen)"; }
-      else { delete auswahl[k.id]; karte.classList.remove("gewaehlt"); knopf.textContent = "Pate werden →"; }
+      if (!offen && auswahl[k.id] === undefined) { offen = true; wahl.hidden = false; knopf.classList.add("voll"); knopf.textContent = "Auswählen"; return; }
+      if (auswahl[k.id] === undefined) { auswahl[k.id] = betrag; karte.classList.add("gewaehlt"); knopf.textContent = "Ausgewählt · " + euro(betrag) + " – entfernen"; }
+      else { delete auswahl[k.id]; karte.classList.remove("gewaehlt"); offen = false; wahl.hidden = true; knopf.classList.remove("voll"); knopf.textContent = "Pate werden"; }
       aktualisieren();
     });
     raster.appendChild(karte);

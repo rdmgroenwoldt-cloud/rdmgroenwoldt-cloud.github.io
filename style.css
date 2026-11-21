@@ -84,7 +84,7 @@ img.hell,.pl-marke img.hell,footer img.hell{background:#fff;object-fit:contain;p
 .banner .inhalt{position:relative;z-index:2;padding-bottom:clamp(48px,9vh,110px);width:100%}
 .banner .marke{display:inline-flex;align-items:center;gap:10px;padding:7px 16px;border:1px solid rgba(240,207,122,.4);border-radius:999px;background:rgba(11,10,8,.45);backdrop-filter:blur(6px);color:var(--gold2);font-size:13px;letter-spacing:.12em;text-transform:uppercase}
 .banner h1{font-size:clamp(40px,7vw,88px);margin:18px 0 12px;max-width:900px;color:#fff;text-shadow:0 4px 30px rgba(0,0,0,.5)}
-.banner h1 em{font-style:normal;color:var(--gold2)}
+.banner h1 em{font-style:normal;color:inherit}
 .banner .lead{margin:0;max-width:640px;color:#e8dfcc;font-size:clamp(17px,1.6vw,21px)}
 .banner .punkte{position:absolute;z-index:3;right:clamp(16px,4vw,48px);bottom:clamp(24px,5vh,48px);display:flex;gap:10px}
 .banner .punkte button{width:12px;height:12px;border-radius:999px;border:0;background:rgba(255,255,255,.35);cursor:pointer;padding:0;transition:width .3s,background .3s}
@@ -425,7 +425,7 @@ details.klapp[open] > .klapp-inhalt{animation:einblenden .3s ease}
 .wende.klein .wende-vorne{background:linear-gradient(170deg,var(--bg2),#100f0b);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px}
 .wende.klein .wende-vorne::after{display:none}
 .wende.klein .wende-vorne b{font:700 clamp(36px,3.6vw,50px)/1 var(--serif);color:var(--gold2)}
-.wende.klein.rot .wende-vorne b{color:#ef8f7b}
+.wende.klein.rot .wende-vorne b{color:var(--text)}
 .wende.klein .wende-vorne span{margin-top:10px;font-size:15px;color:var(--text)}
 .wende.klein .wende-vorne i{position:absolute;bottom:12px;right:14px;font-style:normal;font-size:11px;color:var(--muted)}
 .wende.klein .wende-hinten{padding:20px;justify-content:center}
