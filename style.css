@@ -480,3 +480,5 @@ footer{background:rgba(8,7,6,.92)}
 .banner .inhalt,.banner .punkte{z-index:3}
 .banner::after{background:linear-gradient(180deg,rgba(12,18,52,.78) 0%,rgba(14,20,58,.45) 40%,rgba(11,10,8,.82) 80%,var(--bg) 100%),linear-gradient(90deg,rgba(11,12,30,.7) 0%,rgba(11,10,8,0) 65%)}
 .banner .folie img{filter:saturate(.85) brightness(.8)}
+.nachthimmel.schwarz{background:radial-gradient(ellipse at 50% 30%,#221b0e 0%,#0e0c09 55%,#0b0a08 100%);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.nachthimmel.schwarz .stern-zaehler{color:var(--muted)}

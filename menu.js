@@ -400,7 +400,8 @@ const BEREICHE = {
   document.querySelectorAll(".nachthimmel").forEach((bereich) => {
     const c = bereich.querySelector("canvas");
     if (!c) return;
-    const hm = himmel(c, { dichte: 2600, schnuppe: 0.008, milchstrasse: true, farben: ["255,255,255", "210,225,255", "255,236,190"] });
+    const schwarz = bereich.classList.contains("schwarz");
+    const hm = himmel(c, { dichte: 2600, schnuppe: 0.008, milchstrasse: !schwarz, farben: schwarz ? ["255,255,255", "255,236,190", "240,207,122"] : ["255,255,255", "210,225,255", "255,236,190"] });
     const zaehler = bereich.querySelector("[data-sterne]");
     let anzahl = 0;
     c.addEventListener("click", (ev) => {
