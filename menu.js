@@ -79,7 +79,9 @@ const BEREICHE = {
       { titel: "Übersicht", url: "kids4hope.html" },
       { titel: "Unterstützen", url: "spenden.html#kids4hope" }
     ],
-    sozial: []
+    sozial: [
+      { titel: "kids4hope.com", url: "https://kids4hope.com/" }
+    ]
   },
   medical: {
     name: "Medical Point North Gaza",
