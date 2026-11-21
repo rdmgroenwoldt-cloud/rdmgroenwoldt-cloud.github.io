@@ -261,7 +261,8 @@
   }
   function galerie() {
     const g = document.getElementById("wk-galerie"); if (!g) return;
-    g.textContent = daten.galerie && daten.galerie.length ? "" : t("galerieLeer");
+    const fertig = daten.galerie || daten.archiv || [];
+    g.textContent = fertig.length ? "" : t("galerieLeer");
   }
   function texte() {
     document.documentElement.lang = sprache;

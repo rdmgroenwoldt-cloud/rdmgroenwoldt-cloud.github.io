@@ -18,9 +18,21 @@ const PATENKATZEN = [
   { id: "hind", name: "Hind", zeile: "Kitten der getigerten Mutter", text: "Hell cremefarben, die Kleinste der Familie.", gruppe: ["kitten"], bedarf: 25, schon: 0 }
 ];
 
-(function () {
+(async function () {
   const raster = document.getElementById("paten-raster");
   if (!raster) return;
+  // Stand aus der Spenden-Zentrale: data-api am Raster (oder ?paten-api= nur lokal). Ohne Server gelten die Werte oben.
+  const api = raster.dataset.api || (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? new URLSearchParams(location.search).get("paten-api") : "");
+  if (api) {
+    try {
+      const r = await fetch(api, { cache: "no-store" });
+      const j = r.ok ? await r.json() : null;
+      (j && Array.isArray(j.tiere) ? j.tiere : []).forEach((t) => {
+        const k = PATENKATZEN.find((x) => x.id === t.id);
+        if (k && t.bedarf > 0) { k.bedarf = +t.bedarf; k.schon = Math.max(0, +t.schon || 0); }
+      });
+    } catch (e) { /* Server nicht erreichbar: Karten bleiben mit den Grundwerten bedienbar */ }
+  }
   const auswahl = {}; // id -> Betrag
   const euro = (z) => z.toLocaleString("de-DE") + " €";
 
