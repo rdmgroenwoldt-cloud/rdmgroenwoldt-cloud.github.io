@@ -61,10 +61,37 @@ const PATENKATZEN = [
     raster.appendChild(karte);
   });
 
+  // Karussell: je eine „Seite“ (3 Karten am PC, 2 am Tablet, 1 am Handy) weiterwischen
+  const links = document.querySelector(".karussell-pfeil.links"), rechts = document.querySelector(".karussell-pfeil.rechts");
+  const punkte = document.getElementById("karussell-punkte");
+  const seite = () => raster.clientWidth + 20;
+  const seitenZahl = () => Math.max(1, Math.ceil((raster.scrollWidth - 4) / seite()));
+  function karussell() {
+    const n = seitenZahl(), akt = Math.round(raster.scrollLeft / seite());
+    if (punkte.children.length !== n) {
+      punkte.innerHTML = "";
+      for (let i = 0; i < n; i++) {
+        const b = document.createElement("button");
+        b.type = "button"; b.setAttribute("aria-label", "Seite " + (i + 1));
+        b.addEventListener("click", () => raster.scrollTo({ left: i * seite() }));
+        punkte.appendChild(b);
+      }
+    }
+    [...punkte.children].forEach((b, i) => b.setAttribute("aria-current", String(i === akt)));
+    if (links) links.disabled = raster.scrollLeft < 10;
+    if (rechts) rechts.disabled = raster.scrollLeft + raster.clientWidth >= raster.scrollWidth - 10;
+  }
+  if (links) links.addEventListener("click", () => raster.scrollBy({ left: -seite() }));
+  if (rechts) rechts.addEventListener("click", () => raster.scrollBy({ left: seite() }));
+  raster.addEventListener("scroll", () => requestAnimationFrame(karussell), { passive: true });
+  window.addEventListener("resize", karussell);
+  setTimeout(karussell, 50);
+
   // Filter
   document.querySelectorAll(".paten-filter button").forEach((b) => b.addEventListener("click", () => {
     document.querySelectorAll(".paten-filter button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
     raster.querySelectorAll(".patenkarte").forEach((k) => { k.hidden = b.dataset.f !== "alle" && !k.dataset.gruppe.split(" ").includes(b.dataset.f); });
+    raster.scrollTo({ left: 0 }); punkte.innerHTML = ""; setTimeout(karussell, 50);
   }));
 
   // Auswahl-Leiste und Abschluss

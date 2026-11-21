@@ -343,7 +343,7 @@ const BEREICHE = {
       ctx.clearRect(0, 0, w, h);
       if (opt.milchstrasse) {
         const g = ctx.createLinearGradient(w * 0.15, h, w * 0.85, 0);
-        g.addColorStop(0, "rgba(140,170,255,0)"); g.addColorStop(0.5, "rgba(150,175,255,0.10)"); g.addColorStop(1, "rgba(140,170,255,0)");
+        g.addColorStop(0, "rgba(240,207,122,0)"); g.addColorStop(0.5, "rgba(240,207,122,0.06)"); g.addColorStop(1, "rgba(240,207,122,0)");
         ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
       }
       for (const s of sterne) {
@@ -393,7 +393,7 @@ const BEREICHE = {
 
   // 1b) Sterne über Bildern (z. B. Startseiten-Banner): <canvas class="sterne-ueber">
   document.querySelectorAll("canvas.sterne-ueber").forEach((c) => {
-    himmel(c, { dichte: 1800, schnuppe: 0.012, milchstrasse: true, farben: ["255,255,255", "210,225,255", "255,236,190"] });
+    himmel(c, { dichte: 1800, schnuppe: 0.012, milchstrasse: true, farben: ["255,255,255", "255,236,190", "240,207,122"] });
   });
 
   // 2) Nachthimmel-Bereiche (z. B. Kids4Hope): <div class="nachthimmel"><canvas></canvas>…</div>
@@ -401,7 +401,7 @@ const BEREICHE = {
     const c = bereich.querySelector("canvas");
     if (!c) return;
     const schwarz = bereich.classList.contains("schwarz");
-    const hm = himmel(c, { dichte: 2600, schnuppe: 0.008, milchstrasse: !schwarz, farben: schwarz ? ["255,255,255", "255,236,190", "240,207,122"] : ["255,255,255", "210,225,255", "255,236,190"] });
+    const hm = himmel(c, { dichte: 2600, schnuppe: 0.008, milchstrasse: !schwarz, farben: ["255,255,255", "255,236,190", "240,207,122"] });
     const zaehler = bereich.querySelector("[data-sterne]");
     let anzahl = 0;
     c.addEventListener("click", (ev) => {

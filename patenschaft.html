@@ -6,15 +6,28 @@
 <title>Katzen-Patenschaften – Dar Al-Rahma Cat Rescue</title>
 <meta name="description" content="Katzen-Patenschaften bei Dar Al-Rahma Cat Rescue in Nord-Gaza: Wähle eine Katze, lege deinen Monatsbetrag fest und unterstütze sie direkt – als private Spende, jederzeit beendbar.">
 <meta name="robots" content="noindex">
-<link rel="stylesheet" href="style.css?v=20261121g">
+<link rel="stylesheet" href="style.css?v=20261121h">
 <style>
   .pate-fakten{display:flex;gap:34px;flex-wrap:wrap;margin-top:26px}
   .pate-fakten div b{display:block;font:700 19px var(--sans);color:#fff}
-  .pate-fakten div span{color:#c9d3ff;font-size:14px}
+  .pate-fakten div span{color:var(--gold2);font-size:14px}
   .pate-fakten div:nth-child(1) b{color:#ef8f7b}
   .pate-fakten div:nth-child(3) b{color:#8fd18f}
   .paten-filter{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:0 0 28px}
-  .paten-raster{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px}
+  .karussell{position:relative}
+  .paten-raster{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 40px) / 3);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 18px;scrollbar-width:thin;scrollbar-color:var(--line2) transparent;overscroll-behavior-x:contain}
+  .paten-raster > .patenkarte{scroll-snap-align:start}
+  .paten-raster > .patenkarte[hidden]{display:none}
+  .karussell-pfeil{position:absolute;top:42%;z-index:5;width:48px;height:48px;border-radius:50%;border:1px solid var(--line2);background:rgba(21,19,15,.92);color:var(--gold2);font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--schatten)}
+  .karussell-pfeil:hover{border-color:var(--gold)}
+  .karussell-pfeil[disabled]{opacity:.3;cursor:default}
+  .karussell-pfeil.links{left:-22px}.karussell-pfeil.rechts{right:-22px}
+  .karussell-punkte{display:flex;justify-content:center;gap:8px;margin-top:6px}
+  .karussell-punkte button{width:10px;height:10px;border-radius:999px;border:0;padding:0;background:var(--line2);cursor:pointer;transition:width .3s,background .3s}
+  .karussell-punkte button[aria-current="true"]{width:28px;background:var(--gold2)}
+  .wisch-hinweis{text-align:center;color:var(--muted);font-size:13px;margin:0 0 14px}
+  @media (max-width:1000px){.paten-raster{grid-auto-columns:calc((100% - 20px) / 2)}}
+  @media (max-width:640px){.paten-raster{grid-auto-columns:86%;gap:14px}.karussell-pfeil{display:none}}
   .patenkarte{background:linear-gradient(180deg,var(--bg2),#11100c);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:12px;transition:border-color .25s,box-shadow .25s}
   .patenkarte.gewaehlt{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),var(--schatten)}
   .patenkarte .kopf{display:flex;gap:14px;align-items:center}
@@ -52,9 +65,9 @@
   <div class="seitenkopf nachthimmel" style="text-align:left;min-height:min(70vh,640px);display:flex;align-items:center">
     <canvas aria-label="Sternenhimmel – antippen, um einen Stern anzuzünden"></canvas>
     <div class="wrap">
-      <span style="display:inline-block;color:#c9d3ff;font-size:13px;letter-spacing:.14em;text-transform:uppercase">Patenschaften · Cat Rescue</span>
+      <span style="display:inline-block;color:var(--gold2);font-size:13px;letter-spacing:.14em;text-transform:uppercase">Patenschaften · Cat Rescue</span>
       <h1 style="color:#fff">Eine Katze. Ein Monat.<br><span style="color:var(--gold2)">Deine Patenschaft.</span></h1>
-      <p class="lead" style="margin:0;color:#dfe6ff;max-width:620px">Wähle eine Katze, lege deinen Monatsbetrag fest und unterstütze sie direkt – Futter, Pflege und Tierarzt für die Geretteten in Nord-Gaza.</p>
+      <p class="lead" style="margin:0;color:var(--text);max-width:620px">Wähle eine Katze, lege deinen Monatsbetrag fest und unterstütze sie direkt – Futter, Pflege und Tierarzt für die Geretteten in Nord-Gaza.</p>
       <a class="btn voll" href="#auswahl">Patenkatze auswählen ↓</a>
       <div class="pate-fakten">
         <div><b>ab 5 €</b><span>im Monat</span></div>
@@ -77,7 +90,13 @@
         <button type="button" data-f="kitten" aria-pressed="false">Kitten</button>
         <button type="button" data-f="ohne-namen" aria-pressed="false">Noch ohne Namen</button>
       </div>
-      <div class="paten-raster bildgruppe" id="paten-raster"></div>
+      <p class="wisch-hinweis">Wische oder nutze die Pfeile – je drei Katzen auf einmal.</p>
+      <div class="karussell">
+        <button type="button" class="karussell-pfeil links" aria-label="Vorherige Katzen">‹</button>
+        <div class="paten-raster bildgruppe" id="paten-raster" tabindex="0" aria-label="Patenkatzen, seitlich wischen"></div>
+        <button type="button" class="karussell-pfeil rechts" aria-label="Nächste Katzen">›</button>
+      </div>
+      <div class="karussell-punkte" id="karussell-punkte" aria-label="Seiten"></div>
     </div>
   </section>
 
@@ -127,7 +146,7 @@
 </main>
 <div class="auswahl-leiste" id="auswahl-leiste" aria-live="polite"><span><b id="leiste-anzahl">0</b> Patenschaften · <b id="leiste-summe">0 €</b> im Monat</span><a class="btn voll" href="#abschluss">Weiter</a></div>
 <div id="fuss"></div>
-<script src="patenschaft.js?v=20261121g"></script>
-<script src="menu.js?v=20261121g"></script>
+<script src="patenschaft.js?v=20261121h"></script>
+<script src="menu.js?v=20261121h"></script>
 </body>
 </html>
