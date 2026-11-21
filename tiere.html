@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Unsere Tiere – Dar Al-Rahma Cat Rescue</title>
+<title>Die Tiere – Dar Al-Rahma Cat Rescue</title>
 <meta name="description" content="Die Katzen und Hunde von Dar Al-Rahma Cat Rescue in Nord-Gaza: Tiervorstellungen, Rettungsaktionen aus den Trümmern, Happy Ends und die Tiere, die wir verloren haben.">
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="style.css">
@@ -11,43 +11,93 @@
 <body>
 <div id="kopf"></div>
 <main>
-  <div class="seitenkopf">
+  <div class="seitenkopf mit-bild">
+    <img src="assets/katzen/ashanti-gross.jpg" alt="" style="object-position:50% 35%">
     <div class="wrap">
-      <h1>Unsere Tiere</h1>
-      <p class="lead">Jede Rettung hat ihre eigene Geschichte. Die Berichte zu den einzelnen Rettungen folgen.</p>
+      <span style="display:inline-block;color:var(--gold2);font-size:13px;letter-spacing:.14em;text-transform:uppercase">Dar Al-Rahma Cat Rescue · Nord-Gaza</span>
+      <h1>Die Tiere von Cat Rescue</h1>
+      <p class="lead">Zwei Katzenmütter, zwölf Kitten und eine Katze, die allein kam – gerettet aus den Trümmern von Nord-Gaza. Bild antippen für die Großansicht.</p>
     </div>
   </div>
 
-  <section style="border-top:0;padding-top:24px">
+  <section>
     <div class="wrap">
-      <div class="raster" style="text-align:center;margin-bottom:40px">
-        <div class="karte"><div class="zahl">15</div><p style="margin-top:6px">Katzen sind aktuell in unserer Obhut – dazu einzelne Hunde</p></div>
-        <div class="karte"><div class="zahl">1</div><p style="margin-top:6px">Katze ist wieder bei ihrem Menschen</p></div>
-        <div class="karte"><div class="zahl">1</div><p style="margin-top:6px">kleine Katze haben wir verloren</p></div>
+      <div class="zahlenband" style="margin:0 0 48px">
+        <div><b>15</b><span>Katzen in Obhut</span></div>
+        <div><b>2</b><span>Katzenmütter</span></div>
+        <div><b>12</b><span>Kitten</span></div>
+        <div><b>1</b><span>Katze wieder bei ihrem Menschen</span></div>
       </div>
 
-      <div class="filter" role="group" aria-label="Galerie filtern">
-        <button data-k="alle" aria-pressed="true">Alle</button>
-        <button data-k="tiere" aria-pressed="false">Tiervorstellungen</button>
-        <button data-k="rettung" aria-pressed="false">Rettungsaktionen</button>
-        <button data-k="zuhause" aria-pressed="false">Wieder zu Hause</button>
-        <button data-k="erinnerung" aria-pressed="false">In Erinnerung</button>
+      <div class="familie zeigen">
+        <div class="bildgruppe"><button type="button" class="mutter-bild" data-gross="assets/katzen/sumada-gross.jpg" data-text="Sumada – die erste Mutterkatze"><img src="assets/katzen/sumada.jpg" alt="Sumada, eine weiß-rote Katzenmutter"></button></div>
+        <div>
+          <div class="ort">Familie 1 · 8 Katzen</div>
+          <h3>Sumada &amp; ihre 7 Kitten</h3>
+          <p>Mit Sumada hat alles angefangen: die erste Mutterkatze von Cat Rescue – mit sieben Kleinen, die heute neugierig durch das Haus toben.</p>
+          <div class="kitten bildgruppe">
+            <button type="button" data-gross="assets/katzen/ashanti-gross.jpg" data-text="Ashanti – Kitten von Sumada"><img src="assets/katzen/ashanti.jpg" alt="Ashanti – Kitten von Sumada" loading="lazy"><span>Ashanti</span></button>
+            <button type="button" data-gross="assets/katzen/lima-gross.jpg" data-text="Lima – Kitten von Sumada"><img src="assets/katzen/lima.jpg" alt="Lima – Kitten von Sumada" loading="lazy"><span>Lima</span></button>
+            <button type="button" data-gross="assets/katzen/palestine-gross.jpg" data-text="Palestine – Kitten von Sumada"><img src="assets/katzen/palestine.jpg" alt="Palestine – Kitten von Sumada" loading="lazy"><span>Palestine</span></button>
+            <button type="button" data-gross="assets/katzen/zaytouna-gross.jpg" data-text="Zaytouna – Kitten von Sumada"><img src="assets/katzen/zaytouna.jpg" alt="Zaytouna – Kitten von Sumada" loading="lazy"><span>Zaytouna</span></button>
+            <button type="button" data-gross="assets/katzen/nadija-gross.jpg" data-text="Nadija – Kitten von Sumada"><img src="assets/katzen/nadija.jpg" alt="Nadija – Kitten von Sumada" loading="lazy"><span>Nadija</span></button>
+            <button type="button" data-gross="assets/katzen/latifa-gross.jpg" data-text="Latifa – Kitten von Sumada"><img src="assets/katzen/latifa.jpg" alt="Latifa – Kitten von Sumada" loading="lazy"><span>Latifa</span></button>
+            <button type="button" data-gross="assets/katzen/cataleya-gross.jpg" data-text="Cataleya – Kitten von Sumada"><img src="assets/katzen/cataleya.jpg" alt="Cataleya – Kitten von Sumada" loading="lazy"><span>Cataleya</span></button>
+          </div>
+        </div>
       </div>
-      <div class="galerie" id="galerie"></div>
-      <dialog id="galerie-dialog">
-        <button class="btn" type="button">Schließen</button>
-        <div class="bild"></div>
-        <div class="inhalt"><h3></h3><p class="quelle zeile"></p><p class="beschreibung"></p></div>
-      </dialog>
+
+      <div class="familie zeigen">
+        <div class="bildgruppe"><button type="button" class="mutter-bild" data-gross="assets/katzen/mutter-gross.jpg" data-text="Die getigerte Mutterkatze – sie hat noch keinen Namen"><img src="assets/katzen/mutter.jpg" alt="Getigerte Katzenmutter mit Kitten auf einem roten Teppich"></button></div>
+        <div>
+          <div class="ort">Familie 2 · 6 Katzen · aus den Trümmern</div>
+          <h3>Mutter ohne Namen &amp; 5 Kitten</h3>
+          <p>Zwischen den Trümmern gefunden: eine getigerte Katzenmutter mit fünf Kitten. Die Mutter hat noch keinen Namen – <a href="patenschaft.html">wer gibt ihr einen?</a></p>
+          <div class="kitten bildgruppe">
+            <button type="button" data-gross="assets/katzen/elsa-gross.jpg" data-text="Elsa – Kitten von der getigerten Mutter"><img src="assets/katzen/elsa.jpg" alt="Elsa – Kitten von der getigerten Mutter" loading="lazy"><span>Elsa</span></button>
+            <button type="button" data-gross="assets/katzen/luna-gross.jpg" data-text="Luna – Kitten von der getigerten Mutter"><img src="assets/katzen/luna.jpg" alt="Luna – Kitten von der getigerten Mutter" loading="lazy"><span>Luna</span></button>
+            <button type="button" data-gross="assets/katzen/subaia-gross.jpg" data-text="Subaia – Kitten von der getigerten Mutter"><img src="assets/katzen/subaia.jpg" alt="Subaia – Kitten von der getigerten Mutter" loading="lazy"><span>Subaia</span></button>
+            <button type="button" data-gross="assets/katzen/mulan-gross.jpg" data-text="Mulan – Kitten von der getigerten Mutter"><img src="assets/katzen/mulan.jpg" alt="Mulan – Kitten von der getigerten Mutter" loading="lazy"><span>Mulan</span></button>
+            <button type="button" data-gross="assets/katzen/hind-gross.jpg" data-text="Hind – Kitten von der getigerten Mutter"><img src="assets/katzen/hind.jpg" alt="Hind – Kitten von der getigerten Mutter" loading="lazy"><span>Hind</span></button>
+          </div>
+        </div>
+      </div>
+
+      <h2 style="margin-top:56px">Noch ohne Namen</h2>
+      <p class="kurz">Diese Katzen warten noch auf einen Namen. Mit einer <a href="patenschaft.html">Namenspatenschaft</a> kannst du ihn aussuchen.</p>
+      <div class="einzel bildgruppe" style="max-width:720px;margin:0 auto">
+        <div class="karte zeigen"><button type="button" data-gross="assets/katzen/schwarzweiss-gross.jpg" data-text="Schwarz-weiße Katze – noch ohne Namen"><img src="assets/katzen/schwarzweiss.jpg" alt="Schwarz-weiße Katze – noch ohne Namen" loading="lazy"><span hidden>Schwarz-weiße Katze</span></button><h4>Schwarz-weiße Katze</h4><p>Kam allein, ohne Babys. Gelbgrüne Augen, weiße Pfoten – und noch ohne Namen.</p></div>
+        <div class="karte zeigen"><button type="button" data-gross="assets/katzen/mutter-gross.jpg" data-text="Die getigerte Mutterkatze – noch ohne Namen"><img src="assets/katzen/mutter.jpg" alt="Die getigerte Mutterkatze – noch ohne Namen" loading="lazy"><span hidden>Die getigerte Mutterkatze</span></button><h4>Getigerte Mutterkatze</h4><p>Die Mutter von Elsa, Luna, Subaia, Mulan und Hind.</p></div>
+      </div>
+
+      <details class="klapp" style="max-width:960px;margin:40px auto 0"><summary>Wieder zu Hause &amp; unsere Hunde<small>Ein Happy End und weitere Schützlinge</small></summary><div class="klapp-inhalt">
+        <p><strong>Wieder zu Hause:</strong> Eine gefundene Katze hatte noch ein Zuhause – Cat Rescue konnte ihren Besitzer finden, und er hat sie wieder zu sich genommen.</p>
+        <p><strong>Hunde:</strong> Neben den Katzen werden auch einzelne Hunde mitversorgt. Ihre Vorstellung folgt.</p>
+      </div></details>
+    </div>
+  </section>
+
+  <section class="dunkel">
+    <div class="wrap">
+      <span class="ueber">In Erinnerung</span>
+      <h2>Anisa</h2>
+      <div class="gedenk bildgruppe" style="margin-top:28px">
+        <button type="button" data-gross="assets/katzen/anisa-gedenken-gross.jpg" data-text="Anisa – in Erinnerung"><img src="assets/katzen/anisa.jpg" alt="Das Babykätzchen Anisa im Karton auf einem Stofftier"></button>
+        <div>
+          <h3>Unsere kleine Anisa</h3>
+          <p>Anisa war ein Babykätzchen aus den Trümmern. Trotz aller Pflege hat sie es nicht geschafft. <em>Inna lillahi wa inna ilayhi raji'un</em> – wir gehören Allah, und zu Ihm kehren wir zurück.</p>
+          <p class="quelle">Antippen zeigt das Gedenkbild von Dar Al-Rahma Cat Rescue.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section>
     <div class="wrap" style="text-align:center">
       <h2>Ein Tier hat noch keinen Namen?</h2>
-      <p class="sub">Werde Namenspate. Die Namens-Versteigerung startet mit der Gründung der gUG.</p>
+      <p class="kurz">Werde Namenspate. Die Namens-Versteigerung startet mit der Gründung der gUG.</p>
       <a class="btn voll" href="patenschaft.html">Patenschaft &amp; Namensgebung</a>
-      <p style="margin-top:28px">Neue Rettungen und Geschichten zeigen wir zuerst auf Instagram und TikTok:</p>
+      <p style="margin-top:28px">Neue Rettungen und Geschichten zeigt Cat Rescue zuerst auf Instagram und TikTok:</p>
       <a class="btn btn-sozial" href="https://www.instagram.com/daralrahmacatrescue/" target="_blank" rel="noopener">Instagram · @daralrahmacatrescue</a>
       <a class="btn btn-sozial" href="https://www.tiktok.com/@daralrahmacatrescue" target="_blank" rel="noopener">TikTok · @daralrahmacatrescue</a>
     </div>
@@ -55,6 +105,5 @@
 </main>
 <div id="fuss"></div>
 <script src="menu.js"></script>
-<script src="galerie.js"></script>
 </body>
 </html>

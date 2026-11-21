@@ -16,7 +16,7 @@ const MENU = [
     { titel: "Alle Projekte im Netzwerk", url: "projekte.html" },
     { gruppe: "Projekte, die wir begleiten" },
     { titel: "Medical Point North Gaza", url: "medical-point.html" },
-    { titel: "Kids4Hope", url: "kinderhilfe.html#kids4hope" },
+    { titel: "Kids4Hope", url: "kids4hope.html" },
     { titel: "Dar Al-Rahma Cat Rescue", url: "tierschutz.html" },
     { gruppe: "Sammelbereiche" },
     { titel: "Children's Relief – Kinderprojekte", url: "kinderhilfe.html" },
@@ -66,6 +66,17 @@ const BEREICHE = {
     logo: "assets/logo-childrens-relief-vorlaeufig.jpg",
     seiten: [
       { titel: "Übersicht", url: "kinderhilfe.html" },
+      { titel: "Unterstützen", url: "spenden.html#kids4hope" }
+    ],
+    sozial: []
+  },
+  kids4hope: {
+    name: "Kids4Hope",
+    zusatz: "Together for a brighter tomorrow",
+    logo: "assets/kids4hope/logo.png",
+    hell: true,
+    seiten: [
+      { titel: "Übersicht", url: "kids4hope.html" },
       { titel: "Unterstützen", url: "spenden.html#kids4hope" }
     ],
     sozial: []
@@ -214,7 +225,7 @@ const BEREICHE = {
   } else teile.forEach((t) => t.classList.add("da"));
 
   // Fotogalerie (.mosaik) mit Großansicht; sensible Bilder erst nach Klick
-  const mosaike = document.querySelectorAll(".mosaik");
+  const mosaike = document.querySelectorAll(".mosaik, .bildgruppe");
   if (!mosaike.length) return;
   const gb = document.createElement("div");
   gb.className = "grossbild";
