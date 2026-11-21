@@ -389,6 +389,11 @@ const BEREICHE = {
   document.body.prepend(hg);
   himmel(hg, { dichte: 4000, schnuppe: 0.0025, milchstrasse: false, farben: ["255,255,255", "255,236,190", "240,207,122"] });
 
+  // 1b) Sterne über Bildern (z. B. Startseiten-Banner): <canvas class="sterne-ueber">
+  document.querySelectorAll("canvas.sterne-ueber").forEach((c) => {
+    himmel(c, { dichte: 1800, schnuppe: 0.012, milchstrasse: true, farben: ["255,255,255", "210,225,255", "255,236,190"] });
+  });
+
   // 2) Nachthimmel-Bereiche (z. B. Kids4Hope): <div class="nachthimmel"><canvas></canvas>…</div>
   document.querySelectorAll(".nachthimmel").forEach((bereich) => {
     const c = bereich.querySelector("canvas");

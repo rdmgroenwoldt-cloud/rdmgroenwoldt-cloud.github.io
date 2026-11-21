@@ -475,3 +475,8 @@ footer{background:rgba(8,7,6,.92)}
 .nachthimmel::after{content:"";position:absolute;inset:auto 0 0;height:120px;background:linear-gradient(180deg,transparent,var(--bg));pointer-events:none}
 .stern-zaehler{display:flex;align-items:center;gap:10px;margin-top:22px;color:#c9d3ff;font-size:14px}
 .stern-zaehler b{color:var(--gold2);font-size:16px}
+/* Sternenhimmel über dem Startseiten-Banner */
+.banner .sterne-ueber{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.banner .inhalt,.banner .punkte{z-index:3}
+.banner::after{background:linear-gradient(180deg,rgba(12,18,52,.78) 0%,rgba(14,20,58,.45) 40%,rgba(11,10,8,.82) 80%,var(--bg) 100%),linear-gradient(90deg,rgba(11,12,30,.7) 0%,rgba(11,10,8,0) 65%)}
+.banner .folie img{filter:saturate(.85) brightness(.8)}
