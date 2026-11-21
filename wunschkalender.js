@@ -52,6 +52,7 @@
   let sprache = "de";
   try { const s = localStorage.getItem("wk-sprache"); if (s && T[s]) sprache = s; } catch (e) {}
   const t = (k) => T[sprache][k] ?? T.de[k];
+  const esc = (x) => String(x ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const euro = (z) => new Intl.NumberFormat(sprache === "ar" ? "ar" : sprache === "en" ? "en-GB" : "de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(z);
 
   const leinwand = document.getElementById("wk-bild");
@@ -65,7 +66,7 @@
   let modus = "z2";
   const ruhig = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  function laden(src) { return new Promise((ok, fehler) => { const i = new Image(); i.onload = () => ok(i); i.onerror = fehler; i.src = src; }); }
+  function laden(src) { return new Promise((ok, fehler) => { const i = new Image(); i.crossOrigin = "anonymous"; i.onload = () => ok(i); i.onerror = fehler; i.src = src; }); }
   function bildDaten(img) { const c = document.createElement("canvas"); c.width = img.naturalWidth; c.height = img.naturalHeight; const x = c.getContext("2d"); x.drawImage(img, 0, 0); return x.getImageData(0, 0, c.width, c.height); }
 
   // Wert je Wunsch nach Vorschau-Zustand (Demo) oder bestätigten Spenden (echt)
@@ -78,8 +79,16 @@
   }
 
   async function start() {
-    let quelle = "assets/wunsch/wuensche.json";
-    daten = await (await fetch(quelle + "?v=" + Date.now())).json();
+    // Datenquelle: eigener Server (data-api) – sonst die mitgelieferte Demo-Datei
+    const api = apiAdresse;
+    daten = null;
+    if (api) {
+      try { const r = await fetch(api, { cache: "no-store" }); if (r.ok) { daten = await r.json(); if (!daten.kunstwerk) daten = null; } } catch (e) { daten = null; }
+      if (daten && daten.kunstwerk.bereichsliste) daten.kunstwerk.bereichsliste.forEach((x) => { bereichNamen[x.id] = x.name; bereichBox[x.id] = x.box; });
+    }
+    // Server eingestellt, aber nicht erreichbar: ehrliche Meldung statt stiller Demo-Daten
+    if (api && !daten) { rahmen.classList.add("fehler"); rahmen.setAttribute("data-meldung", "Die Daten sind gerade nicht erreichbar. Bitte später noch einmal versuchen."); return; }
+    if (!daten) daten = await (await fetch("assets/wunsch/wuensche.json?v=" + Date.now())).json();
     try { const lokal = localStorage.getItem("wk-verwaltung"); if (lokal && location.hostname.match(/localhost|127\.0\.0\.1|^$/)) daten = JSON.parse(lokal); } catch (e) {}
     const [bild, karte] = await Promise.all([laden(daten.kunstwerk.bild), laden(daten.kunstwerk.bereiche)]);
     W = bild.naturalWidth; H = bild.naturalHeight;
@@ -227,7 +236,8 @@
 
   // Liste (barrierearm: alle Wünsche auch ohne Bild erreichbar)
   let bereichNamen = {}, bereichBox = {};
-  fetch("assets/wunsch/bereiche.json").then((r) => r.json()).then((b) => b.forEach((x) => { bereichNamen[x.id] = x.name; bereichBox[x.id] = x.box; }));
+  const apiAdresse = document.getElementById("wunschkalender").dataset.api || (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? new URLSearchParams(location.search).get("api") : "");
+  if (!apiAdresse) fetch("assets/wunsch/bereiche.json").then((r) => r.json()).then((b) => b.forEach((x) => { bereichNamen[x.id] = x.name; bereichBox[x.id] = x.box; }));
   function liste() {
     const ziel = document.getElementById("wk-liste"); if (!ziel || !daten) return;
     const gruppen = {};
@@ -237,12 +247,12 @@
       const ws = gruppen[k]; if (!ws) return;
       const erf = ws.filter((w) => wert(w) >= w.ziel).length;
       const d = document.createElement("details"); d.className = "klapp";
-      d.innerHTML = `<summary>${t("kat")[k]}<small>${erf} ${t("von")} ${ws.length} ${t("erfuellt")}</small></summary><div class="klapp-inhalt"><ul class="wk-zeilen"></ul></div>`;
+      d.innerHTML = `<summary>${esc(t("kat")[k])}<small>${erf} ${esc(t("von"))} ${ws.length} ${esc(t("erfuellt"))}</small></summary><div class="klapp-inhalt"><ul class="wk-zeilen"></ul></div>`;
       const ul = d.querySelector("ul");
       ws.forEach((w) => {
         const li = document.createElement("li"), b = Math.min(w.ziel, wert(w));
         const status = b >= w.ziel ? t("voll") : b > 0 ? t("teil") : t("offen");
-        li.innerHTML = `<button type="button"><span>${wunschTitel(w)}<small>${bereichNamen[w.bereich] || ""}</small></span><span class="wk-st">${euro(b)} / ${euro(w.ziel)} · ${status}</span></button>`;
+        li.innerHTML = `<button type="button"><span>${esc(wunschTitel(w))}<small>${esc(bereichNamen[w.bereich] || "")}</small></span><span class="wk-st">${esc(euro(b))} / ${esc(euro(w.ziel))} · ${esc(status)}</span></button>`;
         li.querySelector("button").addEventListener("click", () => oeffnen(w.bereich));
         ul.appendChild(li);
       });
