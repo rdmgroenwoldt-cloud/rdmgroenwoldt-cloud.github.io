@@ -1,0 +1,962 @@
+[
+ {
+  "id": 1,
+  "name": "Bordüre oben links",
+  "kat": "rahmen",
+  "flaeche": 7523,
+  "mitte": [
+   203,
+   39
+  ],
+  "box": [
+   17,
+   18,
+   429,
+   61
+  ]
+ },
+ {
+  "id": 2,
+  "name": "Bordüre oben rechts",
+  "kat": "rahmen",
+  "flaeche": 7230,
+  "mitte": [
+   827,
+   39
+  ],
+  "box": [
+   600,
+   18,
+   1010,
+   61
+  ]
+ },
+ {
+  "id": 3,
+  "name": "Bordüre unten links",
+  "kat": "rahmen",
+  "flaeche": 3925,
+  "mitte": [
+   175,
+   1082
+  ],
+  "box": [
+   17,
+   1068,
+   345,
+   1095
+  ]
+ },
+ {
+  "id": 4,
+  "name": "Bordüre unten Mitte",
+  "kat": "rahmen",
+  "flaeche": 3643,
+  "mitte": [
+   509,
+   1081
+  ],
+  "box": [
+   346,
+   1068,
+   675,
+   1101
+  ]
+ },
+ {
+  "id": 5,
+  "name": "Bordüre unten rechts",
+  "kat": "rahmen",
+  "flaeche": 4141,
+  "mitte": [
+   848,
+   1082
+  ],
+  "box": [
+   676,
+   1068,
+   1010,
+   1096
+  ]
+ },
+ {
+  "id": 6,
+  "name": "Bordüre links oben",
+  "kat": "rahmen",
+  "flaeche": 6978,
+  "mitte": [
+   31,
+   310
+  ],
+  "box": [
+   17,
+   62,
+   51,
+   570
+  ]
+ },
+ {
+  "id": 7,
+  "name": "Bordüre links unten",
+  "kat": "rahmen",
+  "flaeche": 5207,
+  "mitte": [
+   32,
+   858
+  ],
+  "box": [
+   15,
+   571,
+   51,
+   1067
+  ]
+ },
+ {
+  "id": 8,
+  "name": "Bordüre rechts oben",
+  "kat": "rahmen",
+  "flaeche": 6646,
+  "mitte": [
+   994,
+   289
+  ],
+  "box": [
+   976,
+   62,
+   1010,
+   545
+  ]
+ },
+ {
+  "id": 9,
+  "name": "Bordüre rechts unten",
+  "kat": "rahmen",
+  "flaeche": 4008,
+  "mitte": [
+   995,
+   911
+  ],
+  "box": [
+   976,
+   574,
+   1010,
+   1067
+  ]
+ },
+ {
+  "id": 10,
+  "name": "Tatreez-Stern oben links",
+  "kat": "ornament",
+  "flaeche": 17996,
+  "mitte": [
+   159,
+   154
+  ],
+  "box": [
+   54,
+   62,
+   299,
+   267
+  ]
+ },
+ {
+  "id": 11,
+  "name": "Tatreez-Stern oben rechts",
+  "kat": "ornament",
+  "flaeche": 17525,
+  "mitte": [
+   868,
+   154
+  ],
+  "box": [
+   728,
+   62,
+   974,
+   267
+  ]
+ },
+ {
+  "id": 12,
+  "name": "Tatreez-Motiv unten links",
+  "kat": "ornament",
+  "flaeche": 8970,
+  "mitte": [
+   122,
+   995
+  ],
+  "box": [
+   55,
+   890,
+   229,
+   1065
+  ]
+ },
+ {
+  "id": 13,
+  "name": "Tatreez-Motiv unten rechts",
+  "kat": "ornament",
+  "flaeche": 8846,
+  "mitte": [
+   905,
+   999
+  ],
+  "box": [
+   790,
+   890,
+   974,
+   1064
+  ]
+ },
+ {
+  "id": 14,
+  "name": "Tatreez-Mittelband unten",
+  "kat": "ornament",
+  "flaeche": 4617,
+  "mitte": [
+   535,
+   1051
+  ],
+  "box": [
+   290,
+   1005,
+   769,
+   1067
+  ]
+ },
+ {
+  "id": 15,
+  "name": "Pfote – Zeh links",
+  "kat": "pfote",
+  "flaeche": 1457,
+  "mitte": [
+   450,
+   953
+  ],
+  "box": [
+   428,
+   924,
+   473,
+   999
+  ]
+ },
+ {
+  "id": 16,
+  "name": "Pfote – Zeh Mitte links",
+  "kat": "pfote",
+  "flaeche": 1425,
+  "mitte": [
+   483,
+   907
+  ],
+  "box": [
+   420,
+   870,
+   509,
+   938
+  ]
+ },
+ {
+  "id": 17,
+  "name": "Pfote – Zeh Mitte rechts",
+  "kat": "pfote",
+  "flaeche": 1319,
+  "mitte": [
+   540,
+   909
+  ],
+  "box": [
+   517,
+   871,
+   609,
+   939
+  ]
+ },
+ {
+  "id": 18,
+  "name": "Pfote – Zeh rechts",
+  "kat": "pfote",
+  "flaeche": 1309,
+  "mitte": [
+   569,
+   952
+  ],
+  "box": [
+   547,
+   926,
+   590,
+   978
+  ]
+ },
+ {
+  "id": 19,
+  "name": "Pfote – Ballen",
+  "kat": "pfote",
+  "flaeche": 3517,
+  "mitte": [
+   507,
+   988
+  ],
+  "box": [
+   455,
+   946,
+   553,
+   1019
+  ]
+ },
+ {
+  "id": 20,
+  "name": "Bogen – Stein links unten",
+  "kat": "bogen",
+  "flaeche": 5143,
+  "mitte": [
+   198,
+   364
+  ],
+  "box": [
+   163,
+   307,
+   244,
+   470
+  ]
+ },
+ {
+  "id": 21,
+  "name": "Bogen – Stein links Mitte",
+  "kat": "bogen",
+  "flaeche": 10270,
+  "mitte": [
+   224,
+   242
+  ],
+  "box": [
+   46,
+   27,
+   299,
+   328
+  ]
+ },
+ {
+  "id": 22,
+  "name": "Bogen – Stein links oben",
+  "kat": "bogen",
+  "flaeche": 10257,
+  "mitte": [
+   327,
+   150
+  ],
+  "box": [
+   150,
+   51,
+   415,
+   225
+  ]
+ },
+ {
+  "id": 23,
+  "name": "Bogen – Schlussstein",
+  "kat": "bogen",
+  "flaeche": 16135,
+  "mitte": [
+   492,
+   78
+  ],
+  "box": [
+   373,
+   8,
+   626,
+   180
+  ]
+ },
+ {
+  "id": 24,
+  "name": "Bogen – Stein rechts oben",
+  "kat": "bogen",
+  "flaeche": 14395,
+  "mitte": [
+   677,
+   133
+  ],
+  "box": [
+   572,
+   36,
+   873,
+   228
+  ]
+ },
+ {
+  "id": 25,
+  "name": "Bogen – Stein rechts Mitte",
+  "kat": "bogen",
+  "flaeche": 8538,
+  "mitte": [
+   801,
+   234
+  ],
+  "box": [
+   726,
+   23,
+   975,
+   319
+  ]
+ },
+ {
+  "id": 26,
+  "name": "Bogen – Stein rechts unten",
+  "kat": "bogen",
+  "flaeche": 16806,
+  "mitte": [
+   826,
+   393
+  ],
+  "box": [
+   710,
+   287,
+   904,
+   536
+  ]
+ },
+ {
+  "id": 27,
+  "name": "Altstadt links",
+  "kat": "stadt",
+  "flaeche": 14529,
+  "mitte": [
+   380,
+   281
+  ],
+  "box": [
+   274,
+   181,
+   470,
+   385
+  ]
+ },
+ {
+  "id": 28,
+  "name": "Kuppel",
+  "kat": "stadt",
+  "flaeche": 2395,
+  "mitte": [
+   607,
+   227
+  ],
+  "box": [
+   568,
+   188,
+   634,
+   253
+  ]
+ },
+ {
+  "id": 29,
+  "name": "Moschee",
+  "kat": "stadt",
+  "flaeche": 11072,
+  "mitte": [
+   617,
+   283
+  ],
+  "box": [
+   531,
+   208,
+   721,
+   342
+  ]
+ },
+ {
+  "id": 30,
+  "name": "Altstadt rechts",
+  "kat": "stadt",
+  "flaeche": 3127,
+  "mitte": [
+   739,
+   362
+  ],
+  "box": [
+   672,
+   312,
+   791,
+   436
+  ]
+ },
+ {
+  "id": 31,
+  "name": "Mutter – linkes Ohr",
+  "kat": "fell",
+  "flaeche": 8038,
+  "mitte": [
+   473,
+   314
+  ],
+  "box": [
+   386,
+   219,
+   533,
+   393
+  ]
+ },
+ {
+  "id": 32,
+  "name": "Mutter – Stirn",
+  "kat": "fell",
+  "flaeche": 8832,
+  "mitte": [
+   524,
+   351
+  ],
+  "box": [
+   451,
+   284,
+   625,
+   427
+  ]
+ },
+ {
+  "id": 33,
+  "name": "Mutter – Gesicht und rechtes Ohr",
+  "kat": "fell",
+  "flaeche": 19614,
+  "mitte": [
+   563,
+   431
+  ],
+  "box": [
+   399,
+   355,
+   704,
+   518
+  ]
+ },
+ {
+  "id": 34,
+  "name": "Mutter – Wange und Hals",
+  "kat": "fell",
+  "flaeche": 32693,
+  "mitte": [
+   468,
+   529
+  ],
+  "box": [
+   350,
+   420,
+   595,
+   683
+  ]
+ },
+ {
+  "id": 35,
+  "name": "Mutter – Rücken",
+  "kat": "fell",
+  "flaeche": 16869,
+  "mitte": [
+   347,
+   510
+  ],
+  "box": [
+   268,
+   381,
+   438,
+   632
+  ]
+ },
+ {
+  "id": 36,
+  "name": "Kitten – Kopf",
+  "kat": "fell",
+  "flaeche": 15594,
+  "mitte": [
+   639,
+   567
+  ],
+  "box": [
+   534,
+   509,
+   738,
+   627
+  ]
+ },
+ {
+  "id": 37,
+  "name": "Kitten – Pfoten",
+  "kat": "fell",
+  "flaeche": 11274,
+  "mitte": [
+   590,
+   647
+  ],
+  "box": [
+   512,
+   569,
+   705,
+   696
+  ]
+ },
+ {
+  "id": 38,
+  "name": "Kufiya – linke Schlaufe",
+  "kat": "kufiya",
+  "flaeche": 15548,
+  "mitte": [
+   241,
+   630
+  ],
+  "box": [
+   160,
+   515,
+   332,
+   738
+  ]
+ },
+ {
+  "id": 39,
+  "name": "Kufiya – vorne links",
+  "kat": "kufiya",
+  "flaeche": 39399,
+  "mitte": [
+   354,
+   698
+  ],
+  "box": [
+   229,
+   543,
+   518,
+   823
+  ]
+ },
+ {
+  "id": 40,
+  "name": "Kufiya – Mitte",
+  "kat": "kufiya",
+  "flaeche": 7498,
+  "mitte": [
+   560,
+   720
+  ],
+  "box": [
+   466,
+   685,
+   657,
+   759
+  ]
+ },
+ {
+  "id": 41,
+  "name": "Kufiya – rechts",
+  "kat": "kufiya",
+  "flaeche": 39107,
+  "mitte": [
+   721,
+   745
+  ],
+  "box": [
+   555,
+   574,
+   842,
+   920
+  ]
+ },
+ {
+  "id": 42,
+  "name": "Kufiya – Fransen",
+  "kat": "kufiya",
+  "flaeche": 12886,
+  "mitte": [
+   307,
+   959
+  ],
+  "box": [
+   49,
+   826,
+   478,
+   1092
+  ]
+ },
+ {
+  "id": 43,
+  "name": "Flagge – Rot",
+  "kat": "flagge",
+  "flaeche": 20120,
+  "mitte": [
+   448,
+   794
+  ],
+  "box": [
+   251,
+   678,
+   591,
+   953
+  ]
+ },
+ {
+  "id": 44,
+  "name": "Flagge – Grün",
+  "kat": "flagge",
+  "flaeche": 11818,
+  "mitte": [
+   576,
+   858
+  ],
+  "box": [
+   460,
+   817,
+   699,
+   982
+  ]
+ },
+ {
+  "id": 45,
+  "name": "Flagge – Schwarz und Weiß",
+  "kat": "flagge",
+  "flaeche": 11697,
+  "mitte": [
+   670,
+   867
+  ],
+  "box": [
+   527,
+   777,
+   791,
+   1091
+  ]
+ },
+ {
+  "id": 46,
+  "name": "Olivenzweig oben links",
+  "kat": "zweig",
+  "flaeche": 4520,
+  "mitte": [
+   322,
+   65
+  ],
+  "box": [
+   51,
+   13,
+   448,
+   133
+  ]
+ },
+ {
+  "id": 47,
+  "name": "Olivenzweig oben rechts",
+  "kat": "zweig",
+  "flaeche": 3909,
+  "mitte": [
+   695,
+   64
+  ],
+  "box": [
+   580,
+   13,
+   939,
+   126
+  ]
+ },
+ {
+  "id": 48,
+  "name": "Olivenzweig links oben",
+  "kat": "zweig",
+  "flaeche": 13432,
+  "mitte": [
+   167,
+   341
+  ],
+  "box": [
+   20,
+   40,
+   339,
+   480
+  ]
+ },
+ {
+  "id": 49,
+  "name": "Olivenzweig links Mitte",
+  "kat": "zweig",
+  "flaeche": 13212,
+  "mitte": [
+   133,
+   580
+  ],
+  "box": [
+   15,
+   411,
+   256,
+   686
+  ]
+ },
+ {
+  "id": 50,
+  "name": "Olivenzweig links unten",
+  "kat": "zweig",
+  "flaeche": 23109,
+  "mitte": [
+   175,
+   791
+  ],
+  "box": [
+   21,
+   656,
+   284,
+   1067
+  ]
+ },
+ {
+  "id": 51,
+  "name": "Olivenzweig rechts oben",
+  "kat": "zweig",
+  "flaeche": 8546,
+  "mitte": [
+   906,
+   312
+  ],
+  "box": [
+   816,
+   47,
+   1002,
+   397
+  ]
+ },
+ {
+  "id": 52,
+  "name": "Olivenzweig rechts Mitte",
+  "kat": "zweig",
+  "flaeche": 19016,
+  "mitte": [
+   857,
+   557
+  ],
+  "box": [
+   700,
+   436,
+   1005,
+   653
+  ]
+ },
+ {
+  "id": 53,
+  "name": "Olivenzweig rechts unten",
+  "kat": "zweig",
+  "flaeche": 34681,
+  "mitte": [
+   803,
+   831
+  ],
+  "box": [
+   458,
+   636,
+   1006,
+   1092
+  ]
+ },
+ {
+  "id": 54,
+  "name": "Olive links oben",
+  "kat": "olive",
+  "flaeche": 8981,
+  "mitte": [
+   132,
+   395
+  ],
+  "box": [
+   33,
+   297,
+   201,
+   481
+  ]
+ },
+ {
+  "id": 55,
+  "name": "Olive links Mitte",
+  "kat": "olive",
+  "flaeche": 8746,
+  "mitte": [
+   151,
+   493
+  ],
+  "box": [
+   67,
+   408,
+   208,
+   579
+  ]
+ },
+ {
+  "id": 56,
+  "name": "Olive links unten",
+  "kat": "olive",
+  "flaeche": 5418,
+  "mitte": [
+   106,
+   823
+  ],
+  "box": [
+   33,
+   784,
+   165,
+   1003
+  ]
+ },
+ {
+  "id": 57,
+  "name": "Olive rechts oben",
+  "kat": "olive",
+  "flaeche": 3231,
+  "mitte": [
+   937,
+   431
+  ],
+  "box": [
+   886,
+   382,
+   1005,
+   506
+  ]
+ },
+ {
+  "id": 58,
+  "name": "Grüne Olive",
+  "kat": "olive",
+  "flaeche": 5477,
+  "mitte": [
+   910,
+   476
+  ],
+  "box": [
+   846,
+   428,
+   979,
+   523
+  ]
+ },
+ {
+  "id": 59,
+  "name": "Olive rechts Mitte",
+  "kat": "olive",
+  "flaeche": 366,
+  "mitte": [
+   891,
+   521
+  ],
+  "box": [
+   881,
+   508,
+   906,
+   533
+  ]
+ },
+ {
+  "id": 60,
+  "name": "Olive rechts unten",
+  "kat": "olive",
+  "flaeche": 3463,
+  "mitte": [
+   869,
+   777
+  ],
+  "box": [
+   827,
+   735,
+   924,
+   813
+  ]
+ }
+]

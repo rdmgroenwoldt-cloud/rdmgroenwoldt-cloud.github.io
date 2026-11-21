@@ -37,6 +37,7 @@ const MENU = [
   { titel: "Aktuelles", url: "aktuelles.html" },
   { titel: "Helfen", unter: [
     { titel: "Projekte unterstützen", url: "spenden.html" },
+    { titel: "Wunschkalender „Paws of Hope“", url: "wunschkalender.html" },
     { titel: "Mitmachen & Zusammenarbeit", url: "mitmachen.html" },
     { titel: "Kontakt", url: "kontakt.html" }
   ]}
@@ -53,6 +54,7 @@ const BEREICHE = {
       { titel: "Die Tiere", url: "tiere.html" },
       { titel: "Tiere in Gaza", url: "tiere-in-gaza.html" },
       { titel: "Patenschaften", url: "patenschaft.html" },
+      { titel: "Wunschkalender", url: "wunschkalender.html" },
       { titel: "Unterstützen", url: "spenden.html#catrescue" }
     ],
     sozial: [
