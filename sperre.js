@@ -3,9 +3,10 @@
 // (SHA-256 von "dar-al-rahma|" + Passwort), nicht das Passwort selbst.
 (function () {
   "use strict";
-  var PRUEFWERT = "43bfab2a0c8208f4de23d45665fe042613d0bbbeb90e9a0e065b745d58b5d070";
+  // Gültig: "DarAlRahma" (Kim 22.11.2026) und das zuerst vereinbarte "DaAlRahma"
+  var PRUEFWERTE = ["26e3d669687b59fee044e655fd2370de954e5ede9577586637756e27789e47d0", "43bfab2a0c8208f4de23d45665fe042613d0bbbeb90e9a0e065b745d58b5d070"];
   var SCHLUESSEL = "dar-zugang";
-  try { if (localStorage.getItem(SCHLUESSEL) === PRUEFWERT) return; } catch (e) { /* ohne Speicher: jedes Mal fragen */ }
+  try { if (PRUEFWERTE.indexOf(localStorage.getItem(SCHLUESSEL)) >= 0) return; } catch (e) { /* ohne Speicher: jedes Mal fragen */ }
 
   var html = document.documentElement;
   var sp = (html.lang || "de").slice(0, 2), wurzel = sp === "de" ? "" : "../";
@@ -56,8 +57,8 @@
       var meldung = box.querySelector(".fehler");
       if (!(window.crypto && crypto.subtle)) { meldung.textContent = T[4]; return; }
       var wert = await pruefwert(form.pw.value);
-      if (wert !== PRUEFWERT) { meldung.textContent = T[3]; form.pw.select(); return; }
-      try { localStorage.setItem(SCHLUESSEL, PRUEFWERT); } catch (e) { /* dann gilt es nur für diese Seite */ }
+      if (PRUEFWERTE.indexOf(wert) < 0) { meldung.textContent = T[3]; form.pw.select(); return; }
+      try { localStorage.setItem(SCHLUESSEL, wert); } catch (e) { /* dann gilt es nur für diese Seite */ }
       box.remove();
       html.classList.remove("gesperrt");
     });
