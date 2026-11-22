@@ -13,18 +13,17 @@ const MENU = [
     { titel: "Häufige Fragen", url: "faq.html" }
   ]},
   { titel: "Projekte", unter: [
-    { titel: "Alle Projekte auf einen Blick", url: "projekte.html" },
-    { gruppe: "Projekte, die wir begleiten" },
-    { titel: "Medical Point North Gaza", url: "projekte.html#medical-point" },
-    { titel: "Kids4Hope", url: "projekte.html#kids4hope" },
-    { titel: "Hope4Humanity & Gazahilfspool", url: "projekte.html#hope4humanity" },
+    { gruppe: "Unsere Arbeit" },
     { titel: "Dar Al-Rahma Cat Rescue", url: "tierschutz.html" },
-    { gruppe: "Sammelbereiche" },
+    { titel: "Unsere Tiere", url: "tiere.html" },
+    { titel: "Katzen-Patenschaften", url: "patenschaft.html" },
     { titel: "Children's Relief – Kinderprojekte", url: "kinderhilfe.html" },
     { gruppe: "Arbeitsbereiche im Aufbau" },
     { titel: "Mensch & Tier: seelische Hilfe", url: "mensch-und-tier.html" },
     { titel: "Kultur & Identität", url: "kultur.html" },
-    { titel: "Inklusion & Integration", url: "inklusion.html" }
+    { titel: "Inklusion & Integration", url: "inklusion.html" },
+    { gruppe: "Im Netzwerk" },
+    { titel: "Projekte, die wir begleiten", url: "projekte.html" }
   ]},
   { titel: "Lage in Gaza", unter: [
     { titel: "Warum Nord-Gaza", url: "nord-gaza.html" },
