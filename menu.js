@@ -17,7 +17,8 @@ const MENU = [
     { gruppe: "Projekte, die wir begleiten" },
     { titel: "Medical Point North Gaza", url: "medical-point.html" },
     { titel: "Kids4Hope", url: "kids4hope.html" },
-    { titel: "Gazahilfspool – Familienpatenschaften", url: "gazahilfspool.html" },
+    { titel: "Hope4Humanity – Wasser & Familienhilfe", url: "hope4humanity.html" },
+    { titel: "Gazahilfspool (Hope4Humanity)", url: "gazahilfspool.html" },
     { titel: "Dar Al-Rahma Cat Rescue", url: "tierschutz.html" },
     { gruppe: "Sammelbereiche" },
     { titel: "Children's Relief – Kinderprojekte", url: "kinderhilfe.html" },
@@ -86,13 +87,15 @@ const BEREICHE = {
       { titel: "kids4hope.com", url: "https://kids4hope.com/" }
     ]
   },
-  gazahilfspool: {
-    name: "Gazahilfspool",
-    zusatz: "Familienpatenschaften in Gaza",
-    logo: null,
+  hope4humanity: {
+    name: "Hope4Humanity",
+    zusatz: "Humans serving hope",
+    logo: "assets/hope4humanity/logo-breit.jpg",
+    hell: true,
     seiten: [
-      { titel: "Übersicht", url: "gazahilfspool.html" },
-      { titel: "Unterstützen", url: "spenden.html#gazahilfspool" }
+      { titel: "Übersicht", url: "hope4humanity.html" },
+      { titel: "Gazahilfspool", url: "gazahilfspool.html" },
+      { titel: "Unterstützen", url: "spenden.html#hope4humanity" }
     ],
     sozial: []
   },
