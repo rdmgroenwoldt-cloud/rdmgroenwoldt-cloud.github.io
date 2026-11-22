@@ -6,6 +6,7 @@
 <title>Cookies &amp; lokaler Speicher – Dar Al-Rahma Center</title>
 <meta name="robots" content="noindex">
 <link rel="stylesheet" href="style.css?v=20261122g">
+<script src="sperre.js?v=2"></script>
 <style>
   .recht h2{font-size:26px;margin:40px 0 10px;text-align:left}
   .recht p,.recht li{color:var(--text);line-height:1.7}
@@ -26,21 +27,22 @@
       <div class="kasten"><strong>Diese Website setzt keine Cookies.</strong> Es gibt kein Tracking, keine Statistik, keine Werbung und keine eingebetteten Inhalte von Facebook, Instagram, YouTube oder Google. Deshalb musst du auch nichts „akzeptieren“.</div>
 
       <h2>Was wir in deinem Browser speichern</h2>
-      <p>Nur zwei kleine Einträge im <strong>lokalen Speicher</strong> (localStorage) deines Browsers – und nur, wenn du die jeweilige Funktion benutzt. Sie verlassen dein Gerät nicht.</p>
+      <p>Nur drei kleine Einträge im <strong>lokalen Speicher</strong> (localStorage) deines Browsers – und nur, wenn du die jeweilige Funktion benutzt. Sie verlassen dein Gerät nicht.</p>
       <table>
         <thead><tr><th>Eintrag</th><th>Wofür</th><th>Wie lange</th></tr></thead>
         <tbody>
+          <tr><td><code>dar-zugang</code></td><td>Merkt sich, dass du das Passwort für diese noch nicht öffentliche Website eingegeben hast. Gespeichert wird nur ein Prüfwert, nicht das Passwort.</td><td>bis du ihn löschst</td></tr>
           <tr><td><code>dar-hinweis</code></td><td>Merkt sich, dass du den Hinweis zu Cookies und Datenschutz geschlossen hast, damit er nicht auf jeder Seite erscheint.</td><td>bis du ihn löschst</td></tr>
           <tr><td><code>wk-sprache</code></td><td>Merkt sich deine Sprache (Deutsch, Englisch, Arabisch) im <a href="wunschkalender.html">Wunschkalender</a>.</td><td>bis du ihn löschst</td></tr>
         </tbody>
       </table>
-      <p>Beide Einträge sind für eine Funktion nötig, die du selbst nutzt; eine Einwilligung ist dafür nicht erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG).</p>
+      <p>Alle Einträge sind für eine Funktion nötig, die du selbst nutzt; eine Einwilligung ist dafür nicht erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG).</p>
 
       <h2>Übersicht</h2>
       <table>
         <thead><tr><th>Art</th><th>Auf dieser Website</th></tr></thead>
         <tbody>
-          <tr><td>Notwendige Einträge</td><td>ja – die zwei oben genannten, nur lokal</td></tr>
+          <tr><td>Notwendige Einträge</td><td>ja – die drei oben genannten, nur lokal</td></tr>
           <tr><td>Statistik / Reichweitenmessung</td><td>nein</td></tr>
           <tr><td>Marketing / Werbung</td><td>nein</td></tr>
           <tr><td>Eingebettete Inhalte Dritter (Videos, Karten, Social Media)</td><td>nein – Videos liegen auf unserem eigenen Webspace</td></tr>
@@ -54,7 +56,7 @@
       <script>
         document.getElementById("speicher-loeschen").addEventListener("click", function () {
           var m = document.getElementById("speicher-meldung");
-          try { ["dar-hinweis", "wk-sprache"].forEach(function (k) { localStorage.removeItem(k); }); m.textContent = "Gelöscht."; }
+          try { ["dar-zugang", "dar-hinweis", "wk-sprache"].forEach(function (k) { localStorage.removeItem(k); }); m.textContent = "Gelöscht."; }
           catch (e) { m.textContent = "Dein Browser lässt keinen Zugriff zu – es ist also auch nichts gespeichert."; }
         });
       </script>

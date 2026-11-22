@@ -458,7 +458,7 @@ const BEREICHE = {
     '<h2>Cookies? Brauchen wir nicht.</h2>' +
     '<p>Diese Website setzt <strong>keine Cookies</strong> und nutzt kein Tracking, keine Statistik und keine Werbung. Schriften, Bilder und Videos liegen bei uns – nichts wird an Google, Facebook &amp; Co. übertragen.</p>' +
     '<details class="cookie-details"><summary>Einstellungen ansehen</summary><ul class="cookie-arten">' +
-    '<li><span>Notwendig</span><small>nur lokale Einstellungen, z. B. deine Sprache im Wunschkalender</small><b class="an">immer an</b></li>' +
+    '<li><span>Notwendig</span><small>nur lokale Einträge, z. B. Zugang und Sprache im Wunschkalender</small><b class="an">immer an</b></li>' +
     '<li><span>Statistik</span><small>wird nicht verwendet</small><b>aus</b></li>' +
     '<li><span>Marketing</span><small>wird nicht verwendet</small><b>aus</b></li>' +
     '</ul></details>' +
