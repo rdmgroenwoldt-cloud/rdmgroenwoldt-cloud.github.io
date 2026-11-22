@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ملفات تعريف الارتباط والتخزين المحلي – مركز دار الرحمة</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../style.css?v=20261122i">
+<script src="../sperre.js?v=20261122h"></script>
+<style>
+  .recht h2{font-size:26px;margin:40px 0 10px;text-align:left}
+  .recht p,.recht li{color:var(--text);line-height:1.7}
+  .recht .luecke{background:rgba(212,168,75,.14);border:1px dashed var(--gold);border-radius:6px;padding:1px 6px;color:var(--gold2)}
+  .recht .stand{color:var(--muted);font-size:14px;margin-top:40px}
+  .recht table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
+  .recht th,.recht td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
+  .recht th{color:var(--gold2);font-weight:600}
+</style>
+</head>
+<body>
+<div id="kopf"></div>
+<main>
+  <div class="seitenkopf" style="padding-bottom:30px"><div class="wrap"><h1>ملفات تعريف الارتباط والتخزين المحلي</h1></div></div>
+  <section style="border-top:0;padding-top:10px">
+    <div class="wrap text recht">
+
+      <p class="quelle">هذه الترجمة للمعلومات فقط، والنص الألماني هو النص الملزم قانونيًا.</p>
+
+      <div class="kasten"><strong>لا يضع هذا الموقع أي ملفات تعريف ارتباط (كوكيز).</strong> لا يوجد تتبّع ولا إحصاءات ولا إعلانات ولا محتوى مُضمَّن من فيسبوك أو إنستغرام أو يوتيوب أو غوغل. ولهذا لا حاجة لأن «تقبل» أي شيء.</div>
+
+      <h2>ما الذي نحفظه في متصفحك</h2>
+      <p>ثلاثة إدخالات صغيرة فقط في <strong>التخزين المحلي</strong> (localStorage) لمتصفحك – ولا تُحفظ إلا إذا استخدمت الوظيفة المعنية. وهي لا تغادر جهازك.</p>
+      <table>
+        <thead><tr><th>الإدخال</th><th>الغرض</th><th>المدة</th></tr></thead>
+        <tbody>
+          <tr><td><code>dar-zugang</code></td><td>يتذكّر أنك أدخلت كلمة المرور لهذا الموقع الذي لم يُفتح للعموم بعد. لا تُحفظ كلمة المرور نفسها، بل قيمة تحقّق فقط.</td><td>حتى تحذفه</td></tr>
+          <tr><td><code>dar-hinweis</code></td><td>يتذكّر أنك أغلقت التنبيه الخاص بملفات تعريف الارتباط وحماية البيانات، حتى لا يظهر في كل صفحة.</td><td>حتى تحذفه</td></tr>
+          <tr><td><code>wk-sprache</code></td><td>يتذكّر لغتك (الألمانية أو الإنجليزية أو العربية) في <a href="wunschkalender.html">تقويم الأمنيات</a>.</td><td>حتى تحذفه</td></tr>
+        </tbody>
+      </table>
+      <p>جميع الإدخالات ضرورية لوظيفة تستخدمها أنت بنفسك؛ ولا يلزم الحصول على موافقة لذلك (المادة 25 الفقرة 2 البند 2 من قانون حماية الخصوصية في الاتصالات والخدمات الرقمية، TDDDG).</p>
+
+      <h2>نظرة عامة</h2>
+      <table>
+        <thead><tr><th>النوع</th><th>على هذا الموقع</th></tr></thead>
+        <tbody>
+          <tr><td>إدخالات ضرورية</td><td>نعم – الثلاثة المذكورة أعلاه، محليًا فقط</td></tr>
+          <tr><td>الإحصاءات / قياس الوصول</td><td>لا</td></tr>
+          <tr><td>التسويق / الإعلانات</td><td>لا</td></tr>
+          <tr><td>محتوى مُضمَّن من أطراف ثالثة (فيديو، خرائط، وسائل التواصل الاجتماعي)</td><td>لا – مقاطع الفيديو موجودة على مساحة الاستضافة الخاصة بنا</td></tr>
+          <tr><td>خطوط من خوادم خارجية</td><td>لا – الخطوط موجودة لدينا</td></tr>
+        </tbody>
+      </table>
+
+      <h2>حذف الإدخالات</h2>
+      <p>بالزر أدناه تحذف جميع إدخالات هذا الموقع من متصفحك. وبدلًا من ذلك يمكنك فعل ذلك في إعدادات المتصفح ضمن «ملفات تعريف الارتباط وبيانات المواقع».</p>
+      <p><button type="button" class="btn" id="speicher-loeschen" style="margin:6px 0 0">حذف الإدخالات المحفوظة</button> <span id="speicher-meldung" class="quelle"></span></p>
+      <script>
+        document.getElementById("speicher-loeschen").addEventListener("click", function () {
+          var m = document.getElementById("speicher-meldung");
+          try { ["dar-zugang", "dar-hinweis", "wk-sprache"].forEach(function (k) { localStorage.removeItem(k); }); m.textContent = "تم الحذف."; }
+          catch (e) { m.textContent = "متصفحك لا يسمح بالوصول – وبالتالي لا يوجد شيء محفوظ أيضًا."; }
+        });
+      </script>
+
+      <p>المزيد في <a href="datenschutz.html">سياسة الخصوصية</a>.</p>
+      <p class="stand">التحديث: 22 نوفمبر 2026</p>
+    </div>
+  </section>
+</main>
+<div id="fuss"></div>
+<script src="../menu.js?v=20261122i"></script>
+</body>
+</html>

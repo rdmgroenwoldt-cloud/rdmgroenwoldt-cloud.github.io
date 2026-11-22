@@ -33,8 +33,36 @@ const PATENKATZEN = [
       });
     } catch (e) { /* Server nicht erreichbar: Karten bleiben mit den Grundwerten bedienbar */ }
   }
+  const PS_SPRACHE = (document.documentElement.lang || "de").slice(0, 2);
+  const PS_WURZEL = PS_SPRACHE === "de" ? "" : "../";
+  const PS_T = {
+    de: { pate: "Pate werden", waehlen: "Auswählen", gewaehlt: "Ausgewählt", entfernen: "entfernen", rest: "es fehlen dann noch", gedeckt: "damit ist alles gedeckt", imMonat: "im Monat", ganz: "ganz", von: "von", teil: "teilweise mit Paten", sucht: "sucht Paten", monatsbetrag: "Monatsbetrag für", seite: "Seite", hallo: "Hallo Cat Rescue, ich möchte Pate werden:", zusammen: "Zusammen" },
+    en: { pate: "Become a sponsor", waehlen: "Select", gewaehlt: "Selected", entfernen: "remove", rest: "then still missing", gedeckt: "that covers everything", imMonat: "per month", ganz: "full", von: "of", teil: "partly sponsored", sucht: "looking for sponsors", monatsbetrag: "Monthly amount for", seite: "Page", hallo: "Hello Cat Rescue, I would like to become a sponsor:", zusammen: "Total" },
+    ar: { pate: "كن كافلًا", waehlen: "اختيار", gewaehlt: "تم الاختيار", entfernen: "إزالة", rest: "سيبقى ناقصًا", gedeckt: "وبذلك تتم تغطية كل شيء", imMonat: "شهريًا", ganz: "كامل", von: "من", teil: "لها كفلاء جزئيًا", sucht: "تبحث عن كفلاء", monatsbetrag: "المبلغ الشهري لـ", seite: "صفحة", hallo: "مرحبًا Cat Rescue، أرغب في أن أصبح كافلًا:", zusammen: "المجموع" }
+  };
+  const ps = (k) => (PS_T[PS_SPRACHE] || PS_T.de)[k] ?? PS_T.de[k];
+  const PS_KATZEN = {
+    sumada: { en: ["Mother cat · 7 kittens", "Cat Rescue's first mother cat. It all began with her."], ar: ["قطة أم · 7 صغار", "أول قطة أم لدى Cat Rescue. ومعها بدأ كل شيء."] },
+    mutter: { en: ["Mother cat · 5 kittens · still unnamed", "Rescued from the rubble with five kittens. As her sponsor, you get to give her a name."], ar: ["قطة أم · 5 صغار · بلا اسم بعد", "أُنقذت من تحت الأنقاض مع صغارها الخمسة. وبصفتك كافلًا لها يمكنك أن تمنحها اسمًا."] },
+    schwarzweiss: { en: ["came alone · still unnamed", "Yellow-green eyes, white paws – and still no name. Who will give her one?"], ar: ["جاءت وحدها · بلا اسم بعد", "عيون صفراء مخضرّة وأقدام بيضاء – وما زالت بلا اسم. من يمنحها اسمًا؟"] },
+    ashanti: { en: ["Kitten of Sumada", "Tricolour and curious – she wears a necklace in the colours of Palestine."], ar: ["من صغار سمادا", "ثلاثية الألوان وفضولية – تضع قلادة بألوان فلسطين."] },
+    lima: { en: ["Kitten of Sumada", "Tricolour, with big ears and watchful eyes."], ar: ["من صغار سمادا", "ثلاثية الألوان، بأذنين كبيرتين ونظرة يقظة."] },
+    palestine: { en: ["Kitten of Sumada", "White and red, and always off exploring."], ar: ["من صغار سمادا", "بيضاء وحمراء، وفي رحلة استكشاف دائمًا."] },
+    zaytouna: { en: ["Kitten of Sumada", "Loves to sit up on the wooden shelf."], ar: ["من صغار سمادا", "تحب الجلوس في أعلى الرف الخشبي."] },
+    nadija: { en: ["Kitten of Sumada", "Red tabby, loves lying on the red rug."], ar: ["من صغار سمادا", "حمراء مخططة، تحب الاستلقاء على السجادة الحمراء."] },
+    latifa: { en: ["Kitten of Sumada", "White and red, with bright eyes."], ar: ["من صغار سمادا", "بيضاء وحمراء، بعينين فاتحتين."] },
+    cataleya: { en: ["Kitten of Sumada", "With a long, curled tail."], ar: ["من صغار سمادا", "بذيل طويل ملتف."] },
+    elsa: { en: ["Kitten of the tabby mother", "Light red and white, with pale blue eyes."], ar: ["من صغار الأم المخططة", "أحمر فاتح وأبيض، بعينين زرقاوين فاتحتين."] },
+    luna: { en: ["Kitten of the tabby mother", "Grey and white, with blue eyes and a pink nose."], ar: ["من صغار الأم المخططة", "رمادية وبيضاء، بعينين زرقاوين وأنف وردي."] },
+    subaia: { en: ["Kitten of the tabby mother", "Tricolour – her face half dark, half red."], ar: ["من صغار الأم المخططة", "ثلاثية الألوان – وجهها نصفه داكن ونصفه أحمر."] },
+    mulan: { en: ["Kitten of the tabby mother", "Red and white, and brave."], ar: ["من صغار الأم المخططة", "حمراء وبيضاء وشجاعة."] },
+    hind: { en: ["Kitten of the tabby mother", "Light cream-coloured, the smallest of the family."], ar: ["من صغار الأم المخططة", "بلون كريمي فاتح، أصغر أفراد العائلة."] }
+  };
+  PATENKATZEN.forEach((k) => { const u = PS_KATZEN[k.id]?.[PS_SPRACHE]; if (u) { k.zeile = u[0]; k.text = u[1]; } });
+  const PS_NAMEN = { "Getigerte Mutter": { en: "Tabby mother", ar: "الأم المخططة" }, "Schwarz-weiße Katze": { en: "Black-and-white cat", ar: "القطة السوداء والبيضاء" } };
+  PATENKATZEN.forEach((k) => { const u = PS_NAMEN[k.name]?.[PS_SPRACHE]; if (u) k.name = u; });
   const auswahl = {}; // id -> Betrag
-  const euro = (z) => z.toLocaleString("de-DE") + " €";
+  const euro = (z) => PS_SPRACHE === "en" ? "€" + z.toLocaleString("en-GB") : z.toLocaleString(PS_SPRACHE === "ar" ? "en-GB" : "de-DE") + " €";
 
   PATENKATZEN.forEach((k) => {
     const karte = document.createElement("article");
@@ -42,21 +70,21 @@ const PATENKATZEN = [
     karte.dataset.gruppe = k.gruppe.join(" ");
     const stufen = [5, 10, 20].filter((b) => b < k.bedarf);
     karte.innerHTML = `
-      <button type="button" class="bild" data-gross="assets/katzen/${k.id}-gross.jpg" data-text="${k.name} – ${k.text}"><img src="assets/katzen/${k.id}.jpg" alt="${k.name}" loading="lazy"></button>
+      <button type="button" class="bild" data-gross="${PS_WURZEL}assets/katzen/${k.id}-gross.jpg" data-text="${k.name} – ${k.text}"><img src="${PS_WURZEL}assets/katzen/${k.id}.jpg" alt="${k.name}" loading="lazy"></button>
       <div class="inhalt">
-        <span class="status">${k.schon > 0 ? "teilweise mit Paten" : "sucht Paten"}</span>
+        <span class="status">${k.schon > 0 ? ps("teil") : ps("sucht")}</span>
         <h3>${k.name}</h3>
         <div class="zeile">${k.zeile}</div>
         <div class="fortschritt" aria-hidden="true"><i style="width:${Math.min(100, (k.schon / k.bedarf) * 100)}%"></i></div>
-        <div class="fortschritt-text">${euro(k.schon)} von ${euro(k.bedarf)} im Monat</div>
+        <div class="fortschritt-text">${euro(k.schon)} ${ps("von")} ${euro(k.bedarf)} ${ps("imMonat")}</div>
         <div class="wahl" hidden>
-          <div class="betraege" role="group" aria-label="Monatsbetrag für ${k.name}">
-            ${stufen.map((b) => `<button type="button" data-b="${b}" aria-pressed="${b === 10}">${b} €</button>`).join("")}
-            <button type="button" data-b="${k.bedarf}" aria-pressed="false">${euro(k.bedarf)} (ganz)</button>
+          <div class="betraege" role="group" aria-label="${ps("monatsbetrag")} ${k.name}">
+            ${stufen.map((b) => `<button type="button" data-b="${b}" aria-pressed="${b === 10}">${euro(b)}</button>`).join("")}
+            <button type="button" data-b="${k.bedarf}" aria-pressed="false">${euro(k.bedarf)} (${ps("ganz")})</button>
           </div>
-          <div class="wahl-text"><b data-betrag>10 €</b> im Monat <small data-rest></small></div>
+          <div class="wahl-text"><b data-betrag>${euro(10)}</b> ${ps("imMonat")} <small data-rest></small></div>
         </div>
-        <button type="button" class="btn" data-waehlen>Pate werden</button>
+        <button type="button" class="btn" data-waehlen>${ps("pate")}</button>
       </div>`;
     let betrag = 10, offen = false;
     const wahl = karte.querySelector(".wahl");
@@ -64,16 +92,16 @@ const PATENKATZEN = [
     const zeigeBetrag = () => {
       karte.querySelector("[data-betrag]").textContent = euro(betrag);
       const rest = k.bedarf - k.schon - betrag;
-      karte.querySelector("[data-rest]").textContent = rest > 0 ? "· es fehlen dann noch " + euro(rest) : "· damit ist alles gedeckt";
+      karte.querySelector("[data-rest]").textContent = rest > 0 ? "· " + ps("rest") + " " + euro(rest) : "· " + ps("gedeckt");
       karte.querySelectorAll(".betraege button").forEach((b) => b.setAttribute("aria-pressed", String(+b.dataset.b === betrag)));
-      if (auswahl[k.id] !== undefined) { auswahl[k.id] = betrag; knopf.textContent = "Ausgewählt · " + euro(betrag) + " – entfernen"; aktualisieren(); }
+      if (auswahl[k.id] !== undefined) { auswahl[k.id] = betrag; knopf.textContent = ps("gewaehlt") + " · " + euro(betrag) + " – " + ps("entfernen"); aktualisieren(); }
     };
     zeigeBetrag();
     karte.querySelectorAll(".betraege button").forEach((b) => b.addEventListener("click", () => { betrag = +b.dataset.b; zeigeBetrag(); }));
     knopf.addEventListener("click", () => {
-      if (!offen && auswahl[k.id] === undefined) { offen = true; wahl.hidden = false; knopf.classList.add("voll"); knopf.textContent = "Auswählen"; return; }
-      if (auswahl[k.id] === undefined) { auswahl[k.id] = betrag; karte.classList.add("gewaehlt"); knopf.textContent = "Ausgewählt · " + euro(betrag) + " – entfernen"; }
-      else { delete auswahl[k.id]; karte.classList.remove("gewaehlt"); offen = false; wahl.hidden = true; knopf.classList.remove("voll"); knopf.textContent = "Pate werden"; }
+      if (!offen && auswahl[k.id] === undefined) { offen = true; wahl.hidden = false; knopf.classList.add("voll"); knopf.textContent = ps("waehlen"); return; }
+      if (auswahl[k.id] === undefined) { auswahl[k.id] = betrag; karte.classList.add("gewaehlt"); knopf.textContent = ps("gewaehlt") + " · " + euro(betrag) + " – " + ps("entfernen"); }
+      else { delete auswahl[k.id]; karte.classList.remove("gewaehlt"); offen = false; wahl.hidden = true; knopf.classList.remove("voll"); knopf.textContent = ps("pate"); }
       aktualisieren();
     });
     raster.appendChild(karte);
@@ -90,7 +118,7 @@ const PATENKATZEN = [
       punkte.innerHTML = "";
       for (let i = 0; i < n; i++) {
         const b = document.createElement("button");
-        b.type = "button"; b.setAttribute("aria-label", "Seite " + (i + 1));
+        b.type = "button"; b.setAttribute("aria-label", ps("seite") + " " + (i + 1));
         b.addEventListener("click", () => raster.scrollTo({ left: i * seite() }));
         punkte.appendChild(b);
       }
@@ -119,7 +147,7 @@ const PATENKATZEN = [
   function text() {
     const ids = Object.keys(auswahl);
     const summe = ids.reduce((s, id) => s + auswahl[id], 0);
-    return "Hallo Cat Rescue, ich möchte Pate werden:\n" + ids.map((id) => "- " + PATENKATZEN.find((k) => k.id === id).name + ": " + euro(auswahl[id]) + " im Monat").join("\n") + "\nZusammen: " + euro(summe) + " im Monat";
+    return ps("hallo") + "\n" + ids.map((id) => "- " + PATENKATZEN.find((k) => k.id === id).name + ": " + euro(auswahl[id]) + " " + ps("imMonat")).join("\n") + "\n" + ps("zusammen") + ": " + euro(summe) + " " + ps("imMonat");
   }
   function aktualisieren() {
     const ids = Object.keys(auswahl);
@@ -133,9 +161,9 @@ const PATENKATZEN = [
     ids.forEach((id) => {
       const k = PATENKATZEN.find((x) => x.id === id);
       const li = document.createElement("li");
-      li.innerHTML = `<span>${k.name} – ${euro(auswahl[id])} im Monat</span>`;
+      li.innerHTML = `<span>${k.name} – ${euro(auswahl[id])} ${ps("imMonat")}</span>`;
       const weg = document.createElement("button");
-      weg.type = "button"; weg.textContent = "entfernen";
+      weg.type = "button"; weg.textContent = ps("entfernen");
       weg.addEventListener("click", () => raster.querySelectorAll(".patenkarte").forEach((karte) => { if (karte.querySelector("h3").textContent === k.name) karte.querySelector("[data-waehlen]").click(); }));
       li.appendChild(weg);
       liste.appendChild(li);

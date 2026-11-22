@@ -49,7 +49,10 @@
       titelKat: { futter: "طعام قطة لمدة شهر", impfung: "تطعيم ضد طاعون القطط", wurm: "علاج الديدان", floh: "حماية من البراغيث والقراد", notfall: "حالة بيطرية طارئة", medizin: "أدوية", streu: "رمل القطط", unterkunft: "المأوى" }
     }
   };
-  let sprache = "de";
+  const WK_SEITE = (document.documentElement.lang || "de").slice(0, 2);
+  const WK_WURZEL = WK_SEITE === "de" ? "" : "../";
+  const wkPfad = (x) => (typeof x === "string" && x && !/^([a-z][a-z0-9+.-]*:|\/|\.\.\/)/i.test(x)) ? WK_WURZEL + x : x;
+  let sprache = T[WK_SEITE] ? WK_SEITE : "de";
   try { const s = localStorage.getItem("wk-sprache"); if (s && T[s]) sprache = s; } catch (e) {}
   const t = (k) => T[sprache][k] ?? T.de[k];
   const esc = (x) => String(x ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -88,9 +91,9 @@
     }
     // Server eingestellt, aber nicht erreichbar: ehrliche Meldung statt stiller Demo-Daten
     if (api && !daten) { rahmen.classList.add("fehler"); rahmen.setAttribute("data-meldung", "Die Daten sind gerade nicht erreichbar. Bitte später noch einmal versuchen."); return; }
-    if (!daten) daten = await (await fetch("assets/wunsch/wuensche.json?v=" + Date.now())).json();
+    if (!daten) daten = await (await fetch(WK_WURZEL + "assets/wunsch/wuensche.json?v=" + Date.now())).json();
     try { const lokal = localStorage.getItem("wk-verwaltung"); if (lokal && location.hostname.match(/localhost|127\.0\.0\.1|^$/)) daten = JSON.parse(lokal); } catch (e) {}
-    const [bild, karte] = await Promise.all([laden(daten.kunstwerk.bild), laden(daten.kunstwerk.bereiche)]);
+    const [bild, karte] = await Promise.all([laden(wkPfad(daten.kunstwerk.bild)), laden(wkPfad(daten.kunstwerk.bereiche))]);
     W = bild.naturalWidth; H = bild.naturalHeight;
     leinwand.width = ueber.width = W; leinwand.height = ueber.height = H;
     farbe = bildDaten(bild); const k = bildDaten(karte);
@@ -237,7 +240,7 @@
   // Liste (barrierearm: alle Wünsche auch ohne Bild erreichbar)
   let bereichNamen = {}, bereichBox = {};
   const apiAdresse = document.getElementById("wunschkalender").dataset.api || (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? new URLSearchParams(location.search).get("api") : "");
-  if (!apiAdresse) fetch("assets/wunsch/bereiche.json").then((r) => r.json()).then((b) => b.forEach((x) => { bereichNamen[x.id] = x.name; bereichBox[x.id] = x.box; }));
+  if (!apiAdresse) fetch(WK_WURZEL + "assets/wunsch/bereiche.json").then((r) => r.json()).then((b) => b.forEach((x) => { bereichNamen[x.id] = x.name; bereichBox[x.id] = x.box; }));
   function liste() {
     const ziel = document.getElementById("wk-liste"); if (!ziel || !daten) return;
     const gruppen = {};

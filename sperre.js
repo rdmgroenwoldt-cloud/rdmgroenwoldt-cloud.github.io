@@ -8,6 +8,13 @@
   try { if (localStorage.getItem(SCHLUESSEL) === PRUEFWERT) return; } catch (e) { /* ohne Speicher: jedes Mal fragen */ }
 
   var html = document.documentElement;
+  var sp = (html.lang || "de").slice(0, 2), wurzel = sp === "de" ? "" : "../";
+  var T = {
+    de: ["Diese Seite ist noch nicht öffentlich.<br>Bitte gib das Passwort ein.", "Passwort", "Öffnen", "Das Passwort stimmt nicht.", "Dein Browser unterstützt die Prüfung nicht.", "Dar Al-Rahma"],
+    en: ["This website is not public yet.<br>Please enter the password.", "Password", "Open", "The password is not correct.", "Your browser does not support the check.", "Dar Al-Rahma"],
+    ar: ["هذا الموقع غير متاح للعامة بعد.<br>يرجى إدخال كلمة المرور.", "كلمة المرور", "فتح", "كلمة المرور غير صحيحة.", "متصفحك لا يدعم التحقق.", "دار الرحمة"]
+  }[sp] || null;
+  if (!T) T = ["Diese Seite ist noch nicht öffentlich.<br>Bitte gib das Passwort ein.", "Passwort", "Öffnen", "Das Passwort stimmt nicht.", "Dein Browser unterstützt die Prüfung nicht.", "Dar Al-Rahma"];
   html.classList.add("gesperrt");
   var stil = document.createElement("style");
   stil.textContent =
@@ -35,11 +42,11 @@
     box.id = "sperre";
     box.innerHTML =
       '<form autocomplete="off">' +
-      '<img src="assets/logo-center.jpg" alt="">' +
-      "<h1>Dar Al-Rahma</h1>" +
-      "<p>Diese Seite ist noch nicht öffentlich.<br>Bitte gib das Passwort ein.</p>" +
-      '<input type="password" name="pw" aria-label="Passwort" placeholder="Passwort" required autofocus>' +
-      '<button type="submit">Öffnen</button>' +
+      '<img src="' + wurzel + 'assets/logo-center.jpg" alt="">' +
+      "<h1>" + T[5] + "</h1>" +
+      "<p>" + T[0] + "</p>" +
+      '<input type="password" name="pw" aria-label="' + T[1] + '" placeholder="' + T[1] + '" required autofocus>' +
+      '<button type="submit">' + T[2] + '</button>' +
       '<p class="fehler" role="alert"></p>' +
       "</form>";
     document.body.appendChild(box);
@@ -47,9 +54,9 @@
     form.addEventListener("submit", async function (ev) {
       ev.preventDefault();
       var meldung = box.querySelector(".fehler");
-      if (!(window.crypto && crypto.subtle)) { meldung.textContent = "Dein Browser unterstützt die Prüfung nicht."; return; }
+      if (!(window.crypto && crypto.subtle)) { meldung.textContent = T[4]; return; }
       var wert = await pruefwert(form.pw.value);
-      if (wert !== PRUEFWERT) { meldung.textContent = "Das Passwort stimmt nicht."; form.pw.select(); return; }
+      if (wert !== PRUEFWERT) { meldung.textContent = T[3]; form.pw.select(); return; }
       try { localStorage.setItem(SCHLUESSEL, PRUEFWERT); } catch (e) { /* dann gilt es nur für diese Seite */ }
       box.remove();
       html.classList.remove("gesperrt");

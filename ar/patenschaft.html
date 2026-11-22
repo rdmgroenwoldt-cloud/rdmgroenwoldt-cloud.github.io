@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>كفالة القطط – Dar Al-Rahma Cat Rescue</title>
+<meta name="description" content="كفالة القطط لدى Dar Al-Rahma Cat Rescue في شمال غزة: اختاروا قطة، وحدّدوا مبلغكم الشهري، وادعموها مباشرة – كتبرّع خاص، ويمكن إنهاؤه في أي وقت.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../style.css?v=20261122i">
+<script src="../sperre.js?v=20261122h"></script>
+<style>
+  .pate-fakten{display:flex;gap:34px;flex-wrap:wrap;margin-top:26px}
+  .pate-fakten div b{display:block;font:600 18px var(--sans);color:var(--text)}
+  .pate-fakten div span{color:var(--muted);font-size:14px}
+  .paten-filter{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:0 0 28px}
+  .karussell{position:relative}
+  .paten-raster{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 40px) / 3);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 18px;scrollbar-width:thin;scrollbar-color:var(--line2) transparent;overscroll-behavior-x:contain}
+  .paten-raster > .patenkarte{scroll-snap-align:start}
+  .paten-raster > .patenkarte[hidden]{display:none}
+  .karussell-pfeil{position:absolute;top:42%;z-index:5;width:48px;height:48px;border-radius:50%;border:1px solid var(--line2);background:rgba(21,19,15,.92);color:var(--gold2);font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--schatten)}
+  .karussell-pfeil:hover{border-color:var(--gold)}
+  .karussell-pfeil[disabled]{opacity:.3;cursor:default}
+  .karussell-pfeil.links{left:-22px}.karussell-pfeil.rechts{right:-22px}
+  .karussell-punkte{display:flex;justify-content:center;gap:8px;margin-top:6px}
+  .karussell-punkte button{width:10px;height:10px;border-radius:999px;border:0;padding:0;background:var(--line2);cursor:pointer;transition:width .3s,background .3s}
+  .karussell-punkte button[aria-current="true"]{width:28px;background:var(--gold2)}
+  .wisch-hinweis{text-align:center;color:var(--muted);font-size:13px;margin:0 0 14px}
+  @media (max-width:1000px){.paten-raster{grid-auto-columns:calc((100% - 20px) / 2)}}
+  @media (max-width:640px){.paten-raster{grid-auto-columns:86%;gap:14px}.karussell-pfeil{display:none}}
+  .patenkarte{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s}
+  .patenkarte.gewaehlt{border-color:var(--gold)}
+  .patenkarte .bild{border:0;padding:0;background:var(--bg3);cursor:zoom-in;aspect-ratio:4/3;overflow:hidden}
+  .patenkarte .bild img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .patenkarte .bild:hover img{transform:scale(1.04)}
+  .patenkarte .inhalt{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .patenkarte .status{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .patenkarte h3{margin:0;font-size:26px}
+  .patenkarte .zeile{color:var(--muted);font-size:14px}
+  .fortschritt{height:4px;border-radius:999px;background:var(--bg3);overflow:hidden;margin-top:6px}
+  .fortschritt i{display:block;height:100%;width:0;background:var(--gold)}
+  .fortschritt-text{font-size:13px;color:var(--muted)}
+  .wahl{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+  .wahl[hidden]{display:none}
+  .betraege{display:flex;flex-wrap:wrap;gap:8px}
+  .betraege button{background:none;border:1px solid var(--line2);color:var(--text);border-radius:999px;padding:6px 13px;font:500 14px var(--sans);cursor:pointer}
+  .betraege button[aria-pressed="true"]{border-color:var(--gold);color:var(--gold2)}
+  .wahl-text{font-size:14px;color:var(--text)}
+  .wahl-text small{color:var(--muted)}
+  .patenkarte .btn{margin:auto 0 0;justify-content:center;width:100%}
+  .patenkarte .inhalt > .btn{margin-top:12px}
+  .auswahl-leiste{position:fixed;left:50%;bottom:16px;transform:translate(-50%,140%);z-index:60;display:flex;align-items:center;gap:16px;background:rgba(21,19,15,.96);backdrop-filter:blur(10px);border:1px solid var(--gold);border-radius:999px;padding:10px 12px 10px 22px;box-shadow:var(--schatten);transition:transform .35s;max-width:calc(100% - 24px)}
+  .auswahl-leiste.da{transform:translate(-50%,0)}
+  .auswahl-leiste b{color:var(--gold2)}
+  .auswahl-leiste .btn{margin:0;padding:10px 20px}
+  #abschluss[hidden]{display:none}
+  .abschluss-liste{list-style:none;padding:0;margin:0 0 16px}
+  .abschluss-liste li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .abschluss-liste li button{background:none;border:0;color:var(--muted);cursor:pointer;font-size:13px;text-decoration:underline}
+  .abschluss-summe{display:flex;justify-content:space-between;font:700 22px var(--serif);color:var(--gold2)}
+  @media (max-width:640px){.auswahl-leiste{border-radius:var(--r);padding:10px 12px;font-size:14px}.pate-fakten{gap:20px}}
+</style>
+</head>
+<body>
+<div id="kopf"></div>
+<main>
+  <div class="seitenkopf nachthimmel" style="text-align:left;min-height:min(70vh,640px);display:flex;align-items:center">
+    <canvas aria-label="سماء مرصّعة بالنجوم – المسوا لإضاءة نجمة"></canvas>
+    <div class="wrap">
+      <span style="display:inline-block;color:var(--gold2);font-size:13px;letter-spacing:.14em;text-transform:uppercase">الكفالات · Cat Rescue</span>
+      <h1>قطة واحدة. شهر واحد.<br>كفالتكم.</h1>
+      <p class="lead" style="margin:0;color:var(--text);max-width:620px">اختاروا قطة، وحدّدوا مبلغكم الشهري، وادعموها مباشرة – طعام ورعاية وطبيب بيطري للقطط المنقَذة في شمال غزة.</p>
+      <a class="btn voll" href="#auswahl">اختاروا قطة لكفالتها ↓</a>
+      <div class="pate-fakten">
+        <div><b>ابتداءً من 5 €</b><span>شهريًا</span></div>
+        <div><b>كاملة أو جزئية</b><span>القرار لكم</span></div>
+        <div><b>يمكن إنهاؤها في أي وقت</b><span>بلا عقد</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="auswahl">
+    <div class="wrap">
+      <div class="kasten" style="max-width:900px;margin:0 auto 40px"><strong>تبرّع خاص:</strong> لم تُؤسَّس بعد الشركة غير الربحية (UG). تذهب كفالتكم <strong>مباشرة إلى Cat Rescue</strong> وإلى الأشخاص الذين يتحمّلون أعباء المشروع. لا يوجد <strong>إيصال تبرّع</strong> لذلك، والمبالغ <strong>غير قابلة للخصم الضريبي</strong>. الكفالة دعم طوعي وليست شراءً – تبقى القطة في رعاية المشروع. وبعد <a href="gruendung.html">تأسيس الشركة غير الربحية (gUG)</a> سنعرض نقل الكفالة.</div>
+
+      <span class="ueber">من يبحث الآن عن كافل</span>
+      <h2>اختاروا قطتكم المكفولة</h2>
+      <p class="kurz">نحو 25 € شهريًا لكل قطة – كاملة أو جزئية، وأيضًا لأكثر من قطة.</p>
+      <div class="paten-filter filter" role="group" aria-label="تصفية القطط">
+        <button type="button" data-f="alle" aria-pressed="true">الكل</button>
+        <button type="button" data-f="mutter" aria-pressed="false">الأمهات</button>
+        <button type="button" data-f="kitten" aria-pressed="false">الصغار</button>
+        <button type="button" data-f="ohne-namen" aria-pressed="false">بلا اسم بعد</button>
+      </div>
+
+      <div class="karussell">
+        <button type="button" class="karussell-pfeil links" aria-label="القطط السابقة">‹</button>
+        <div class="paten-raster bildgruppe" id="paten-raster" tabindex="0" aria-label="القطط المتاحة للكفالة، مرّروا جانبًا"></div>
+        <button type="button" class="karussell-pfeil rechts" aria-label="القطط التالية">›</button>
+      </div>
+      <div class="karussell-punkte" id="karussell-punkte" aria-label="الصفحات"></div>
+    </div>
+  </section>
+
+  <section id="abschluss" class="dunkel" hidden>
+    <div class="wrap" style="max-width:760px">
+      <span class="ueber">اختياركم</span>
+      <h2>أوشكتم على الانتهاء</h2>
+      <ul class="abschluss-liste" id="abschluss-liste"></ul>
+      <div class="abschluss-summe"><span>المجموع شهريًا</span><span id="abschluss-summe">0 €</span></div>
+      <div class="kasten" style="margin-top:24px"><strong>الخطوة التالية:</strong> يجري الآن إعداد طرق التبرع المباشرة للكفالات (مثل PayPal). وحتى ذلك الحين تواصلوا معنا باختياركم عبر قنوات Cat Rescue – وسنردّ عليكم بكل البيانات.
+        <p style="margin:14px 0 0"><a class="btn voll" style="margin:0 8px 8px 0" href="https://www.instagram.com/daralrahmacatrescue/" target="_blank" rel="noopener">أرسلوا اختياركم عبر إنستغرام</a><button type="button" class="btn" style="margin:0 0 8px" id="auswahl-kopieren">انسخوا الاختيار</button></p>
+        <p class="quelle" id="kopiert-hinweis" hidden>اختياركم الآن في الحافظة – يمكنكم لصقه ببساطة في الرسالة.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="ueber">كيف تصبحون كفلاء</span>
+      <h2>في ثلاث خطوات</h2>
+      <ol class="schritte" style="max-width:900px;margin:32px auto 0">
+        <li><span class="nr">1</span><div class="inh"><h4>الاختيار</h4><p>قطة واحدة أو عائلة كاملة – ومبلغكم الشهري.</p></div></li>
+        <li><span class="nr">2</span><div class="inh"><h4>التجميع</h4><p>يمكنكم أيضًا كفالة أكثر من قطة دفعة واحدة. تشاهدون اختياركم في الشريط في الأسفل.</p></div></li>
+        <li><span class="nr">3</span><div class="inh"><h4>الإرسال مباشرة</h4><p>يذهب المبلغ مباشرة إلى Cat Rescue في شمال غزة. وستصلكم أخبار وصور عن قطتكم.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="dunkel">
+    <div class="wrap">
+      <div class="klapp-liste">
+        <details class="klapp"><summary>ما الذي يحققه مبلغكم<small>كفالة الطعام والرعاية والحياة</small></summary><div class="klapp-inhalt"><ul class="haken"><li><strong>ابتداءً من 10 € شهريًا:</strong> طعام لقطة، مع أخبار وصور منتظمة.</li><li><strong>ابتداءً من 25 € شهريًا:</strong> طعام ورعاية وحصة من التطعيمات – مع تحديثات شخصية عن قطتكم المكفولة.</li><li><strong>ابتداءً من 50 € شهريًا:</strong> رعاية شاملة تشمل الطبيب البيطري والتعقيم – لقطة واحدة أو لعائلة كاملة، مثل أم مع صغارها.</li></ul><p>المبالغ مجرد اقتراحات – وكل مساهمة تفيد.</p></div></details>
+        <details class="klapp"><summary>أن تمنحوا قطة اسمها<small>كفالة التسمية ومزاد التسمية</small></summary><div class="klapp-inhalt"><p><strong>كفالة التسمية:</strong> كافلٌ بمبلغ 25 € شهريًا فأكثر يحق له أن يسمّي قطة لم تُسمَّ بعد – مثل الأم المخطّطة أو القطة الأبيض والأسود. يُذكر الاسم في الصفحة، مع اسمكم ككافل إن أحببتم.</p><p><strong>مزاد التسمية</strong> (يبدأ مع تأسيس الشركة غير الربحية gUG): إن لم يكن لحيوان كافلُ تسمية، فإن صاحب أعلى عرض خلال المدة المحددة ينال حق إعطاء الاسم. ويذهب العائد بالكامل إلى رعاية الحيوانات.</p></div></details>
+        <details class="klapp"><summary>الموثوقية وإنهاء الكفالة<small>يمكن إنهاؤها في أي وقت، بلا عقد</small></summary><div class="klapp-inhalt"><p>يمكنكم إنهاء الكفالة في أي وقت. ويبقى الاسم الممنوح ما دامت الكفالة قائمة. إذا انقطعت المبالغ شهرين نذكّركم؛ وإن لم يصل دفع خلال 30 يومًا بعد ذلك فيجوز إعادة منح الاسم.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="weiter">
+        <a href="tiere.html"><b>الحيوانات</b><span>كل القطط مع حكاياتها</span></a>
+        <a href="spenden.html#catrescue"><b>تبرّعوا مرة واحدة</b><span>طرق التبرع لـ Cat Rescue</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="auswahl-leiste" id="auswahl-leiste" aria-live="polite"><span><b id="leiste-anzahl">0</b> كفالات · <b id="leiste-summe">0 €</b> شهريًا</span><a class="btn voll" href="#abschluss">متابعة</a></div>
+<div id="fuss"></div>
+<script src="../patenschaft.js?v=20261122h"></script>
+<script src="../menu.js?v=20261122i"></script>
+</body>
+</html>

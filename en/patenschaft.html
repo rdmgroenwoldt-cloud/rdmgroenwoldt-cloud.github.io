@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cat Sponsorships – Dar Al-Rahma Cat Rescue</title>
+<meta name="description" content="Cat sponsorships at Dar Al-Rahma Cat Rescue in North Gaza: choose a cat, set your monthly amount and support her directly – as a private donation, which you can end at any time.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../style.css?v=20261122i">
+<script src="../sperre.js?v=20261122h"></script>
+<style>
+  .pate-fakten{display:flex;gap:34px;flex-wrap:wrap;margin-top:26px}
+  .pate-fakten div b{display:block;font:600 18px var(--sans);color:var(--text)}
+  .pate-fakten div span{color:var(--muted);font-size:14px}
+  .paten-filter{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:0 0 28px}
+  .karussell{position:relative}
+  .paten-raster{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 40px) / 3);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 18px;scrollbar-width:thin;scrollbar-color:var(--line2) transparent;overscroll-behavior-x:contain}
+  .paten-raster > .patenkarte{scroll-snap-align:start}
+  .paten-raster > .patenkarte[hidden]{display:none}
+  .karussell-pfeil{position:absolute;top:42%;z-index:5;width:48px;height:48px;border-radius:50%;border:1px solid var(--line2);background:rgba(21,19,15,.92);color:var(--gold2);font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--schatten)}
+  .karussell-pfeil:hover{border-color:var(--gold)}
+  .karussell-pfeil[disabled]{opacity:.3;cursor:default}
+  .karussell-pfeil.links{left:-22px}.karussell-pfeil.rechts{right:-22px}
+  .karussell-punkte{display:flex;justify-content:center;gap:8px;margin-top:6px}
+  .karussell-punkte button{width:10px;height:10px;border-radius:999px;border:0;padding:0;background:var(--line2);cursor:pointer;transition:width .3s,background .3s}
+  .karussell-punkte button[aria-current="true"]{width:28px;background:var(--gold2)}
+  .wisch-hinweis{text-align:center;color:var(--muted);font-size:13px;margin:0 0 14px}
+  @media (max-width:1000px){.paten-raster{grid-auto-columns:calc((100% - 20px) / 2)}}
+  @media (max-width:640px){.paten-raster{grid-auto-columns:86%;gap:14px}.karussell-pfeil{display:none}}
+  .patenkarte{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s}
+  .patenkarte.gewaehlt{border-color:var(--gold)}
+  .patenkarte .bild{border:0;padding:0;background:var(--bg3);cursor:zoom-in;aspect-ratio:4/3;overflow:hidden}
+  .patenkarte .bild img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .patenkarte .bild:hover img{transform:scale(1.04)}
+  .patenkarte .inhalt{padding:18px 20px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .patenkarte .status{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .patenkarte h3{margin:0;font-size:26px}
+  .patenkarte .zeile{color:var(--muted);font-size:14px}
+  .fortschritt{height:4px;border-radius:999px;background:var(--bg3);overflow:hidden;margin-top:6px}
+  .fortschritt i{display:block;height:100%;width:0;background:var(--gold)}
+  .fortschritt-text{font-size:13px;color:var(--muted)}
+  .wahl{display:flex;flex-direction:column;gap:10px;margin-top:6px}
+  .wahl[hidden]{display:none}
+  .betraege{display:flex;flex-wrap:wrap;gap:8px}
+  .betraege button{background:none;border:1px solid var(--line2);color:var(--text);border-radius:999px;padding:6px 13px;font:500 14px var(--sans);cursor:pointer}
+  .betraege button[aria-pressed="true"]{border-color:var(--gold);color:var(--gold2)}
+  .wahl-text{font-size:14px;color:var(--text)}
+  .wahl-text small{color:var(--muted)}
+  .patenkarte .btn{margin:auto 0 0;justify-content:center;width:100%}
+  .patenkarte .inhalt > .btn{margin-top:12px}
+  .auswahl-leiste{position:fixed;left:50%;bottom:16px;transform:translate(-50%,140%);z-index:60;display:flex;align-items:center;gap:16px;background:rgba(21,19,15,.96);backdrop-filter:blur(10px);border:1px solid var(--gold);border-radius:999px;padding:10px 12px 10px 22px;box-shadow:var(--schatten);transition:transform .35s;max-width:calc(100% - 24px)}
+  .auswahl-leiste.da{transform:translate(-50%,0)}
+  .auswahl-leiste b{color:var(--gold2)}
+  .auswahl-leiste .btn{margin:0;padding:10px 20px}
+  #abschluss[hidden]{display:none}
+  .abschluss-liste{list-style:none;padding:0;margin:0 0 16px}
+  .abschluss-liste li{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+  .abschluss-liste li button{background:none;border:0;color:var(--muted);cursor:pointer;font-size:13px;text-decoration:underline}
+  .abschluss-summe{display:flex;justify-content:space-between;font:700 22px var(--serif);color:var(--gold2)}
+  @media (max-width:640px){.auswahl-leiste{border-radius:var(--r);padding:10px 12px;font-size:14px}.pate-fakten{gap:20px}}
+</style>
+</head>
+<body>
+<div id="kopf"></div>
+<main>
+  <div class="seitenkopf nachthimmel" style="text-align:left;min-height:min(70vh,640px);display:flex;align-items:center">
+    <canvas aria-label="Starry sky – tap to light a star"></canvas>
+    <div class="wrap">
+      <span style="display:inline-block;color:var(--gold2);font-size:13px;letter-spacing:.14em;text-transform:uppercase">Sponsorships · Cat Rescue</span>
+      <h1>One cat. One month.<br>Your sponsorship.</h1>
+      <p class="lead" style="margin:0;color:var(--text);max-width:620px">Choose a cat, set your monthly amount and support her directly – food, care and vet bills for the rescued cats in North Gaza.</p>
+      <a class="btn voll" href="#auswahl">Choose a sponsor cat ↓</a>
+      <div class="pate-fakten">
+        <div><b>from €5</b><span>a month</span></div>
+        <div><b>in full or in part</b><span>you decide</span></div>
+        <div><b>end any time</b><span>no contract</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="auswahl">
+    <div class="wrap">
+      <div class="kasten" style="max-width:900px;margin:0 auto 40px"><strong>Private donation:</strong> The non-profit UG has not yet been founded. Your sponsorship goes <strong>directly to Cat Rescue</strong> and the private individuals who run the project. There is <strong>no donation receipt</strong> for it, and the contributions are <strong>not tax-deductible</strong>. The sponsorship is voluntary support, not a purchase – the cat remains in the care of the project. After the <a href="gruendung.html">founding of the gUG</a>, we plan to offer to transfer the sponsorship.</div>
+
+      <span class="ueber">Who is looking for a sponsor right now</span>
+      <h2>Choose your sponsor cat</h2>
+      <p class="kurz">About €25 a month per cat – in full or in part, and for several cats too.</p>
+      <div class="paten-filter filter" role="group" aria-label="Filter cats">
+        <button type="button" data-f="alle" aria-pressed="true">All</button>
+        <button type="button" data-f="mutter" aria-pressed="false">Mothers</button>
+        <button type="button" data-f="kitten" aria-pressed="false">Kittens</button>
+        <button type="button" data-f="ohne-namen" aria-pressed="false">Still unnamed</button>
+      </div>
+
+      <div class="karussell">
+        <button type="button" class="karussell-pfeil links" aria-label="Previous cats">‹</button>
+        <div class="paten-raster bildgruppe" id="paten-raster" tabindex="0" aria-label="Sponsor cats, swipe sideways"></div>
+        <button type="button" class="karussell-pfeil rechts" aria-label="Next cats">›</button>
+      </div>
+      <div class="karussell-punkte" id="karussell-punkte" aria-label="Pages"></div>
+    </div>
+  </section>
+
+  <section id="abschluss" class="dunkel" hidden>
+    <div class="wrap" style="max-width:760px">
+      <span class="ueber">Your selection</span>
+      <h2>Almost there</h2>
+      <ul class="abschluss-liste" id="abschluss-liste"></ul>
+      <div class="abschluss-summe"><span>Total per month</span><span id="abschluss-summe">0 €</span></div>
+      <div class="kasten" style="margin-top:24px"><strong>What happens next:</strong> The direct donation channels for sponsorships (for example PayPal) are currently being set up. Until then, get in touch with your selection through Cat Rescue's channels – we will get back to you with all the details.
+        <p style="margin:14px 0 0"><a class="btn voll" style="margin:0 8px 8px 0" href="https://www.instagram.com/daralrahmacatrescue/" target="_blank" rel="noopener">Send selection via Instagram</a><button type="button" class="btn" style="margin:0 0 8px" id="auswahl-kopieren">Copy selection</button></p>
+        <p class="quelle" id="kopiert-hinweis" hidden>Your selection is on the clipboard – you can simply paste it into the message.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <span class="ueber">How to become a sponsor</span>
+      <h2>In three steps</h2>
+      <ol class="schritte" style="max-width:900px;margin:32px auto 0">
+        <li><span class="nr">1</span><div class="inh"><h4>Choose</h4><p>One cat or a whole family – and your monthly amount.</p></div></li>
+        <li><span class="nr">2</span><div class="inh"><h4>Put it together</h4><p>Several sponsorships at once are possible too. You can see your selection in the bar below.</p></div></li>
+        <li><span class="nr">3</span><div class="inh"><h4>Send directly</h4><p>Your contribution goes directly to Cat Rescue in North Gaza. You will receive news and photos of “your” cat.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="dunkel">
+    <div class="wrap">
+      <div class="klapp-liste">
+        <details class="klapp"><summary>What your contribution achieves<small>Food sponsor, care sponsor, lifetime sponsor</small></summary><div class="klapp-inhalt"><ul class="haken"><li><strong>from €10 a month:</strong> Food for one cat, with regular news and photos.</li><li><strong>from €25 a month:</strong> Food, care and a share of vaccinations – with personal updates about your sponsor cat.</li><li><strong>from €50 a month:</strong> All-round care including vet and neutering – for one cat or a whole family, for example a mother with kittens.</li></ul><p>The amounts are suggestions – every contribution helps.</p></div></details>
+        <details class="klapp"><summary>Giving a cat her name<small>Naming sponsorship and name auction</small></summary><div class="klapp-inhalt"><p><strong>Naming sponsorship:</strong> As a sponsor from €25 a month, you may give a name to a cat who does not have one yet – for example the tabby mother cat or the black-and-white cat. The name is shown on the page, with you as the sponsor if you wish.</p><p><strong>Name auction</strong> (starts with the founding of the gUG): If an animal has no naming sponsor, the highest bid within the auction period earns the right to choose the name. The proceeds go entirely to the care of the animals.</p></div></details>
+        <details class="klapp"><summary>Reliability and ending a sponsorship<small>End any time, no contract</small></summary><div class="klapp-inhalt"><p>You can end your sponsorship at any time. A name that has been given stays for as long as the sponsorship lasts. If contributions stop for two months, we will remind you; if no payment arrives within 30 days after that, the name may be given to someone else.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="weiter">
+        <a href="tiere.html"><b>The animals</b><span>All the cats and their stories</span></a>
+        <a href="spenden.html#catrescue"><b>Donate once</b><span>Ways to donate to Cat Rescue</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+<div class="auswahl-leiste" id="auswahl-leiste" aria-live="polite"><span><b id="leiste-anzahl">0</b> sponsorships · <b id="leiste-summe">0 €</b> a month</span><a class="btn voll" href="#abschluss">Continue</a></div>
+<div id="fuss"></div>
+<script src="../patenschaft.js?v=20261122h"></script>
+<script src="../menu.js?v=20261122i"></script>
+</body>
+</html>

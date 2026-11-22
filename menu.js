@@ -2,6 +2,174 @@
 // Neue Seite des Hauses Dar Al-Rahma? Im MENU eintragen.
 // Neue Seite eines Projekts? Im passenden BEREICH unter "seiten" eintragen.
 
+// ---------- Sprache (de/en/ar) ----------
+// Deutsche Seiten liegen im Hauptordner, Übersetzungen in en/ und ar/ (gleiche Dateinamen).
+const SPRACHE = (document.documentElement.lang || "de").slice(0, 2);
+const WURZEL = SPRACHE === "de" ? "" : "../";
+const UE = {
+ "en": {
+  "Über uns": "About us",
+  "Wer wir sind": "Who we are",
+  "Leitbild & Kreislauf": "Mission & cycle",
+  "Unsere Ziele": "Our goals",
+  "Gründung der gUG": "Founding the charity",
+  "Transparenz": "Transparency",
+  "Häufige Fragen": "FAQ",
+  "Projekte": "Projects",
+  "Unsere Arbeit": "Our work",
+  "Unsere Tiere": "Our animals",
+  "Katzen-Patenschaften": "Cat sponsorships",
+  "Children's Relief – Kinderprojekte": "Children's Relief – children's projects",
+  "Arbeitsbereiche im Aufbau": "Areas in development",
+  "Mensch & Tier: seelische Hilfe": "People & animals: emotional support",
+  "Kultur & Identität": "Culture & identity",
+  "Inklusion & Integration": "Inclusion & integration",
+  "Im Netzwerk": "In the network",
+  "Projekte, die wir begleiten": "Projects we support",
+  "Lage in Gaza": "Situation in Gaza",
+  "Warum Nord-Gaza": "Why North Gaza",
+  "Zahlen & Fakten": "Facts & figures",
+  "Humanitäre & medizinische Lage": "Humanitarian & medical situation",
+  "Veranstaltungen": "Events",
+  "International Charity Gala 2027": "International Charity Gala 2027",
+  "Weitere Veranstaltungen": "More events",
+  "Aktuelles": "News",
+  "Helfen": "Help",
+  "Projekte unterstützen": "Support projects",
+  "Wunschkalender „Paws of Hope“": "Wish calendar “Paws of Hope”",
+  "Mitmachen & Zusammenarbeit": "Get involved & cooperation",
+  "Kontakt": "Contact",
+  "Tierschutz Nord-Gaza": "Animal welfare in North Gaza",
+  "Übersicht": "Overview",
+  "Die Tiere": "The animals",
+  "Tiere in Gaza": "Animals in Gaza",
+  "Patenschaften": "Sponsorships",
+  "Wunschkalender": "Wish calendar",
+  "Unterstützen": "Support",
+  "Sammelbereich für Kinderprojekte": "Collection of children's projects",
+  "Entwurf · noch nicht veröffentlicht · Spendenlinks, Kontakt und Impressum folgen": "Draft · not yet published · donation links, contact and legal notice to follow",
+  "Die gemeinnützige UG ist in Vorbereitung – bis dahin unterstützt du die Projekte direkt.": "Our non-profit company is being founded – until then you support the projects directly.",
+  "Mehr erfahren": "Learn more",
+  "Netzwerk der Barmherzigkeit": "Network of Compassion",
+  "Menü": "Menu",
+  "Hauptmenü": "Main menu",
+  "Spenden": "Donate",
+  "begleitet von Dar Al-Rahma": "supported by Dar Al-Rahma",
+  "Projekt": "Project",
+  "ein eigenständiges Projekt, begleitet und unterstützt von Dar Al-Rahma": "an independent project, accompanied and supported by Dar Al-Rahma",
+  "Siegel Dar Al-Rahma Center": "Seal of Dar Al-Rahma Center",
+  "Dar Al-Rahma ist ein Netzwerk: Wir begleiten und unterstützen bestehende Projekte vor Ort und verbinden sie miteinander – denn gemeinsam ist man stark.": "Dar Al-Rahma is a network: we accompany and support existing projects on the ground and connect them with each other – because together we are strong.",
+  "Gala 2027": "Gala 2027",
+  "Dar Al-Rahma Center · Gründung einer gemeinnützigen UG in Vorbereitung": "Dar Al-Rahma Center · non-profit company being founded",
+  "Impressum": "Legal notice",
+  "Datenschutz": "Privacy",
+  "Cookies": "Cookies",
+  "Bild": "Image",
+  "zeigen": "show",
+  "Vorherige Bilder": "Previous images",
+  "Weitere Bilder": "More images",
+  "von": "of",
+  "Bildern · wischen oder Pfeile": "images · swipe or use the arrows",
+  "Schließen": "Close",
+  "Vorheriges Bild": "Previous image",
+  "Nächstes Bild": "Next image",
+  "Hinweis zu Cookies und Datenschutz": "Notice on cookies and privacy",
+  "Cookies? Brauchen wir nicht.": "Cookies? We don't need them.",
+  "Diese Website setzt <strong>keine Cookies</strong> und nutzt kein Tracking, keine Statistik und keine Werbung. Schriften, Bilder und Videos liegen bei uns – nichts wird an Google, Facebook &amp; Co. übertragen.": "This website sets <strong>no cookies</strong> and uses no tracking, no statistics and no advertising. Fonts, images and videos are hosted by us – nothing is sent to Google, Facebook &amp; co.",
+  "Einstellungen ansehen": "View settings",
+  "Notwendig": "Necessary",
+  "nur lokale Einträge, z. B. Zugang und Sprache im Wunschkalender": "only local entries, e.g. access and language in the wish calendar",
+  "immer an": "always on",
+  "Statistik": "Statistics",
+  "wird nicht verwendet": "not used",
+  "aus": "off",
+  "Marketing": "Marketing",
+  "Verstanden": "Got it",
+  "Sprache": "Language"
+ },
+ "ar": {
+  "Über uns": "من نحن",
+  "Wer wir sind": "من نحن",
+  "Leitbild & Kreislauf": "رؤيتنا ودائرة التكافل",
+  "Unsere Ziele": "أهدافنا",
+  "Gründung der gUG": "تأسيس الشركة غير الربحية",
+  "Transparenz": "الشفافية",
+  "Häufige Fragen": "أسئلة شائعة",
+  "Projekte": "المشاريع",
+  "Unsere Arbeit": "عملنا",
+  "Unsere Tiere": "حيواناتنا",
+  "Katzen-Patenschaften": "كفالة القطط",
+  "Children's Relief – Kinderprojekte": "Children's Relief – مشاريع الأطفال",
+  "Arbeitsbereiche im Aufbau": "مجالات قيد الإنشاء",
+  "Mensch & Tier: seelische Hilfe": "الإنسان والحيوان: دعم نفسي",
+  "Kultur & Identität": "الثقافة والهوية",
+  "Inklusion & Integration": "الدمج والاندماج",
+  "Im Netzwerk": "في الشبكة",
+  "Projekte, die wir begleiten": "مشاريع نرافقها",
+  "Lage in Gaza": "الوضع في غزة",
+  "Warum Nord-Gaza": "لماذا شمال غزة",
+  "Zahlen & Fakten": "أرقام وحقائق",
+  "Humanitäre & medizinische Lage": "الوضع الإنساني والطبي",
+  "Veranstaltungen": "الفعاليات",
+  "International Charity Gala 2027": "الحفل الخيري الدولي 2027",
+  "Weitere Veranstaltungen": "فعاليات أخرى",
+  "Aktuelles": "الأخبار",
+  "Helfen": "ساعد",
+  "Projekte unterstützen": "ادعم المشاريع",
+  "Wunschkalender „Paws of Hope“": "تقويم الأمنيات «Paws of Hope»",
+  "Mitmachen & Zusammenarbeit": "شارك وتعاون معنا",
+  "Kontakt": "تواصل معنا",
+  "Tierschutz Nord-Gaza": "حماية الحيوانات في شمال غزة",
+  "Übersicht": "نظرة عامة",
+  "Die Tiere": "الحيوانات",
+  "Tiere in Gaza": "الحيوانات في غزة",
+  "Patenschaften": "الكفالات",
+  "Wunschkalender": "تقويم الأمنيات",
+  "Unterstützen": "ادعم",
+  "Sammelbereich für Kinderprojekte": "تجمع مشاريع الأطفال",
+  "Entwurf · noch nicht veröffentlicht · Spendenlinks, Kontakt und Impressum folgen": "مسودة · لم تُنشر بعد · روابط التبرع ووسائل التواصل والبيانات القانونية قريبًا",
+  "Die gemeinnützige UG ist in Vorbereitung – bis dahin unterstützt du die Projekte direkt.": "تأسيس شركتنا غير الربحية قيد التحضير – وحتى ذلك الحين تدعم المشاريع مباشرة.",
+  "Mehr erfahren": "اعرف المزيد",
+  "Netzwerk der Barmherzigkeit": "شبكة الرحمة",
+  "Menü": "القائمة",
+  "Hauptmenü": "القائمة الرئيسية",
+  "Spenden": "تبرّع",
+  "begleitet von Dar Al-Rahma": "بمرافقة دار الرحمة",
+  "Projekt": "مشروع",
+  "ein eigenständiges Projekt, begleitet und unterstützt von Dar Al-Rahma": "مشروع مستقل ترافقه وتدعمه دار الرحمة",
+  "Siegel Dar Al-Rahma Center": "شعار مركز دار الرحمة",
+  "Dar Al-Rahma ist ein Netzwerk: Wir begleiten und unterstützen bestehende Projekte vor Ort und verbinden sie miteinander – denn gemeinsam ist man stark.": "دار الرحمة شبكة: نرافق المشاريع القائمة على الأرض وندعمها ونربط بينها – فمعًا نحن أقوى.",
+  "Gala 2027": "حفل 2027",
+  "Dar Al-Rahma Center · Gründung einer gemeinnützigen UG in Vorbereitung": "مركز دار الرحمة · تأسيس شركة غير ربحية قيد التحضير",
+  "Impressum": "البيانات القانونية",
+  "Datenschutz": "حماية البيانات",
+  "Cookies": "ملفات تعريف الارتباط",
+  "Bild": "الصورة",
+  "zeigen": "عرض",
+  "Vorherige Bilder": "الصور السابقة",
+  "Weitere Bilder": "صور أخرى",
+  "von": "من",
+  "Bildern · wischen oder Pfeile": "صورة · اسحب أو استخدم الأسهم",
+  "Schließen": "إغلاق",
+  "Vorheriges Bild": "الصورة السابقة",
+  "Nächstes Bild": "الصورة التالية",
+  "Hinweis zu Cookies und Datenschutz": "تنبيه حول ملفات تعريف الارتباط وحماية البيانات",
+  "Cookies? Brauchen wir nicht.": "ملفات تعريف الارتباط؟ لا نحتاجها.",
+  "Diese Website setzt <strong>keine Cookies</strong> und nutzt kein Tracking, keine Statistik und keine Werbung. Schriften, Bilder und Videos liegen bei uns – nichts wird an Google, Facebook &amp; Co. übertragen.": "لا يستخدم هذا الموقع <strong>أي ملفات تعريف ارتباط</strong>، ولا تتبعًا ولا إحصاءات ولا إعلانات. الخطوط والصور ومقاطع الفيديو مخزنة لدينا – ولا يُرسل شيء إلى Google أو Facebook أو غيرهما.",
+  "Einstellungen ansehen": "عرض الإعدادات",
+  "Notwendig": "ضروري",
+  "nur lokale Einträge, z. B. Zugang und Sprache im Wunschkalender": "إدخالات محلية فقط، مثل الدخول ولغة تقويم الأمنيات",
+  "immer an": "مفعّل دائمًا",
+  "Statistik": "إحصاءات",
+  "wird nicht verwendet": "غير مستخدم",
+  "aus": "متوقف",
+  "Marketing": "تسويق",
+  "Verstanden": "فهمت",
+  "Sprache": "اللغة"
+ }
+};
+const t = (s) => (UE[SPRACHE] && UE[SPRACHE][s]) || s;
+
 // ---------- Haus Dar Al-Rahma: Hauptmenü ----------
 const MENU = [
   { titel: "Über uns", unter: [
@@ -87,12 +255,12 @@ const BEREICHE = {
   const bereich = bereichKey ? BEREICHE[bereichKey] : null;
 
   const punkte = MENU.map((p, i) => {
-    if (!p.unter) return `<li><a href="${p.url}"${aktuell(p.url)}>${esc(p.titel)}</a></li>`;
+    if (!p.unter) return `<li><a href="${p.url}"${aktuell(p.url)}>${esc(t(p.titel))}</a></li>`;
     const aktiv = p.unter.some((u) => u.url === hier) || (p.titel === "Projekte" && bereich);
     const unter = p.unter.map((u) => u.gruppe
-      ? `<li class="gruppe">${esc(u.gruppe)}</li>`
-      : `<li><a href="${u.url}"${aktuell(u.url) || (bereich && u.url === bereich.seiten[0].url ? ' class="im-bereich"' : "")}>${esc(u.titel)}</a></li>`).join("");
-    return `<li class="hat-unter${aktiv ? " aktiv" : ""}"><button type="button" aria-expanded="false" aria-controls="um${i}">${esc(p.titel)} <span aria-hidden="true">▾</span></button><ul id="um${i}" class="untermenue">${unter}</ul></li>`;
+      ? `<li class="gruppe">${esc(t(u.gruppe))}</li>`
+      : `<li><a href="${u.url}"${aktuell(u.url) || (bereich && u.url === bereich.seiten[0].url ? ' class="im-bereich"' : "")}>${esc(t(u.titel))}</a></li>`).join("");
+    return `<li class="hat-unter${aktiv ? " aktiv" : ""}"><button type="button" aria-expanded="false" aria-controls="um${i}">${esc(t(p.titel))} <span aria-hidden="true">▾</span></button><ul id="um${i}" class="untermenue">${unter}</ul></li>`;
   }).join("");
 
   const sozialKnoepfe = (liste, klein) => liste.map((s) =>
@@ -101,22 +269,27 @@ const BEREICHE = {
   const leiste = bereich ? `
 <div class="projektleiste">
   <div class="wrap pl-zeile">
-    <a class="pl-marke" href="${bereich.seiten[0].url}">${bereich.logo ? `<img src="${bereich.logo}" alt=""${bereich.hell ? ' class="hell"' : ""}>` : ""}<span><b>${esc(bereich.name)}</b><small>${esc(bereich.zusatz)} · begleitet von Dar Al-Rahma</small></span></a>
-    <nav class="pl-nav" aria-label="Projekt ${esc(bereich.name)}">${bereich.seiten.map((s) => `<a href="${s.url}"${aktuell(s.url)}>${esc(s.titel)}</a>`).join("")}</nav>
+    <a class="pl-marke" href="${bereich.seiten[0].url}">${bereich.logo ? `<img src="${WURZEL}${bereich.logo}" alt=""${bereich.hell ? ' class="hell"' : ""}>` : ""}<span><b>${esc(bereich.name)}</b><small>${esc(t(bereich.zusatz))} · ${t("begleitet von Dar Al-Rahma")}</small></span></a>
+    <nav class="pl-nav" aria-label="${t("Projekt")} ${esc(bereich.name)}">${bereich.seiten.map((s) => `<a href="${s.url}"${aktuell(s.url)}>${esc(t(s.titel))}</a>`).join("")}</nav>
     ${bereich.sozial.length ? `<div class="pl-sozial">${sozialKnoepfe(bereich.sozial, true)}</div>` : ""}
   </div>
 </div>` : "";
 
+  const datei = hier + location.hash;
+  const ziel = { de: (SPRACHE === "de" ? "" : "../") + datei, en: (SPRACHE === "de" ? "en/" : "../en/") + datei, ar: (SPRACHE === "de" ? "ar/" : "../ar/") + datei };
+  const sprachwahl = `<nav class="sprachwahl" aria-label="${t("Sprache")}">` + [["de", "DE", "Deutsch"], ["en", "EN", "English"], ["ar", "ع", "العربية"]]
+    .map(([k, kurz, lang]) => `<a href="${ziel[k]}" lang="${k}" hreflang="${k}" title="${lang}"${k === SPRACHE ? ' aria-current="true"' : ""}>${kurz}</a>`).join("") + `</nav>`;
   const kopf = document.getElementById("kopf");
   if (kopf) {
     kopf.outerHTML = `
-<div class="draft">Entwurf · noch nicht veröffentlicht · Spendenlinks, Kontakt und Impressum folgen</div>
-<div class="gruendungsband">Die gemeinnützige UG ist in Vorbereitung – bis dahin unterstützt du die Projekte direkt. <a href="gruendung.html">Mehr erfahren</a></div>
+<div class="draft">${t("Entwurf · noch nicht veröffentlicht · Spendenlinks, Kontakt und Impressum folgen")}</div>
+<div class="gruendungsband">${t("Die gemeinnützige UG ist in Vorbereitung – bis dahin unterstützt du die Projekte direkt.")} <a href="gruendung.html">${t("Mehr erfahren")}</a></div>
 <header>
   <div class="wrap kopfzeile">
-    <a class="brand" href="index.html"><img src="assets/logo-center.jpg" alt=""><span>Dar Al-Rahma<small>Netzwerk der Barmherzigkeit</small></span></a>
-    <button type="button" class="menueknopf" aria-expanded="false" aria-controls="hauptmenue">Menü</button>
-    <nav aria-label="Hauptmenü"><ul id="hauptmenue" class="hauptmenue">${punkte}<li><a class="btn voll menue-spenden" href="spenden.html">Spenden</a></li></ul></nav>
+    <a class="brand" href="index.html"><img src="${WURZEL}assets/logo-center.jpg" alt=""><span>${SPRACHE === "ar" ? "دار الرحمة" : "Dar Al-Rahma"}<small>${t("Netzwerk der Barmherzigkeit")}</small></span></a>
+    ${sprachwahl}
+    <button type="button" class="menueknopf" aria-expanded="false" aria-controls="hauptmenue">${t("Menü")}</button>
+    <nav aria-label="${t("Hauptmenü")}"><ul id="hauptmenue" class="hauptmenue">${punkte}<li><a class="btn voll menue-spenden" href="spenden.html">${t("Spenden")}</a></li></ul></nav>
   </div>
 </header>${leiste}`;
   }
@@ -125,19 +298,19 @@ const BEREICHE = {
   if (fuss) {
     const spalte = (titel) => {
       const p = MENU.find((m) => m.titel === titel);
-      return (p && p.unter ? p.unter : []).filter((u) => u.url).map((u) => `<a href="${u.url}">${esc(u.titel)}</a>`).join("");
+      return (p && p.unter ? p.unter : []).filter((u) => u.url).map((u) => `<a href="${u.url}">${esc(t(u.titel))}</a>`).join("");
     };
     fuss.outerHTML = `
 <footer>
   <div class="wrap">
-  ${bereich ? `<div class="fuss-projekt">${bereich.logo ? `<img src="${bereich.logo}" alt="Logo ${esc(bereich.name)}"${bereich.hell ? ' class="hell"' : ""}>` : ""}<div><b>${esc(bereich.name)}</b><br>ein eigenständiges Projekt, begleitet und unterstützt von Dar Al-Rahma</div>${bereich.sozial.length ? `<div class="sozial">${sozialKnoepfe(bereich.sozial, true)}</div>` : ""}</div>` : ""}
+  ${bereich ? `<div class="fuss-projekt">${bereich.logo ? `<img src="${WURZEL}${bereich.logo}" alt="Logo ${esc(bereich.name)}"${bereich.hell ? ' class="hell"' : ""}>` : ""}<div><b>${esc(bereich.name)}</b><br>${t("ein eigenständiges Projekt, begleitet und unterstützt von Dar Al-Rahma")}</div>${bereich.sozial.length ? `<div class="sozial">${sozialKnoepfe(bereich.sozial, true)}</div>` : ""}</div>` : ""}
     <div class="fuss-raster">
-      <div class="fuss-marke"><img src="assets/logo-center-siegel.jpg" alt="Siegel Dar Al-Rahma Center"><p>Dar Al-Rahma ist ein Netzwerk: Wir begleiten und unterstützen bestehende Projekte vor Ort und verbinden sie miteinander – denn gemeinsam ist man stark.</p></div>
-      <div><h4>Projekte</h4>${spalte("Projekte")}</div>
-      <div><h4>Über uns</h4>${spalte("Über uns")}</div>
-      <div><h4>Helfen</h4>${spalte("Helfen")}<a href="aktuelles.html">Aktuelles</a><a href="gala.html">Gala 2027</a></div>
+      <div class="fuss-marke"><img src="${WURZEL}assets/logo-center-siegel.jpg" alt="${t("Siegel Dar Al-Rahma Center")}"><p>${t("Dar Al-Rahma ist ein Netzwerk: Wir begleiten und unterstützen bestehende Projekte vor Ort und verbinden sie miteinander – denn gemeinsam ist man stark.")}</p></div>
+      <div><h4>${t("Projekte")}</h4>${spalte("Projekte")}</div>
+      <div><h4>${t("Über uns")}</h4>${spalte("Über uns")}</div>
+      <div><h4>${t("Helfen")}</h4>${spalte("Helfen")}<a href="aktuelles.html">${t("Aktuelles")}</a><a href="gala.html">${t("Gala 2027")}</a></div>
     </div>
-    <div class="fuss-unten"><span>Dar Al-Rahma Center · Gründung einer gemeinnützigen UG in Vorbereitung</span><span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="cookies.html">Cookies</a></span></div>
+    <div class="fuss-unten"><span>${t("Dar Al-Rahma Center · Gründung einer gemeinnützigen UG in Vorbereitung")}</span><span><a href="impressum.html">${t("Impressum")}</a><a href="datenschutz.html">${t("Datenschutz")}</a><a href="cookies.html">${t("Cookies")}</a></span></div>
   </div>
 </footer>`;
   }
@@ -181,7 +354,7 @@ const BEREICHE = {
     folien.forEach((f, i) => {
       const b = document.createElement("button");
       b.type = "button";
-      b.setAttribute("aria-label", "Bild " + (i + 1) + " zeigen");
+      b.setAttribute("aria-label", t("Bild") + " " + (i + 1) + " " + t("zeigen"));
       b.addEventListener("click", () => { zeige(i); neu(); });
       leiste.appendChild(b);
     });
@@ -214,19 +387,20 @@ const BEREICHE = {
     const pfeil = (seite, zeichen, text) => {
       const b = document.createElement("button");
       b.type = "button"; b.className = "gal-pfeil " + seite; b.textContent = zeichen; b.setAttribute("aria-label", text);
-      b.addEventListener("click", () => m.scrollBy({ left: (seite === "links" ? -1 : 1) * m.clientWidth * 0.9, behavior: "smooth" }));
+      b.addEventListener("click", () => m.scrollBy({ left: (seite === "links" ? -1 : 1) * (SPRACHE === "ar" ? -1 : 1) * m.clientWidth * 0.9, behavior: "smooth" }));
       huelle.append(b); return b;
     };
-    const li = pfeil("links", "‹", "Vorherige Bilder"), re = pfeil("rechts", "›", "Weitere Bilder");
+    const li = pfeil("links", SPRACHE === "ar" ? "›" : "‹", t("Vorherige Bilder")), re = pfeil("rechts", SPRACHE === "ar" ? "‹" : "›", t("Weitere Bilder"));
     const z = document.createElement("p"); z.className = "gal-zaehler"; huelle.after(z);
     const stand = () => {
       const breite = karten[0].getBoundingClientRect().width + parseFloat(getComputedStyle(m).columnGap || 0);
       const sichtbar = Math.max(1, Math.round(m.clientWidth / breite));
-      const erstes = Math.min(karten.length, Math.round(m.scrollLeft / breite) + 1);
+      const weg = Math.abs(m.scrollLeft);
+      const erstes = Math.min(karten.length, Math.round(weg / breite) + 1);
       const letztes = Math.min(karten.length, erstes + sichtbar - 1);
-      z.innerHTML = `<b>${erstes}${letztes > erstes ? "–" + letztes : ""}</b> von ${karten.length} Bildern · wischen oder Pfeile`;
-      li.disabled = m.scrollLeft < 8;
-      re.disabled = m.scrollLeft + m.clientWidth >= m.scrollWidth - 8;
+      z.innerHTML = `<b>${erstes}${letztes > erstes ? "–" + letztes : ""}</b> ${t("von")} ${karten.length} ${t("Bildern · wischen oder Pfeile")}`;
+      li.disabled = weg < 8;
+      re.disabled = weg + m.clientWidth >= m.scrollWidth - 8;
     };
     m.addEventListener("scroll", () => requestAnimationFrame(stand), { passive: true });
     window.addEventListener("resize", stand);
@@ -242,7 +416,7 @@ const BEREICHE = {
   gb.className = "grossbild";
   gb.setAttribute("role", "dialog");
   gb.setAttribute("aria-modal", "true");
-  gb.innerHTML = '<button type="button" class="zu" aria-label="Schließen">×</button><button type="button" class="zurueck" aria-label="Vorheriges Bild">‹</button><img alt=""><button type="button" class="vor" aria-label="Nächstes Bild">›</button><div class="text-unten"></div>';
+  gb.innerHTML = '<button type="button" class="zu" aria-label="' + t("Schließen") + '">×</button><button type="button" class="zurueck" aria-label="' + t("Vorheriges Bild") + '">‹</button><img alt=""><button type="button" class="vor" aria-label="' + t("Nächstes Bild") + '">›</button><div class="text-unten"></div>';
   document.body.appendChild(gb);
   let liste = [], pos = 0, zuletzt = null;
   const bild = gb.querySelector("img"), txt = gb.querySelector(".text-unten");
@@ -287,15 +461,17 @@ const BEREICHE = {
     const text = el.textContent;
     // Datumsangaben (12.01.2026) und Spannen (30–45) bleiben stehen
     if (/\d+\.\d+\.\d{4}/.test(text) || /\d\s*[–-]\s*\d/.test(text)) return;
-    const m = text.match(/\d[\d.]*(,\d+)?/);
+    const de = SPRACHE === "de";
+    const m = text.match(de ? /\d[\d.]*(,\d+)?/ : /\d[\d,]*(\.\d+)?/);
     if (!m) return;
     const roh = m[0];
-    const komma = roh.includes(",") ? roh.split(",")[1].length : 0;
-    const wert = parseFloat(roh.replace(/\./g, "").replace(",", "."));
+    const dez = de ? "," : ".", tsd = de ? "." : ",";
+    const komma = roh.includes(dez) ? roh.split(dez)[1].length : 0;
+    const wert = parseFloat(roh.split(tsd).join("").replace(",", "."));
     if (!isFinite(wert) || wert === 0) return;
     const vor = text.slice(0, m.index), nach = text.slice(m.index + roh.length);
-    const tausender = roh.includes(".") || wert >= 10000;
-    const fmt = (z) => z.toLocaleString("de-DE", { minimumFractionDigits: komma, maximumFractionDigits: komma, useGrouping: tausender });
+    const tausender = roh.includes(tsd) || wert >= 10000;
+    const fmt = (z) => z.toLocaleString(de ? "de-DE" : "en-US", { minimumFractionDigits: komma, maximumFractionDigits: komma, useGrouping: tausender });
     teile.push({ el, vor, nach, wert, fmt, ende: text });
     el.textContent = vor + fmt(0) + nach;
   });
@@ -453,17 +629,17 @@ const BEREICHE = {
   const box = document.createElement("section");
   box.className = "cookie-feld";
   box.setAttribute("role", "dialog");
-  box.setAttribute("aria-label", "Hinweis zu Cookies und Datenschutz");
+  box.setAttribute("aria-label", t("Hinweis zu Cookies und Datenschutz"));
   box.innerHTML =
-    '<h2>Cookies? Brauchen wir nicht.</h2>' +
-    '<p>Diese Website setzt <strong>keine Cookies</strong> und nutzt kein Tracking, keine Statistik und keine Werbung. Schriften, Bilder und Videos liegen bei uns – nichts wird an Google, Facebook &amp; Co. übertragen.</p>' +
-    '<details class="cookie-details"><summary>Einstellungen ansehen</summary><ul class="cookie-arten">' +
-    '<li><span>Notwendig</span><small>nur lokale Einträge, z. B. Zugang und Sprache im Wunschkalender</small><b class="an">immer an</b></li>' +
-    '<li><span>Statistik</span><small>wird nicht verwendet</small><b>aus</b></li>' +
-    '<li><span>Marketing</span><small>wird nicht verwendet</small><b>aus</b></li>' +
+    '<h2>' + t("Cookies? Brauchen wir nicht.") + '</h2>' +
+    '<p>' + t("Diese Website setzt <strong>keine Cookies</strong> und nutzt kein Tracking, keine Statistik und keine Werbung. Schriften, Bilder und Videos liegen bei uns – nichts wird an Google, Facebook &amp; Co. übertragen.") + '</p>' +
+    '<details class="cookie-details"><summary>' + t("Einstellungen ansehen") + '</summary><ul class="cookie-arten">' +
+    '<li><span>' + t("Notwendig") + '</span><small>' + t("nur lokale Einträge, z. B. Zugang und Sprache im Wunschkalender") + '</small><b class="an">' + t("immer an") + '</b></li>' +
+    '<li><span>' + t("Statistik") + '</span><small>' + t("wird nicht verwendet") + '</small><b>' + t("aus") + '</b></li>' +
+    '<li><span>' + t("Marketing") + '</span><small>' + t("wird nicht verwendet") + '</small><b>' + t("aus") + '</b></li>' +
     '</ul></details>' +
-    '<div class="cookie-knoepfe"><button type="button" class="btn voll" data-ok>Verstanden</button><a class="btn" href="cookies.html">Mehr erfahren</a></div>' +
-    '<p class="cookie-links"><a href="datenschutz.html">Datenschutz</a> · <a href="impressum.html">Impressum</a></p>';
+    '<div class="cookie-knoepfe"><button type="button" class="btn voll" data-ok>' + t("Verstanden") + '</button><a class="btn" href="cookies.html">' + t("Mehr erfahren") + '</a></div>' +
+    '<p class="cookie-links"><a href="datenschutz.html">' + t("Datenschutz") + '</a> · <a href="impressum.html">' + t("Impressum") + '</a></p>';
   document.body.appendChild(box);
   requestAnimationFrame(() => box.classList.add("offen"));
   box.querySelector("[data-ok]").addEventListener("click", () => {

@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paws of Hope – Wish Calendar of Dar Al-Rahma Cat Rescue</title>
+<meta name="description" content="Paws of Hope – Every Paw Deserves a Chance: An interactive wish calendar for cat rescue in Gaza. Every wish that is fulfilled stitches another piece of the artwork in colour.">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../style.css?v=20261122i">
+<script src="../sperre.js?v=20261122h"></script>
+<style>
+  #wunschkalender[dir="rtl"]{font-family:"Segoe UI",Tahoma,Arial,sans-serif}
+  .wk-kopf{text-align:center;max-width:860px;margin:0 auto}
+  .wk-kopf h1{margin:0 0 6px;font-size:clamp(38px,5vw,60px)}
+  .wk-kopf p{color:var(--muted);margin:0 auto 10px}
+  .wk-sprachen,.wk-zustaende{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+  .wk-sprachen button,.wk-zustaende button{background:none;border:1px solid var(--line2);color:var(--muted);border-radius:999px;padding:6px 14px;font:500 13px var(--sans);cursor:pointer}
+  .wk-sprachen button[aria-pressed="true"],.wk-zustaende button[aria-pressed="true"]{border-color:var(--gold);color:var(--gold2)}
+  .wk-demo{max-width:860px;margin:18px auto 0;border:1px dashed var(--line2);border-radius:var(--r-s);padding:10px 16px;font-size:13px;color:var(--muted);text-align:center}
+  .wk-demo b{color:var(--gold2)}
+  .wk-layout{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:32px;align-items:start;margin-top:32px}
+  .wk-buehne{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--line2);box-shadow:var(--schatten);background:#e9dcc3;aspect-ratio:1028/1125}
+  .wk-buehne canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+  #wk-rand{pointer-events:none}
+  .wk-buehne.fehler::after{content:attr(data-meldung);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;color:#5a4a30;font-size:16px}
+  .wk-buehne:not(.geladen):not(.fehler)::after{content:"…";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:40px;color:#7a6a50}
+  .wk-seite{position:sticky;top:96px;display:flex;flex-direction:column;gap:16px}
+  .wk-box{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+  .wk-box h3{margin:0 0 8px;font-size:22px}
+  .wk-zahl{font:700 34px var(--serif);color:var(--gold2);line-height:1.1}
+  .wk-klein{color:var(--muted);font-size:14px}
+  .wk-gesamt{height:6px;border-radius:999px;background:var(--bg3);overflow:hidden;margin:12px 0 6px}
+  .wk-gesamt i{display:block;height:100%;width:0;background:var(--gold);transition:width 1.6s cubic-bezier(.2,.7,.2,1)}
+  .wk-fertig{text-align:center;border-color:var(--gold)}
+  .wk-zeilen{list-style:none;margin:0;padding:0}
+  .wk-zeilen li button{width:100%;display:flex;justify-content:space-between;gap:12px;align-items:center;text-align:start;background:none;border:0;border-bottom:1px solid var(--line);padding:10px 2px;color:var(--text);font:15px var(--sans);cursor:pointer}
+  .wk-zeilen li button:hover{color:var(--gold2)}
+  .wk-zeilen small{display:block;color:var(--muted);font-size:12px}
+  .wk-st{color:var(--muted);font-size:13px;white-space:nowrap}
+  dialog.wk-dialog{max-width:min(560px,94vw);width:100%;border-color:var(--line2)}
+  .wk-dialog .wk-d-kopf{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center;padding:20px 22px 0}
+  .wk-dialog canvas{width:120px;height:120px;object-fit:contain;background:#e9dcc3;border-radius:var(--r-s);border:1px solid var(--line2)}
+  .wk-d-kat{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .wk-d-titel{margin:4px 0 0;font-size:26px}
+  .wk-dialog .inhalt{padding:14px 22px 22px}
+  .wk-d-text{color:var(--muted);margin:0 0 14px}
+  .wk-d-werte{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin:0 0 14px}
+  .wk-d-werte dt{font-size:12px;color:var(--muted)}
+  .wk-d-werte dd{margin:0;font-weight:600}
+  .wk-d-balken{height:8px;border-radius:999px;background:var(--bg3);overflow:hidden}
+  .wk-d-balken i{display:block;height:100%;width:0;background:var(--gold);transition:width 1.2s cubic-bezier(.2,.7,.2,1)}
+  .wk-d-zeile{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin:6px 0 16px}
+  .wk-d-knopf{width:100%;justify-content:center;margin:0}
+  .wk-d-zu{position:absolute;top:10px;inset-inline-end:10px;background:none;border:0;color:var(--muted);font-size:26px;cursor:pointer;margin:0;float:none}
+  .wk-galerie-leer{color:var(--muted);text-align:center}
+  .wk-motive{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:20px}
+  .wk-motive div{border:1px dashed var(--line2);border-radius:var(--r-s);padding:16px;color:var(--muted);font-size:14px;text-align:center}
+  @media (max-width:980px){.wk-layout{grid-template-columns:1fr}.wk-seite{position:static}}
+  @media (max-width:520px){.wk-dialog .wk-d-kopf{grid-template-columns:80px 1fr}.wk-dialog canvas{width:80px;height:80px}}
+</style>
+</head>
+<body>
+<div id="kopf"></div>
+<main>
+  <section id="wunschkalender" style="padding-top:clamp(40px,6vw,72px)">
+    <div class="wrap">
+      <div class="wk-kopf">
+        <span class="ueber">Dar Al-Rahma Cat Rescue · Gaza</span>
+        <h1 data-t="titel">Paws of Hope</h1>
+        <p data-t="unter"></p>
+        <div class="wk-sprachen" role="group" aria-label="Language"><button type="button" data-sprache="de">Deutsch</button><button type="button" data-sprache="en">English</button><button type="button" data-sprache="ar" lang="ar">العربية</button></div>
+        <div class="wk-demo"><b>DEMO</b> · <span data-t="demoband"></span></div>
+      </div>
+
+      <div class="wk-layout">
+        <div>
+          <div class="wk-buehne" id="wk-buehne">
+            <canvas id="wk-bild" role="img" aria-label="Embroidered artwork: a mother cat with kittens in a keffiyeh, olive branches and tatreez ornaments. Every part stands for a wish."></canvas>
+            <canvas id="wk-rand" aria-hidden="true"></canvas>
+          </div>
+          <p class="wk-klein" style="text-align:center;margin-top:10px" data-t="tippen"></p>
+        </div>
+        <aside class="wk-seite">
+          <div class="wk-box">
+            <div class="wk-klein" data-t="zustand"></div>
+            <div class="wk-zustaende" role="group" style="justify-content:flex-start;margin-top:8px">
+              <button type="button" data-zustand="z1" data-t="z1"></button>
+              <button type="button" data-zustand="z2" data-t="z2"></button>
+              <button type="button" data-zustand="z3" data-t="z3"></button>
+              <button type="button" data-zustand="z4" data-t="z4"></button>
+            </div>
+          </div>
+          <div class="wk-box">
+            <div class="wk-zahl" id="wk-erfuellt">–</div>
+            <div class="wk-klein" data-t="erfuellt"></div>
+            <div class="wk-gesamt"><i id="wk-balken"></i></div>
+            <div class="wk-klein"><span id="wk-summe">–</span> <span data-t="gesammelt"></span></div>
+          </div>
+          <div class="wk-box wk-fertig" id="wk-fertig" hidden>
+            <h3 data-t="fertig"></h3>
+            <p class="wk-klein" data-t="fertigText"></p>
+          </div>
+        </aside>
+      </div>
+
+      <h2 style="margin-top:64px;font-size:30px" data-t="liste"></h2>
+      <div id="wk-liste" class="klapp-liste" style="margin-top:20px"></div>
+
+      <h2 style="margin-top:64px;font-size:30px" data-t="galerie"></h2>
+      <p id="wk-galerie" class="wk-galerie-leer"></p>
+      <h3 style="text-align:center;margin-top:28px;font-size:22px" data-t="neu"></h3>
+      <div class="wk-motive"><div>A cat made of tatreez ornaments</div><div>A cat family under olive branches</div><div>A big paw made of embroidery patterns</div><div>A sleeping cat on a keffiyeh</div></div>
+    </div>
+  </section>
+
+  <dialog class="wk-dialog" id="wk-dialog" aria-labelledby="wk-d-titel">
+    <button type="button" class="wk-d-zu" aria-label="Close">×</button>
+    <div class="wk-d-kopf"><canvas class="wk-d-vorschau" aria-hidden="true"></canvas><div><div class="wk-d-kat"></div><h3 class="wk-d-titel" id="wk-d-titel"></h3><div class="wk-klein wk-d-bereich"></div></div></div>
+    <div class="inhalt">
+      <p class="wk-d-text"></p>
+      <dl class="wk-d-werte">
+        <div><dt data-t="menge"></dt><dd class="wk-d-menge"></dd></div>
+        <div><dt data-t="kosten"></dt><dd class="wk-d-ziel"></dd></div>
+        <div><dt data-t="finanziert"></dt><dd class="wk-d-ist"></dd></div>
+        <div><dt data-t="fehlt"></dt><dd class="wk-d-fehlt"></dd></div>
+      </dl>
+      <div class="wk-d-balken"><i></i></div>
+      <div class="wk-d-zeile"><span class="wk-d-prozent"></span></div>
+      <button type="button" class="btn voll wk-d-knopf" data-t="erfuellen"></button>
+      <p class="wk-d-danke" hidden style="color:var(--gold2);text-align:center;margin:0" data-t="erfuelltText"></p>
+      <div class="kasten wk-d-hinweis" hidden><span data-t="spendeHinweis"></span> <a href="spenden.html#catrescue" data-t="zuSpenden"></a></div>
+    </div>
+  </dialog>
+</main>
+<div id="fuss"></div>
+<script src="../wunschkalender.js?v=20261122h"></script>
+<script src="../menu.js?v=20261122i"></script>
+</body>
+</html>

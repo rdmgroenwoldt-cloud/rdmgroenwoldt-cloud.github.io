@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cookies &amp; local storage – Dar Al-Rahma Center</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="../style.css?v=20261122i">
+<script src="../sperre.js?v=20261122h"></script>
+<style>
+  .recht h2{font-size:26px;margin:40px 0 10px;text-align:left}
+  .recht p,.recht li{color:var(--text);line-height:1.7}
+  .recht .luecke{background:rgba(212,168,75,.14);border:1px dashed var(--gold);border-radius:6px;padding:1px 6px;color:var(--gold2)}
+  .recht .stand{color:var(--muted);font-size:14px;margin-top:40px}
+  .recht table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
+  .recht th,.recht td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
+  .recht th{color:var(--gold2);font-weight:600}
+</style>
+</head>
+<body>
+<div id="kopf"></div>
+<main>
+  <div class="seitenkopf" style="padding-bottom:30px"><div class="wrap"><h1>Cookies &amp; local storage</h1></div></div>
+  <section style="border-top:0;padding-top:10px">
+    <div class="wrap text recht">
+
+      <p class="quelle">This translation is provided for information only. The German version is legally binding.</p>
+
+      <div class="kasten"><strong>This website does not set any cookies.</strong> There is no tracking, no statistics, no advertising and no embedded content from Facebook, Instagram, YouTube or Google. So you don't have to “accept” anything.</div>
+
+      <h2>What we store in your browser</h2>
+      <p>Just three small entries in your browser's <strong>local storage</strong> (localStorage) – and only if you use the relevant feature. They never leave your device.</p>
+      <table>
+        <thead><tr><th>Entry</th><th>Purpose</th><th>How long</th></tr></thead>
+        <tbody>
+          <tr><td><code>dar-zugang</code></td><td>Remembers that you have entered the password for this website, which is not yet public. Only a check value is stored, not the password.</td><td>until you delete it</td></tr>
+          <tr><td><code>dar-hinweis</code></td><td>Remembers that you have closed the notice about cookies and data protection, so that it doesn't appear on every page.</td><td>until you delete it</td></tr>
+          <tr><td><code>wk-sprache</code></td><td>Remembers your language (German, English, Arabic) in the <a href="wunschkalender.html">wish calendar</a>.</td><td>until you delete it</td></tr>
+        </tbody>
+      </table>
+      <p>All entries are needed for a feature you use yourself; no consent is required for this (Section 25 (2) No. 2 of the German Telecommunications Digital Services Data Protection Act, TDDDG).</p>
+
+      <h2>Overview</h2>
+      <table>
+        <thead><tr><th>Type</th><th>On this website</th></tr></thead>
+        <tbody>
+          <tr><td>Necessary entries</td><td>yes – the three listed above, local only</td></tr>
+          <tr><td>Statistics / audience measurement</td><td>no</td></tr>
+          <tr><td>Marketing / advertising</td><td>no</td></tr>
+          <tr><td>Embedded third-party content (videos, maps, social media)</td><td>no – videos are hosted on our own web space</td></tr>
+          <tr><td>Fonts from external servers</td><td>no – the fonts are hosted by us</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Deleting entries</h2>
+      <p>With the button below you delete all of this website's entries from your browser. Alternatively, you can do so in your browser settings under “Cookies and site data”.</p>
+      <p><button type="button" class="btn" id="speicher-loeschen" style="margin:6px 0 0">Delete stored entries</button> <span id="speicher-meldung" class="quelle"></span></p>
+      <script>
+        document.getElementById("speicher-loeschen").addEventListener("click", function () {
+          var m = document.getElementById("speicher-meldung");
+          try { ["dar-zugang", "dar-hinweis", "wk-sprache"].forEach(function (k) { localStorage.removeItem(k); }); m.textContent = "Deleted."; }
+          catch (e) { m.textContent = "Your browser does not allow access – so nothing is stored either."; }
+        });
+      </script>
+
+      <p>More in the <a href="datenschutz.html">privacy policy</a>.</p>
+      <p class="stand">As of: 22 November 2026</p>
+    </div>
+  </section>
+</main>
+<div id="fuss"></div>
+<script src="../menu.js?v=20261122i"></script>
+</body>
+</html>
