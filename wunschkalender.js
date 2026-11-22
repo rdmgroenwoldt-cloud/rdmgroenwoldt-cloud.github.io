@@ -87,7 +87,7 @@
     daten = null;
     if (api) {
       try { const r = await fetch(api, { cache: "no-store" }); if (r.ok) { daten = await r.json(); if (!daten.kunstwerk) daten = null; } } catch (e) { daten = null; }
-      if (daten && daten.kunstwerk.bereichsliste) daten.kunstwerk.bereichsliste.forEach((x) => { bereichNamen[x.id] = x.name; bereichBox[x.id] = x.box; });
+      if (daten && daten.kunstwerk.bereichsliste) daten.kunstwerk.bereichsliste.forEach((x) => { bereichNamen[x.id] = x; bereichBox[x.id] = x.box; });
     }
     // Server eingestellt, aber nicht erreichbar: ehrliche Meldung statt stiller Demo-Daten
     if (api && !daten) { rahmen.classList.add("fehler"); rahmen.setAttribute("data-meldung", "Die Daten sind gerade nicht erreichbar. Bitte später noch einmal versuchen."); return; }
@@ -202,22 +202,25 @@
 
   // Pop-up
   const dlg = document.getElementById("wk-dialog");
-  function wunschTitel(w) { return sprache === "de" ? w.titel : (T[sprache].titelKat?.[w.kategorie] || w.titel); }
+  // Übersetzte Felder (titel_en, beschreibung_ar …) haben Vorrang; sonst Rückfall auf Deutsch bzw. Kategorienamen
+  const feld = (o, k) => (o && (o[k + "_" + sprache] || (sprache === "de" ? o[k] : ""))) || "";
+  function bName(id) { const x = bereichNamen[id]; return !x ? "" : typeof x === "string" ? x : (x["name_" + sprache] || x.name || ""); }
+  function wunschTitel(w) { return feld(w, "titel") || T[sprache].titelKat?.[w.kategorie] || w.titel; }
   function oeffnen(id) {
     const w = bereichInfo[id]; if (!w) return;
     const b = Math.min(w.ziel, wert(w)), fehlt = Math.max(0, w.ziel - b), p = Math.round((b / w.ziel) * 100);
     const name = daten.bereiche?.[id] || "";
     dlg.querySelector(".wk-d-kat").textContent = t("kat")[w.kategorie] + (w.demo ? " · " + t("demo") : "");
     dlg.querySelector(".wk-d-titel").textContent = wunschTitel(w);
-    dlg.querySelector(".wk-d-text").textContent = sprache === "de" ? w.beschreibung : "";
-    dlg.querySelector(".wk-d-text").hidden = sprache !== "de";
-    dlg.querySelector(".wk-d-menge").textContent = w.menge;
+    dlg.querySelector(".wk-d-text").textContent = feld(w, "beschreibung");
+    dlg.querySelector(".wk-d-text").hidden = !feld(w, "beschreibung");
+    dlg.querySelector(".wk-d-menge").textContent = feld(w, "menge") || w.menge;
     dlg.querySelector(".wk-d-ziel").textContent = euro(w.ziel);
     dlg.querySelector(".wk-d-ist").textContent = euro(b);
     dlg.querySelector(".wk-d-fehlt").textContent = euro(fehlt);
     dlg.querySelector(".wk-d-prozent").textContent = p + " %";
     const balken = dlg.querySelector(".wk-d-balken i"); balken.style.width = "0%"; requestAnimationFrame(() => requestAnimationFrame(() => (balken.style.width = p + "%")));
-    dlg.querySelector(".wk-d-bereich").textContent = t("bereich") + ": " + (bereichNamen[id] || "#" + id);
+    dlg.querySelector(".wk-d-bereich").textContent = t("bereich") + ": " + (bName(id) || "#" + id);
     const knopf = dlg.querySelector(".wk-d-knopf"), hinweis = dlg.querySelector(".wk-d-hinweis");
     hinweis.hidden = true;
     if (fehlt <= 0) { knopf.hidden = true; dlg.querySelector(".wk-d-danke").hidden = false; }
@@ -240,7 +243,7 @@
   // Liste (barrierearm: alle Wünsche auch ohne Bild erreichbar)
   let bereichNamen = {}, bereichBox = {};
   const apiAdresse = document.getElementById("wunschkalender").dataset.api || (/^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? new URLSearchParams(location.search).get("api") : "");
-  if (!apiAdresse) fetch(WK_WURZEL + "assets/wunsch/bereiche.json").then((r) => r.json()).then((b) => b.forEach((x) => { bereichNamen[x.id] = x.name; bereichBox[x.id] = x.box; }));
+  if (!apiAdresse) fetch(WK_WURZEL + "assets/wunsch/bereiche.json?v=" + Date.now()).then((r) => r.json()).then((b) => b.forEach((x) => { bereichNamen[x.id] = x; bereichBox[x.id] = x.box; }));
   function liste() {
     const ziel = document.getElementById("wk-liste"); if (!ziel || !daten) return;
     const gruppen = {};
@@ -255,7 +258,7 @@
       ws.forEach((w) => {
         const li = document.createElement("li"), b = Math.min(w.ziel, wert(w));
         const status = b >= w.ziel ? t("voll") : b > 0 ? t("teil") : t("offen");
-        li.innerHTML = `<button type="button"><span>${esc(wunschTitel(w))}<small>${esc(bereichNamen[w.bereich] || "")}</small></span><span class="wk-st">${esc(euro(b))} / ${esc(euro(w.ziel))} · ${esc(status)}</span></button>`;
+        li.innerHTML = `<button type="button"><span>${esc(wunschTitel(w))}<small>${esc(bName(w.bereich))}</small></span><span class="wk-st">${esc(euro(b))} / ${esc(euro(w.ziel))} · ${esc(status)}</span></button>`;
         li.querySelector("button").addEventListener("click", () => oeffnen(w.bereich));
         ul.appendChild(li);
       });

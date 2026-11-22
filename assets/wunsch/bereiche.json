@@ -1,962 +1,1082 @@
 [
- {
-  "id": 1,
-  "name": "Bordüre oben links",
-  "kat": "rahmen",
-  "flaeche": 7523,
-  "mitte": [
-   203,
-   39
-  ],
-  "box": [
-   17,
-   18,
-   429,
-   61
-  ]
- },
- {
-  "id": 2,
-  "name": "Bordüre oben rechts",
-  "kat": "rahmen",
-  "flaeche": 7230,
-  "mitte": [
-   827,
-   39
-  ],
-  "box": [
-   600,
-   18,
-   1010,
-   61
-  ]
- },
- {
-  "id": 3,
-  "name": "Bordüre unten links",
-  "kat": "rahmen",
-  "flaeche": 3925,
-  "mitte": [
-   175,
-   1082
-  ],
-  "box": [
-   17,
-   1068,
-   345,
-   1095
-  ]
- },
- {
-  "id": 4,
-  "name": "Bordüre unten Mitte",
-  "kat": "rahmen",
-  "flaeche": 3643,
-  "mitte": [
-   509,
-   1081
-  ],
-  "box": [
-   346,
-   1068,
-   675,
-   1101
-  ]
- },
- {
-  "id": 5,
-  "name": "Bordüre unten rechts",
-  "kat": "rahmen",
-  "flaeche": 4141,
-  "mitte": [
-   848,
-   1082
-  ],
-  "box": [
-   676,
-   1068,
-   1010,
-   1096
-  ]
- },
- {
-  "id": 6,
-  "name": "Bordüre links oben",
-  "kat": "rahmen",
-  "flaeche": 6978,
-  "mitte": [
-   31,
-   310
-  ],
-  "box": [
-   17,
-   62,
-   51,
-   570
-  ]
- },
- {
-  "id": 7,
-  "name": "Bordüre links unten",
-  "kat": "rahmen",
-  "flaeche": 5207,
-  "mitte": [
-   32,
-   858
-  ],
-  "box": [
-   15,
-   571,
-   51,
-   1067
-  ]
- },
- {
-  "id": 8,
-  "name": "Bordüre rechts oben",
-  "kat": "rahmen",
-  "flaeche": 6646,
-  "mitte": [
-   994,
-   289
-  ],
-  "box": [
-   976,
-   62,
-   1010,
-   545
-  ]
- },
- {
-  "id": 9,
-  "name": "Bordüre rechts unten",
-  "kat": "rahmen",
-  "flaeche": 4008,
-  "mitte": [
-   995,
-   911
-  ],
-  "box": [
-   976,
-   574,
-   1010,
-   1067
-  ]
- },
- {
-  "id": 10,
-  "name": "Tatreez-Stern oben links",
-  "kat": "ornament",
-  "flaeche": 17996,
-  "mitte": [
-   159,
-   154
-  ],
-  "box": [
-   54,
-   62,
-   299,
-   267
-  ]
- },
- {
-  "id": 11,
-  "name": "Tatreez-Stern oben rechts",
-  "kat": "ornament",
-  "flaeche": 17525,
-  "mitte": [
-   868,
-   154
-  ],
-  "box": [
-   728,
-   62,
-   974,
-   267
-  ]
- },
- {
-  "id": 12,
-  "name": "Tatreez-Motiv unten links",
-  "kat": "ornament",
-  "flaeche": 8970,
-  "mitte": [
-   122,
-   995
-  ],
-  "box": [
-   55,
-   890,
-   229,
-   1065
-  ]
- },
- {
-  "id": 13,
-  "name": "Tatreez-Motiv unten rechts",
-  "kat": "ornament",
-  "flaeche": 8846,
-  "mitte": [
-   905,
-   999
-  ],
-  "box": [
-   790,
-   890,
-   974,
-   1064
-  ]
- },
- {
-  "id": 14,
-  "name": "Tatreez-Mittelband unten",
-  "kat": "ornament",
-  "flaeche": 4617,
-  "mitte": [
-   535,
-   1051
-  ],
-  "box": [
-   290,
-   1005,
-   769,
-   1067
-  ]
- },
- {
-  "id": 15,
-  "name": "Pfote – Zeh links",
-  "kat": "pfote",
-  "flaeche": 1457,
-  "mitte": [
-   450,
-   953
-  ],
-  "box": [
-   428,
-   924,
-   473,
-   999
-  ]
- },
- {
-  "id": 16,
-  "name": "Pfote – Zeh Mitte links",
-  "kat": "pfote",
-  "flaeche": 1425,
-  "mitte": [
-   483,
-   907
-  ],
-  "box": [
-   420,
-   870,
-   509,
-   938
-  ]
- },
- {
-  "id": 17,
-  "name": "Pfote – Zeh Mitte rechts",
-  "kat": "pfote",
-  "flaeche": 1319,
-  "mitte": [
-   540,
-   909
-  ],
-  "box": [
-   517,
-   871,
-   609,
-   939
-  ]
- },
- {
-  "id": 18,
-  "name": "Pfote – Zeh rechts",
-  "kat": "pfote",
-  "flaeche": 1309,
-  "mitte": [
-   569,
-   952
-  ],
-  "box": [
-   547,
-   926,
-   590,
-   978
-  ]
- },
- {
-  "id": 19,
-  "name": "Pfote – Ballen",
-  "kat": "pfote",
-  "flaeche": 3517,
-  "mitte": [
-   507,
-   988
-  ],
-  "box": [
-   455,
-   946,
-   553,
-   1019
-  ]
- },
- {
-  "id": 20,
-  "name": "Bogen – Stein links unten",
-  "kat": "bogen",
-  "flaeche": 5143,
-  "mitte": [
-   198,
-   364
-  ],
-  "box": [
-   163,
-   307,
-   244,
-   470
-  ]
- },
- {
-  "id": 21,
-  "name": "Bogen – Stein links Mitte",
-  "kat": "bogen",
-  "flaeche": 10270,
-  "mitte": [
-   224,
-   242
-  ],
-  "box": [
-   46,
-   27,
-   299,
-   328
-  ]
- },
- {
-  "id": 22,
-  "name": "Bogen – Stein links oben",
-  "kat": "bogen",
-  "flaeche": 10257,
-  "mitte": [
-   327,
-   150
-  ],
-  "box": [
-   150,
-   51,
-   415,
-   225
-  ]
- },
- {
-  "id": 23,
-  "name": "Bogen – Schlussstein",
-  "kat": "bogen",
-  "flaeche": 16135,
-  "mitte": [
-   492,
-   78
-  ],
-  "box": [
-   373,
-   8,
-   626,
-   180
-  ]
- },
- {
-  "id": 24,
-  "name": "Bogen – Stein rechts oben",
-  "kat": "bogen",
-  "flaeche": 14395,
-  "mitte": [
-   677,
-   133
-  ],
-  "box": [
-   572,
-   36,
-   873,
-   228
-  ]
- },
- {
-  "id": 25,
-  "name": "Bogen – Stein rechts Mitte",
-  "kat": "bogen",
-  "flaeche": 8538,
-  "mitte": [
-   801,
-   234
-  ],
-  "box": [
-   726,
-   23,
-   975,
-   319
-  ]
- },
- {
-  "id": 26,
-  "name": "Bogen – Stein rechts unten",
-  "kat": "bogen",
-  "flaeche": 16806,
-  "mitte": [
-   826,
-   393
-  ],
-  "box": [
-   710,
-   287,
-   904,
-   536
-  ]
- },
- {
-  "id": 27,
-  "name": "Altstadt links",
-  "kat": "stadt",
-  "flaeche": 14529,
-  "mitte": [
-   380,
-   281
-  ],
-  "box": [
-   274,
-   181,
-   470,
-   385
-  ]
- },
- {
-  "id": 28,
-  "name": "Kuppel",
-  "kat": "stadt",
-  "flaeche": 2395,
-  "mitte": [
-   607,
-   227
-  ],
-  "box": [
-   568,
-   188,
-   634,
-   253
-  ]
- },
- {
-  "id": 29,
-  "name": "Moschee",
-  "kat": "stadt",
-  "flaeche": 11072,
-  "mitte": [
-   617,
-   283
-  ],
-  "box": [
-   531,
-   208,
-   721,
-   342
-  ]
- },
- {
-  "id": 30,
-  "name": "Altstadt rechts",
-  "kat": "stadt",
-  "flaeche": 3127,
-  "mitte": [
-   739,
-   362
-  ],
-  "box": [
-   672,
-   312,
-   791,
-   436
-  ]
- },
- {
-  "id": 31,
-  "name": "Mutter – linkes Ohr",
-  "kat": "fell",
-  "flaeche": 8038,
-  "mitte": [
-   473,
-   314
-  ],
-  "box": [
-   386,
-   219,
-   533,
-   393
-  ]
- },
- {
-  "id": 32,
-  "name": "Mutter – Stirn",
-  "kat": "fell",
-  "flaeche": 8832,
-  "mitte": [
-   524,
-   351
-  ],
-  "box": [
-   451,
-   284,
-   625,
-   427
-  ]
- },
- {
-  "id": 33,
-  "name": "Mutter – Gesicht und rechtes Ohr",
-  "kat": "fell",
-  "flaeche": 19614,
-  "mitte": [
-   563,
-   431
-  ],
-  "box": [
-   399,
-   355,
-   704,
-   518
-  ]
- },
- {
-  "id": 34,
-  "name": "Mutter – Wange und Hals",
-  "kat": "fell",
-  "flaeche": 32693,
-  "mitte": [
-   468,
-   529
-  ],
-  "box": [
-   350,
-   420,
-   595,
-   683
-  ]
- },
- {
-  "id": 35,
-  "name": "Mutter – Rücken",
-  "kat": "fell",
-  "flaeche": 16869,
-  "mitte": [
-   347,
-   510
-  ],
-  "box": [
-   268,
-   381,
-   438,
-   632
-  ]
- },
- {
-  "id": 36,
-  "name": "Kitten – Kopf",
-  "kat": "fell",
-  "flaeche": 15594,
-  "mitte": [
-   639,
-   567
-  ],
-  "box": [
-   534,
-   509,
-   738,
-   627
-  ]
- },
- {
-  "id": 37,
-  "name": "Kitten – Pfoten",
-  "kat": "fell",
-  "flaeche": 11274,
-  "mitte": [
-   590,
-   647
-  ],
-  "box": [
-   512,
-   569,
-   705,
-   696
-  ]
- },
- {
-  "id": 38,
-  "name": "Kufiya – linke Schlaufe",
-  "kat": "kufiya",
-  "flaeche": 15548,
-  "mitte": [
-   241,
-   630
-  ],
-  "box": [
-   160,
-   515,
-   332,
-   738
-  ]
- },
- {
-  "id": 39,
-  "name": "Kufiya – vorne links",
-  "kat": "kufiya",
-  "flaeche": 39399,
-  "mitte": [
-   354,
-   698
-  ],
-  "box": [
-   229,
-   543,
-   518,
-   823
-  ]
- },
- {
-  "id": 40,
-  "name": "Kufiya – Mitte",
-  "kat": "kufiya",
-  "flaeche": 7498,
-  "mitte": [
-   560,
-   720
-  ],
-  "box": [
-   466,
-   685,
-   657,
-   759
-  ]
- },
- {
-  "id": 41,
-  "name": "Kufiya – rechts",
-  "kat": "kufiya",
-  "flaeche": 39107,
-  "mitte": [
-   721,
-   745
-  ],
-  "box": [
-   555,
-   574,
-   842,
-   920
-  ]
- },
- {
-  "id": 42,
-  "name": "Kufiya – Fransen",
-  "kat": "kufiya",
-  "flaeche": 12886,
-  "mitte": [
-   307,
-   959
-  ],
-  "box": [
-   49,
-   826,
-   478,
-   1092
-  ]
- },
- {
-  "id": 43,
-  "name": "Flagge – Rot",
-  "kat": "flagge",
-  "flaeche": 20120,
-  "mitte": [
-   448,
-   794
-  ],
-  "box": [
-   251,
-   678,
-   591,
-   953
-  ]
- },
- {
-  "id": 44,
-  "name": "Flagge – Grün",
-  "kat": "flagge",
-  "flaeche": 11818,
-  "mitte": [
-   576,
-   858
-  ],
-  "box": [
-   460,
-   817,
-   699,
-   982
-  ]
- },
- {
-  "id": 45,
-  "name": "Flagge – Schwarz und Weiß",
-  "kat": "flagge",
-  "flaeche": 11697,
-  "mitte": [
-   670,
-   867
-  ],
-  "box": [
-   527,
-   777,
-   791,
-   1091
-  ]
- },
- {
-  "id": 46,
-  "name": "Olivenzweig oben links",
-  "kat": "zweig",
-  "flaeche": 4520,
-  "mitte": [
-   322,
-   65
-  ],
-  "box": [
-   51,
-   13,
-   448,
-   133
-  ]
- },
- {
-  "id": 47,
-  "name": "Olivenzweig oben rechts",
-  "kat": "zweig",
-  "flaeche": 3909,
-  "mitte": [
-   695,
-   64
-  ],
-  "box": [
-   580,
-   13,
-   939,
-   126
-  ]
- },
- {
-  "id": 48,
-  "name": "Olivenzweig links oben",
-  "kat": "zweig",
-  "flaeche": 13432,
-  "mitte": [
-   167,
-   341
-  ],
-  "box": [
-   20,
-   40,
-   339,
-   480
-  ]
- },
- {
-  "id": 49,
-  "name": "Olivenzweig links Mitte",
-  "kat": "zweig",
-  "flaeche": 13212,
-  "mitte": [
-   133,
-   580
-  ],
-  "box": [
-   15,
-   411,
-   256,
-   686
-  ]
- },
- {
-  "id": 50,
-  "name": "Olivenzweig links unten",
-  "kat": "zweig",
-  "flaeche": 23109,
-  "mitte": [
-   175,
-   791
-  ],
-  "box": [
-   21,
-   656,
-   284,
-   1067
-  ]
- },
- {
-  "id": 51,
-  "name": "Olivenzweig rechts oben",
-  "kat": "zweig",
-  "flaeche": 8546,
-  "mitte": [
-   906,
-   312
-  ],
-  "box": [
-   816,
-   47,
-   1002,
-   397
-  ]
- },
- {
-  "id": 52,
-  "name": "Olivenzweig rechts Mitte",
-  "kat": "zweig",
-  "flaeche": 19016,
-  "mitte": [
-   857,
-   557
-  ],
-  "box": [
-   700,
-   436,
-   1005,
-   653
-  ]
- },
- {
-  "id": 53,
-  "name": "Olivenzweig rechts unten",
-  "kat": "zweig",
-  "flaeche": 34681,
-  "mitte": [
-   803,
-   831
-  ],
-  "box": [
-   458,
-   636,
-   1006,
-   1092
-  ]
- },
- {
-  "id": 54,
-  "name": "Olive links oben",
-  "kat": "olive",
-  "flaeche": 8981,
-  "mitte": [
-   132,
-   395
-  ],
-  "box": [
-   33,
-   297,
-   201,
-   481
-  ]
- },
- {
-  "id": 55,
-  "name": "Olive links Mitte",
-  "kat": "olive",
-  "flaeche": 8746,
-  "mitte": [
-   151,
-   493
-  ],
-  "box": [
-   67,
-   408,
-   208,
-   579
-  ]
- },
- {
-  "id": 56,
-  "name": "Olive links unten",
-  "kat": "olive",
-  "flaeche": 5418,
-  "mitte": [
-   106,
-   823
-  ],
-  "box": [
-   33,
-   784,
-   165,
-   1003
-  ]
- },
- {
-  "id": 57,
-  "name": "Olive rechts oben",
-  "kat": "olive",
-  "flaeche": 3231,
-  "mitte": [
-   937,
-   431
-  ],
-  "box": [
-   886,
-   382,
-   1005,
-   506
-  ]
- },
- {
-  "id": 58,
-  "name": "Grüne Olive",
-  "kat": "olive",
-  "flaeche": 5477,
-  "mitte": [
-   910,
-   476
-  ],
-  "box": [
-   846,
-   428,
-   979,
-   523
-  ]
- },
- {
-  "id": 59,
-  "name": "Olive rechts Mitte",
-  "kat": "olive",
-  "flaeche": 366,
-  "mitte": [
-   891,
-   521
-  ],
-  "box": [
-   881,
-   508,
-   906,
-   533
-  ]
- },
- {
-  "id": 60,
-  "name": "Olive rechts unten",
-  "kat": "olive",
-  "flaeche": 3463,
-  "mitte": [
-   869,
-   777
-  ],
-  "box": [
-   827,
-   735,
-   924,
-   813
-  ]
- }
+  {
+    "id": 1,
+    "name": "Bordüre oben links",
+    "kat": "rahmen",
+    "flaeche": 7523,
+    "mitte": [
+      203,
+      39
+    ],
+    "box": [
+      17,
+      18,
+      429,
+      61
+    ],
+    "name_en": "Border, top left",
+    "name_ar": "الإطار – أعلى اليسار"
+  },
+  {
+    "id": 2,
+    "name": "Bordüre oben rechts",
+    "kat": "rahmen",
+    "flaeche": 7230,
+    "mitte": [
+      827,
+      39
+    ],
+    "box": [
+      600,
+      18,
+      1010,
+      61
+    ],
+    "name_en": "Border, top right",
+    "name_ar": "الإطار – أعلى اليمين"
+  },
+  {
+    "id": 3,
+    "name": "Bordüre unten links",
+    "kat": "rahmen",
+    "flaeche": 3925,
+    "mitte": [
+      175,
+      1082
+    ],
+    "box": [
+      17,
+      1068,
+      345,
+      1095
+    ],
+    "name_en": "Border, bottom left",
+    "name_ar": "الإطار – أسفل اليسار"
+  },
+  {
+    "id": 4,
+    "name": "Bordüre unten Mitte",
+    "kat": "rahmen",
+    "flaeche": 3643,
+    "mitte": [
+      509,
+      1081
+    ],
+    "box": [
+      346,
+      1068,
+      675,
+      1101
+    ],
+    "name_en": "Border, bottom centre",
+    "name_ar": "الإطار – أسفل الوسط"
+  },
+  {
+    "id": 5,
+    "name": "Bordüre unten rechts",
+    "kat": "rahmen",
+    "flaeche": 4141,
+    "mitte": [
+      848,
+      1082
+    ],
+    "box": [
+      676,
+      1068,
+      1010,
+      1096
+    ],
+    "name_en": "Border, bottom right",
+    "name_ar": "الإطار – أسفل اليمين"
+  },
+  {
+    "id": 6,
+    "name": "Bordüre links oben",
+    "kat": "rahmen",
+    "flaeche": 6978,
+    "mitte": [
+      31,
+      310
+    ],
+    "box": [
+      17,
+      62,
+      51,
+      570
+    ],
+    "name_en": "Border, left upper",
+    "name_ar": "الإطار – الجانب الأيسر العلوي"
+  },
+  {
+    "id": 7,
+    "name": "Bordüre links unten",
+    "kat": "rahmen",
+    "flaeche": 5207,
+    "mitte": [
+      32,
+      858
+    ],
+    "box": [
+      15,
+      571,
+      51,
+      1067
+    ],
+    "name_en": "Border, left lower",
+    "name_ar": "الإطار – الجانب الأيسر السفلي"
+  },
+  {
+    "id": 8,
+    "name": "Bordüre rechts oben",
+    "kat": "rahmen",
+    "flaeche": 6646,
+    "mitte": [
+      994,
+      289
+    ],
+    "box": [
+      976,
+      62,
+      1010,
+      545
+    ],
+    "name_en": "Border, right upper",
+    "name_ar": "الإطار – الجانب الأيمن العلوي"
+  },
+  {
+    "id": 9,
+    "name": "Bordüre rechts unten",
+    "kat": "rahmen",
+    "flaeche": 4008,
+    "mitte": [
+      995,
+      911
+    ],
+    "box": [
+      976,
+      574,
+      1010,
+      1067
+    ],
+    "name_en": "Border, right lower",
+    "name_ar": "الإطار – الجانب الأيمن السفلي"
+  },
+  {
+    "id": 10,
+    "name": "Tatreez-Stern oben links",
+    "kat": "ornament",
+    "flaeche": 17996,
+    "mitte": [
+      159,
+      154
+    ],
+    "box": [
+      54,
+      62,
+      299,
+      267
+    ],
+    "name_en": "Tatreez star, top left",
+    "name_ar": "نجمة تطريز – أعلى اليسار"
+  },
+  {
+    "id": 11,
+    "name": "Tatreez-Stern oben rechts",
+    "kat": "ornament",
+    "flaeche": 17525,
+    "mitte": [
+      868,
+      154
+    ],
+    "box": [
+      728,
+      62,
+      974,
+      267
+    ],
+    "name_en": "Tatreez star, top right",
+    "name_ar": "نجمة تطريز – أعلى اليمين"
+  },
+  {
+    "id": 12,
+    "name": "Tatreez-Motiv unten links",
+    "kat": "ornament",
+    "flaeche": 8970,
+    "mitte": [
+      122,
+      995
+    ],
+    "box": [
+      55,
+      890,
+      229,
+      1065
+    ],
+    "name_en": "Tatreez motif, bottom left",
+    "name_ar": "زخرفة تطريز – أسفل اليسار"
+  },
+  {
+    "id": 13,
+    "name": "Tatreez-Motiv unten rechts",
+    "kat": "ornament",
+    "flaeche": 8846,
+    "mitte": [
+      905,
+      999
+    ],
+    "box": [
+      790,
+      890,
+      974,
+      1064
+    ],
+    "name_en": "Tatreez motif, bottom right",
+    "name_ar": "زخرفة تطريز – أسفل اليمين"
+  },
+  {
+    "id": 14,
+    "name": "Tatreez-Mittelband unten",
+    "kat": "ornament",
+    "flaeche": 4617,
+    "mitte": [
+      535,
+      1051
+    ],
+    "box": [
+      290,
+      1005,
+      769,
+      1067
+    ],
+    "name_en": "Tatreez centre band, bottom",
+    "name_ar": "شريط التطريز الأوسط – أسفل"
+  },
+  {
+    "id": 15,
+    "name": "Pfote – Zeh links",
+    "kat": "pfote",
+    "flaeche": 1457,
+    "mitte": [
+      450,
+      953
+    ],
+    "box": [
+      428,
+      924,
+      473,
+      999
+    ],
+    "name_en": "Paw – left toe",
+    "name_ar": "الكف – الإصبع الأيسر"
+  },
+  {
+    "id": 16,
+    "name": "Pfote – Zeh Mitte links",
+    "kat": "pfote",
+    "flaeche": 1425,
+    "mitte": [
+      483,
+      907
+    ],
+    "box": [
+      420,
+      870,
+      509,
+      938
+    ],
+    "name_en": "Paw – centre-left toe",
+    "name_ar": "الكف – الإصبع الأوسط الأيسر"
+  },
+  {
+    "id": 17,
+    "name": "Pfote – Zeh Mitte rechts",
+    "kat": "pfote",
+    "flaeche": 1319,
+    "mitte": [
+      540,
+      909
+    ],
+    "box": [
+      517,
+      871,
+      609,
+      939
+    ],
+    "name_en": "Paw – centre-right toe",
+    "name_ar": "الكف – الإصبع الأوسط الأيمن"
+  },
+  {
+    "id": 18,
+    "name": "Pfote – Zeh rechts",
+    "kat": "pfote",
+    "flaeche": 1309,
+    "mitte": [
+      569,
+      952
+    ],
+    "box": [
+      547,
+      926,
+      590,
+      978
+    ],
+    "name_en": "Paw – right toe",
+    "name_ar": "الكف – الإصبع الأيمن"
+  },
+  {
+    "id": 19,
+    "name": "Pfote – Ballen",
+    "kat": "pfote",
+    "flaeche": 3517,
+    "mitte": [
+      507,
+      988
+    ],
+    "box": [
+      455,
+      946,
+      553,
+      1019
+    ],
+    "name_en": "Paw – pad",
+    "name_ar": "الكف – الوسادة"
+  },
+  {
+    "id": 20,
+    "name": "Bogen – Stein links unten",
+    "kat": "bogen",
+    "flaeche": 5143,
+    "mitte": [
+      198,
+      364
+    ],
+    "box": [
+      163,
+      307,
+      244,
+      470
+    ],
+    "name_en": "Arch – stone, lower left",
+    "name_ar": "القوس – حجر أسفل اليسار"
+  },
+  {
+    "id": 21,
+    "name": "Bogen – Stein links Mitte",
+    "kat": "bogen",
+    "flaeche": 10270,
+    "mitte": [
+      224,
+      242
+    ],
+    "box": [
+      46,
+      27,
+      299,
+      328
+    ],
+    "name_en": "Arch – stone, middle left",
+    "name_ar": "القوس – حجر وسط اليسار"
+  },
+  {
+    "id": 22,
+    "name": "Bogen – Stein links oben",
+    "kat": "bogen",
+    "flaeche": 10257,
+    "mitte": [
+      327,
+      150
+    ],
+    "box": [
+      150,
+      51,
+      415,
+      225
+    ],
+    "name_en": "Arch – stone, upper left",
+    "name_ar": "القوس – حجر أعلى اليسار"
+  },
+  {
+    "id": 23,
+    "name": "Bogen – Schlussstein",
+    "kat": "bogen",
+    "flaeche": 16135,
+    "mitte": [
+      492,
+      78
+    ],
+    "box": [
+      373,
+      8,
+      626,
+      180
+    ],
+    "name_en": "Arch – keystone",
+    "name_ar": "القوس – حجر القفل"
+  },
+  {
+    "id": 24,
+    "name": "Bogen – Stein rechts oben",
+    "kat": "bogen",
+    "flaeche": 14395,
+    "mitte": [
+      677,
+      133
+    ],
+    "box": [
+      572,
+      36,
+      873,
+      228
+    ],
+    "name_en": "Arch – stone, upper right",
+    "name_ar": "القوس – حجر أعلى اليمين"
+  },
+  {
+    "id": 25,
+    "name": "Bogen – Stein rechts Mitte",
+    "kat": "bogen",
+    "flaeche": 8538,
+    "mitte": [
+      801,
+      234
+    ],
+    "box": [
+      726,
+      23,
+      975,
+      319
+    ],
+    "name_en": "Arch – stone, middle right",
+    "name_ar": "القوس – حجر وسط اليمين"
+  },
+  {
+    "id": 26,
+    "name": "Bogen – Stein rechts unten",
+    "kat": "bogen",
+    "flaeche": 16806,
+    "mitte": [
+      826,
+      393
+    ],
+    "box": [
+      710,
+      287,
+      904,
+      536
+    ],
+    "name_en": "Arch – stone, lower right",
+    "name_ar": "القوس – حجر أسفل اليمين"
+  },
+  {
+    "id": 27,
+    "name": "Altstadt links",
+    "kat": "stadt",
+    "flaeche": 14529,
+    "mitte": [
+      380,
+      281
+    ],
+    "box": [
+      274,
+      181,
+      470,
+      385
+    ],
+    "name_en": "Old city, left",
+    "name_ar": "المدينة القديمة – اليسار"
+  },
+  {
+    "id": 28,
+    "name": "Kuppel",
+    "kat": "stadt",
+    "flaeche": 2395,
+    "mitte": [
+      607,
+      227
+    ],
+    "box": [
+      568,
+      188,
+      634,
+      253
+    ],
+    "name_en": "Dome",
+    "name_ar": "القبة"
+  },
+  {
+    "id": 29,
+    "name": "Moschee",
+    "kat": "stadt",
+    "flaeche": 11072,
+    "mitte": [
+      617,
+      283
+    ],
+    "box": [
+      531,
+      208,
+      721,
+      342
+    ],
+    "name_en": "Mosque",
+    "name_ar": "المسجد"
+  },
+  {
+    "id": 30,
+    "name": "Altstadt rechts",
+    "kat": "stadt",
+    "flaeche": 3127,
+    "mitte": [
+      739,
+      362
+    ],
+    "box": [
+      672,
+      312,
+      791,
+      436
+    ],
+    "name_en": "Old city, right",
+    "name_ar": "المدينة القديمة – اليمين"
+  },
+  {
+    "id": 31,
+    "name": "Mutter – linkes Ohr",
+    "kat": "fell",
+    "flaeche": 8038,
+    "mitte": [
+      473,
+      314
+    ],
+    "box": [
+      386,
+      219,
+      533,
+      393
+    ],
+    "name_en": "Mother – left ear",
+    "name_ar": "الأم – الأذن اليسرى"
+  },
+  {
+    "id": 32,
+    "name": "Mutter – Stirn",
+    "kat": "fell",
+    "flaeche": 8832,
+    "mitte": [
+      524,
+      351
+    ],
+    "box": [
+      451,
+      284,
+      625,
+      427
+    ],
+    "name_en": "Mother – forehead",
+    "name_ar": "الأم – الجبهة"
+  },
+  {
+    "id": 33,
+    "name": "Mutter – Gesicht und rechtes Ohr",
+    "kat": "fell",
+    "flaeche": 19614,
+    "mitte": [
+      563,
+      431
+    ],
+    "box": [
+      399,
+      355,
+      704,
+      518
+    ],
+    "name_en": "Mother – face and right ear",
+    "name_ar": "الأم – الوجه والأذن اليمنى"
+  },
+  {
+    "id": 34,
+    "name": "Mutter – Wange und Hals",
+    "kat": "fell",
+    "flaeche": 32693,
+    "mitte": [
+      468,
+      529
+    ],
+    "box": [
+      350,
+      420,
+      595,
+      683
+    ],
+    "name_en": "Mother – cheek and neck",
+    "name_ar": "الأم – الخد والرقبة"
+  },
+  {
+    "id": 35,
+    "name": "Mutter – Rücken",
+    "kat": "fell",
+    "flaeche": 16869,
+    "mitte": [
+      347,
+      510
+    ],
+    "box": [
+      268,
+      381,
+      438,
+      632
+    ],
+    "name_en": "Mother – back",
+    "name_ar": "الأم – الظهر"
+  },
+  {
+    "id": 36,
+    "name": "Kitten – Kopf",
+    "kat": "fell",
+    "flaeche": 15594,
+    "mitte": [
+      639,
+      567
+    ],
+    "box": [
+      534,
+      509,
+      738,
+      627
+    ],
+    "name_en": "Kitten – head",
+    "name_ar": "الصغير – الرأس"
+  },
+  {
+    "id": 37,
+    "name": "Kitten – Pfoten",
+    "kat": "fell",
+    "flaeche": 11274,
+    "mitte": [
+      590,
+      647
+    ],
+    "box": [
+      512,
+      569,
+      705,
+      696
+    ],
+    "name_en": "Kitten – paws",
+    "name_ar": "الصغير – الكفوف"
+  },
+  {
+    "id": 38,
+    "name": "Kufiya – linke Schlaufe",
+    "kat": "kufiya",
+    "flaeche": 15548,
+    "mitte": [
+      241,
+      630
+    ],
+    "box": [
+      160,
+      515,
+      332,
+      738
+    ],
+    "name_en": "Keffiyeh – left loop",
+    "name_ar": "الكوفية – العقدة اليسرى"
+  },
+  {
+    "id": 39,
+    "name": "Kufiya – vorne links",
+    "kat": "kufiya",
+    "flaeche": 39399,
+    "mitte": [
+      354,
+      698
+    ],
+    "box": [
+      229,
+      543,
+      518,
+      823
+    ],
+    "name_en": "Keffiyeh – front left",
+    "name_ar": "الكوفية – الأمام يسار"
+  },
+  {
+    "id": 40,
+    "name": "Kufiya – Mitte",
+    "kat": "kufiya",
+    "flaeche": 7498,
+    "mitte": [
+      560,
+      720
+    ],
+    "box": [
+      466,
+      685,
+      657,
+      759
+    ],
+    "name_en": "Keffiyeh – centre",
+    "name_ar": "الكوفية – الوسط"
+  },
+  {
+    "id": 41,
+    "name": "Kufiya – rechts",
+    "kat": "kufiya",
+    "flaeche": 39107,
+    "mitte": [
+      721,
+      745
+    ],
+    "box": [
+      555,
+      574,
+      842,
+      920
+    ],
+    "name_en": "Keffiyeh – right",
+    "name_ar": "الكوفية – اليمين"
+  },
+  {
+    "id": 42,
+    "name": "Kufiya – Fransen",
+    "kat": "kufiya",
+    "flaeche": 12886,
+    "mitte": [
+      307,
+      959
+    ],
+    "box": [
+      49,
+      826,
+      478,
+      1092
+    ],
+    "name_en": "Keffiyeh – fringes",
+    "name_ar": "الكوفية – الشراشيب"
+  },
+  {
+    "id": 43,
+    "name": "Flagge – Rot",
+    "kat": "flagge",
+    "flaeche": 20120,
+    "mitte": [
+      448,
+      794
+    ],
+    "box": [
+      251,
+      678,
+      591,
+      953
+    ],
+    "name_en": "Flag – red",
+    "name_ar": "العلم – الأحمر"
+  },
+  {
+    "id": 44,
+    "name": "Flagge – Grün",
+    "kat": "flagge",
+    "flaeche": 11818,
+    "mitte": [
+      576,
+      858
+    ],
+    "box": [
+      460,
+      817,
+      699,
+      982
+    ],
+    "name_en": "Flag – green",
+    "name_ar": "العلم – الأخضر"
+  },
+  {
+    "id": 45,
+    "name": "Flagge – Schwarz und Weiß",
+    "kat": "flagge",
+    "flaeche": 11697,
+    "mitte": [
+      670,
+      867
+    ],
+    "box": [
+      527,
+      777,
+      791,
+      1091
+    ],
+    "name_en": "Flag – black and white",
+    "name_ar": "العلم – الأسود والأبيض"
+  },
+  {
+    "id": 46,
+    "name": "Olivenzweig oben links",
+    "kat": "zweig",
+    "flaeche": 4520,
+    "mitte": [
+      322,
+      65
+    ],
+    "box": [
+      51,
+      13,
+      448,
+      133
+    ],
+    "name_en": "Olive branch, top left",
+    "name_ar": "غصن الزيتون – أعلى اليسار"
+  },
+  {
+    "id": 47,
+    "name": "Olivenzweig oben rechts",
+    "kat": "zweig",
+    "flaeche": 3909,
+    "mitte": [
+      695,
+      64
+    ],
+    "box": [
+      580,
+      13,
+      939,
+      126
+    ],
+    "name_en": "Olive branch, top right",
+    "name_ar": "غصن الزيتون – أعلى اليمين"
+  },
+  {
+    "id": 48,
+    "name": "Olivenzweig links oben",
+    "kat": "zweig",
+    "flaeche": 13432,
+    "mitte": [
+      167,
+      341
+    ],
+    "box": [
+      20,
+      40,
+      339,
+      480
+    ],
+    "name_en": "Olive branch, left upper",
+    "name_ar": "غصن الزيتون – يسار علوي"
+  },
+  {
+    "id": 49,
+    "name": "Olivenzweig links Mitte",
+    "kat": "zweig",
+    "flaeche": 13212,
+    "mitte": [
+      133,
+      580
+    ],
+    "box": [
+      15,
+      411,
+      256,
+      686
+    ],
+    "name_en": "Olive branch, left middle",
+    "name_ar": "غصن الزيتون – يسار وسط"
+  },
+  {
+    "id": 50,
+    "name": "Olivenzweig links unten",
+    "kat": "zweig",
+    "flaeche": 23109,
+    "mitte": [
+      175,
+      791
+    ],
+    "box": [
+      21,
+      656,
+      284,
+      1067
+    ],
+    "name_en": "Olive branch, left lower",
+    "name_ar": "غصن الزيتون – يسار سفلي"
+  },
+  {
+    "id": 51,
+    "name": "Olivenzweig rechts oben",
+    "kat": "zweig",
+    "flaeche": 8546,
+    "mitte": [
+      906,
+      312
+    ],
+    "box": [
+      816,
+      47,
+      1002,
+      397
+    ],
+    "name_en": "Olive branch, right upper",
+    "name_ar": "غصن الزيتون – يمين علوي"
+  },
+  {
+    "id": 52,
+    "name": "Olivenzweig rechts Mitte",
+    "kat": "zweig",
+    "flaeche": 19016,
+    "mitte": [
+      857,
+      557
+    ],
+    "box": [
+      700,
+      436,
+      1005,
+      653
+    ],
+    "name_en": "Olive branch, right middle",
+    "name_ar": "غصن الزيتون – يمين وسط"
+  },
+  {
+    "id": 53,
+    "name": "Olivenzweig rechts unten",
+    "kat": "zweig",
+    "flaeche": 34681,
+    "mitte": [
+      803,
+      831
+    ],
+    "box": [
+      458,
+      636,
+      1006,
+      1092
+    ],
+    "name_en": "Olive branch, right lower",
+    "name_ar": "غصن الزيتون – يمين سفلي"
+  },
+  {
+    "id": 54,
+    "name": "Olive links oben",
+    "kat": "olive",
+    "flaeche": 8981,
+    "mitte": [
+      132,
+      395
+    ],
+    "box": [
+      33,
+      297,
+      201,
+      481
+    ],
+    "name_en": "Olive, left upper",
+    "name_ar": "زيتونة – يسار علوي"
+  },
+  {
+    "id": 55,
+    "name": "Olive links Mitte",
+    "kat": "olive",
+    "flaeche": 8746,
+    "mitte": [
+      151,
+      493
+    ],
+    "box": [
+      67,
+      408,
+      208,
+      579
+    ],
+    "name_en": "Olive, left middle",
+    "name_ar": "زيتونة – يسار وسط"
+  },
+  {
+    "id": 56,
+    "name": "Olive links unten",
+    "kat": "olive",
+    "flaeche": 5418,
+    "mitte": [
+      106,
+      823
+    ],
+    "box": [
+      33,
+      784,
+      165,
+      1003
+    ],
+    "name_en": "Olive, left lower",
+    "name_ar": "زيتونة – يسار سفلي"
+  },
+  {
+    "id": 57,
+    "name": "Olive rechts oben",
+    "kat": "olive",
+    "flaeche": 3231,
+    "mitte": [
+      937,
+      431
+    ],
+    "box": [
+      886,
+      382,
+      1005,
+      506
+    ],
+    "name_en": "Olive, right upper",
+    "name_ar": "زيتونة – يمين علوي"
+  },
+  {
+    "id": 58,
+    "name": "Grüne Olive",
+    "kat": "olive",
+    "flaeche": 5477,
+    "mitte": [
+      910,
+      476
+    ],
+    "box": [
+      846,
+      428,
+      979,
+      523
+    ],
+    "name_en": "Green olive",
+    "name_ar": "الزيتونة الخضراء"
+  },
+  {
+    "id": 59,
+    "name": "Olive rechts Mitte",
+    "kat": "olive",
+    "flaeche": 366,
+    "mitte": [
+      891,
+      521
+    ],
+    "box": [
+      881,
+      508,
+      906,
+      533
+    ],
+    "name_en": "Olive, right middle",
+    "name_ar": "زيتونة – يمين وسط"
+  },
+  {
+    "id": 60,
+    "name": "Olive rechts unten",
+    "kat": "olive",
+    "flaeche": 3463,
+    "mitte": [
+      869,
+      777
+    ],
+    "box": [
+      827,
+      735,
+      924,
+      813
+    ],
+    "name_en": "Olive, right lower",
+    "name_ar": "زيتونة – يمين سفلي"
+  }
 ]
