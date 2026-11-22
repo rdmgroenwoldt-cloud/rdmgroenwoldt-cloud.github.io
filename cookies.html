@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cookies &amp; lokaler Speicher – Dar Al-Rahma Center</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css?v=20261122g">
+<style>
+  .recht h2{font-size:26px;margin:40px 0 10px;text-align:left}
+  .recht p,.recht li{color:var(--text);line-height:1.7}
+  .recht .luecke{background:rgba(212,168,75,.14);border:1px dashed var(--gold);border-radius:6px;padding:1px 6px;color:var(--gold2)}
+  .recht .stand{color:var(--muted);font-size:14px;margin-top:40px}
+  .recht table{width:100%;border-collapse:collapse;margin:14px 0;font-size:15px}
+  .recht th,.recht td{border-bottom:1px solid var(--line);padding:10px 8px;text-align:left;vertical-align:top}
+  .recht th{color:var(--gold2);font-weight:600}
+</style>
+</head>
+<body>
+<div id="kopf"></div>
+<main>
+  <div class="seitenkopf" style="padding-bottom:30px"><div class="wrap"><h1>Cookies &amp; lokaler Speicher</h1></div></div>
+  <section style="border-top:0;padding-top:10px">
+    <div class="wrap text recht">
+
+      <div class="kasten"><strong>Diese Website setzt keine Cookies.</strong> Es gibt kein Tracking, keine Statistik, keine Werbung und keine eingebetteten Inhalte von Facebook, Instagram, YouTube oder Google. Deshalb musst du auch nichts „akzeptieren“.</div>
+
+      <h2>Was wir in deinem Browser speichern</h2>
+      <p>Nur zwei kleine Einträge im <strong>lokalen Speicher</strong> (localStorage) deines Browsers – und nur, wenn du die jeweilige Funktion benutzt. Sie verlassen dein Gerät nicht.</p>
+      <table>
+        <thead><tr><th>Eintrag</th><th>Wofür</th><th>Wie lange</th></tr></thead>
+        <tbody>
+          <tr><td><code>dar-hinweis</code></td><td>Merkt sich, dass du den Hinweis zu Cookies und Datenschutz geschlossen hast, damit er nicht auf jeder Seite erscheint.</td><td>bis du ihn löschst</td></tr>
+          <tr><td><code>wk-sprache</code></td><td>Merkt sich deine Sprache (Deutsch, Englisch, Arabisch) im <a href="wunschkalender.html">Wunschkalender</a>.</td><td>bis du ihn löschst</td></tr>
+        </tbody>
+      </table>
+      <p>Beide Einträge sind für eine Funktion nötig, die du selbst nutzt; eine Einwilligung ist dafür nicht erforderlich (§ 25 Abs. 2 Nr. 2 TDDDG).</p>
+
+      <h2>Übersicht</h2>
+      <table>
+        <thead><tr><th>Art</th><th>Auf dieser Website</th></tr></thead>
+        <tbody>
+          <tr><td>Notwendige Einträge</td><td>ja – die zwei oben genannten, nur lokal</td></tr>
+          <tr><td>Statistik / Reichweitenmessung</td><td>nein</td></tr>
+          <tr><td>Marketing / Werbung</td><td>nein</td></tr>
+          <tr><td>Eingebettete Inhalte Dritter (Videos, Karten, Social Media)</td><td>nein – Videos liegen auf unserem eigenen Webspace</td></tr>
+          <tr><td>Schriften von fremden Servern</td><td>nein – die Schriften liegen bei uns</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Einträge löschen</h2>
+      <p>Mit dem Knopf unten löschst du alle Einträge dieser Website aus deinem Browser. Alternativ geht das in den Browser-Einstellungen unter „Cookies und Websitedaten“.</p>
+      <p><button type="button" class="btn" id="speicher-loeschen" style="margin:6px 0 0">Gespeicherte Einträge löschen</button> <span id="speicher-meldung" class="quelle"></span></p>
+      <script>
+        document.getElementById("speicher-loeschen").addEventListener("click", function () {
+          var m = document.getElementById("speicher-meldung");
+          try { ["dar-hinweis", "wk-sprache"].forEach(function (k) { localStorage.removeItem(k); }); m.textContent = "Gelöscht."; }
+          catch (e) { m.textContent = "Dein Browser lässt keinen Zugriff zu – es ist also auch nichts gespeichert."; }
+        });
+      </script>
+
+      <p>Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+      <p class="stand">Stand: 22. November 2026</p>
+    </div>
+  </section>
+</main>
+<div id="fuss"></div>
+<script src="menu.js?v=20261122g"></script>
+</body>
+</html>

@@ -137,7 +137,7 @@ const BEREICHE = {
       <div><h4>Über uns</h4>${spalte("Über uns")}</div>
       <div><h4>Helfen</h4>${spalte("Helfen")}<a href="aktuelles.html">Aktuelles</a><a href="gala.html">Gala 2027</a></div>
     </div>
-    <div class="fuss-unten"><span>Dar Al-Rahma Center · Gründung einer gemeinnützigen UG in Vorbereitung</span><span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></span></div>
+    <div class="fuss-unten"><span>Dar Al-Rahma Center · Gründung einer gemeinnützigen UG in Vorbereitung</span><span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a><a href="cookies.html">Cookies</a></span></div>
   </div>
 </footer>`;
   }
@@ -443,4 +443,32 @@ const BEREICHE = {
     if (a && a.getAttribute("href").length > 1) oeffne(a.getAttribute("href").slice(1));
   });
   if (location.hash) window.addEventListener("load", () => oeffne(location.hash.slice(1)));
+})();
+
+// Cookie-Hinweis: Die Seite setzt keine Cookies – der Hinweis informiert nur und merkt sich das Schließen lokal.
+(function () {
+  let gelesen = false;
+  try { gelesen = localStorage.getItem("dar-hinweis") === "1"; } catch (e) { gelesen = false; }
+  if (gelesen || /cookies\.html$/.test(location.pathname)) return;
+  const box = document.createElement("section");
+  box.className = "cookie-feld";
+  box.setAttribute("role", "dialog");
+  box.setAttribute("aria-label", "Hinweis zu Cookies und Datenschutz");
+  box.innerHTML =
+    '<h2>Cookies? Brauchen wir nicht.</h2>' +
+    '<p>Diese Website setzt <strong>keine Cookies</strong> und nutzt kein Tracking, keine Statistik und keine Werbung. Schriften, Bilder und Videos liegen bei uns – nichts wird an Google, Facebook &amp; Co. übertragen.</p>' +
+    '<details class="cookie-details"><summary>Einstellungen ansehen</summary><ul class="cookie-arten">' +
+    '<li><span>Notwendig</span><small>nur lokale Einstellungen, z. B. deine Sprache im Wunschkalender</small><b class="an">immer an</b></li>' +
+    '<li><span>Statistik</span><small>wird nicht verwendet</small><b>aus</b></li>' +
+    '<li><span>Marketing</span><small>wird nicht verwendet</small><b>aus</b></li>' +
+    '</ul></details>' +
+    '<div class="cookie-knoepfe"><button type="button" class="btn voll" data-ok>Verstanden</button><a class="btn" href="cookies.html">Mehr erfahren</a></div>' +
+    '<p class="cookie-links"><a href="datenschutz.html">Datenschutz</a> · <a href="impressum.html">Impressum</a></p>';
+  document.body.appendChild(box);
+  requestAnimationFrame(() => box.classList.add("offen"));
+  box.querySelector("[data-ok]").addEventListener("click", () => {
+    try { localStorage.setItem("dar-hinweis", "1"); } catch (e) { /* ohne Speicher erscheint der Hinweis eben wieder */ }
+    box.classList.remove("offen");
+    setTimeout(() => box.remove(), 350);
+  });
 })();
