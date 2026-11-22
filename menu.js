@@ -13,12 +13,11 @@ const MENU = [
     { titel: "Häufige Fragen", url: "faq.html" }
   ]},
   { titel: "Projekte", unter: [
-    { titel: "Alle Projekte im Netzwerk", url: "projekte.html" },
+    { titel: "Alle Projekte auf einen Blick", url: "projekte.html" },
     { gruppe: "Projekte, die wir begleiten" },
-    { titel: "Medical Point North Gaza", url: "medical-point.html" },
-    { titel: "Kids4Hope", url: "kids4hope.html" },
-    { titel: "Hope4Humanity – Wasser & Familienhilfe", url: "hope4humanity.html" },
-    { titel: "Gazahilfspool (Hope4Humanity)", url: "gazahilfspool.html" },
+    { titel: "Medical Point North Gaza", url: "projekte.html#medical-point" },
+    { titel: "Kids4Hope", url: "projekte.html#kids4hope" },
+    { titel: "Hope4Humanity & Gazahilfspool", url: "projekte.html#hope4humanity" },
     { titel: "Dar Al-Rahma Cat Rescue", url: "tierschutz.html" },
     { gruppe: "Sammelbereiche" },
     { titel: "Children's Relief – Kinderprojekte", url: "kinderhilfe.html" },
@@ -71,42 +70,6 @@ const BEREICHE = {
     seiten: [
       { titel: "Übersicht", url: "kinderhilfe.html" },
       { titel: "Unterstützen", url: "spenden.html#kids4hope" }
-    ],
-    sozial: []
-  },
-  kids4hope: {
-    name: "Kids4Hope",
-    zusatz: "Together for a brighter tomorrow",
-    logo: "assets/kids4hope/logo.png",
-    hell: true,
-    seiten: [
-      { titel: "Übersicht", url: "kids4hope.html" },
-      { titel: "Unterstützen", url: "spenden.html#kids4hope" }
-    ],
-    sozial: [
-      { titel: "kids4hope.com", url: "https://kids4hope.com/" }
-    ]
-  },
-  hope4humanity: {
-    name: "Hope4Humanity",
-    zusatz: "Humans serving hope",
-    logo: "assets/hope4humanity/logo-breit.jpg",
-    hell: true,
-    seiten: [
-      { titel: "Übersicht", url: "hope4humanity.html" },
-      { titel: "Gazahilfspool", url: "gazahilfspool.html" },
-      { titel: "Unterstützen", url: "spenden.html#hope4humanity" }
-    ],
-    sozial: []
-  },
-  medical: {
-    name: "Medical Point North Gaza",
-    zusatz: "Notfallversorgung Nord-Gaza",
-    logo: "assets/logo-medical-point.png",
-    hell: true,
-    seiten: [
-      { titel: "Übersicht", url: "medical-point.html" },
-      { titel: "Unterstützen", url: "spenden.html#medicalpoint" }
     ],
     sozial: []
   }
