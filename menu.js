@@ -239,6 +239,37 @@ const BEREICHE = {
     setTimeout(() => teile.forEach((t) => t.classList.add("da")), 2500);
   } else teile.forEach((t) => t.classList.add("da"));
 
+  // Galerien als Karussell: Pfeile + Zähler (wischen geht immer)
+  document.querySelectorAll(".mosaik").forEach((m) => {
+    const karten = [...m.children];
+    if (karten.length < 2 || m.parentElement.classList.contains("gal-huelle")) return;
+    const huelle = document.createElement("div");
+    huelle.className = "gal-huelle";
+    m.before(huelle); huelle.append(m);
+    const pfeil = (seite, zeichen, text) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "gal-pfeil " + seite; b.textContent = zeichen; b.setAttribute("aria-label", text);
+      b.addEventListener("click", () => m.scrollBy({ left: (seite === "links" ? -1 : 1) * m.clientWidth * 0.9, behavior: "smooth" }));
+      huelle.append(b); return b;
+    };
+    const li = pfeil("links", "‹", "Vorherige Bilder"), re = pfeil("rechts", "›", "Weitere Bilder");
+    const z = document.createElement("p"); z.className = "gal-zaehler"; huelle.after(z);
+    const stand = () => {
+      const breite = karten[0].getBoundingClientRect().width + parseFloat(getComputedStyle(m).columnGap || 0);
+      const sichtbar = Math.max(1, Math.round(m.clientWidth / breite));
+      const erstes = Math.min(karten.length, Math.round(m.scrollLeft / breite) + 1);
+      const letztes = Math.min(karten.length, erstes + sichtbar - 1);
+      z.innerHTML = `<b>${erstes}${letztes > erstes ? "–" + letztes : ""}</b> von ${karten.length} Bildern · wischen oder Pfeile`;
+      li.disabled = m.scrollLeft < 8;
+      re.disabled = m.scrollLeft + m.clientWidth >= m.scrollWidth - 8;
+    };
+    m.addEventListener("scroll", () => requestAnimationFrame(stand), { passive: true });
+    window.addEventListener("resize", stand);
+    // Karussell in zugeklappten Bereichen erst beim Öffnen vermessen
+    const klapp = m.closest("details"); if (klapp) klapp.addEventListener("toggle", stand);
+    stand();
+  });
+
   // Fotogalerie (.mosaik) mit Großansicht; sensible Bilder erst nach Klick
   const mosaike = document.querySelectorAll(".mosaik, .bildgruppe");
   if (!mosaike.length) return;

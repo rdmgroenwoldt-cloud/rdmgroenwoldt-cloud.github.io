@@ -487,3 +487,23 @@ footer{background:rgba(8,7,6,.92)}
 .banner .folie{z-index:1}
 .banner .folie.an{-webkit-mask-image:none;mask-image:none}
 .banner::after{z-index:2;background:linear-gradient(180deg,rgba(11,10,8,0) 0%,rgba(11,10,8,.2) 40%,rgba(11,10,8,.82) 80%,var(--bg) 100%),linear-gradient(90deg,rgba(11,10,8,.6) 0%,rgba(11,10,8,0) 65%)}
+
+/* ===== Galerie als Karussell (Kim 22.11.2026): gleich große Karten, Bildtext immer darunter, wischen + Pfeile ===== */
+.gal-huelle{position:relative}
+.mosaik,.mosaik.hochformat{display:grid;grid-auto-flow:column;grid-template-columns:none;grid-auto-rows:auto;grid-auto-columns:calc((100% - 3 * 18px) / 4);gap:18px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:4px 2px 14px;scrollbar-width:thin;scrollbar-color:var(--line2) transparent}
+.mosaik button,.mosaik.hochformat button,.mosaik button.gross,.mosaik button.hoch,.mosaik button.breit,.mosaik.hochformat button.breit{grid-column:auto;grid-row:auto;aspect-ratio:auto;display:flex;flex-direction:column;scroll-snap-align:start;background:var(--bg2);border:1px solid var(--line);border-radius:var(--r-s);text-align:left;transition:border-color .3s,transform .3s}
+.mosaik button:hover{border-color:var(--gold);transform:translateY(-3px)}
+.mosaik img,.mosaik.hochformat img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:50% 30%;display:block}
+.mosaik.hochformat img{object-position:50% 22%}
+.mosaik button:hover img{transform:none}
+.mosaik .unterschrift{position:static;opacity:1;transform:none;background:none;padding:12px 14px 14px;color:var(--text);font-size:14px;line-height:1.45;flex:1}
+.mosaik button.sensibel .warnung{bottom:auto;aspect-ratio:4/5;height:auto}
+.mosaik button.sensibel::after{content:attr(data-text);display:block;padding:12px 14px 14px;color:var(--muted);font-size:14px}
+.gal-pfeil{position:absolute;top:calc(50% - 40px);z-index:5;width:48px;height:48px;border-radius:50%;border:1px solid var(--line2);background:rgba(21,19,15,.94);color:var(--gold2);font-size:24px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--schatten)}
+.gal-pfeil:hover{border-color:var(--gold)}
+.gal-pfeil[disabled]{opacity:0;pointer-events:none}
+.gal-pfeil.links{left:-22px}.gal-pfeil.rechts{right:-22px}
+.gal-zaehler{text-align:center;color:var(--muted);font-size:14px;margin-top:4px}
+.gal-zaehler b{color:var(--gold2);font-weight:600}
+@media (max-width:1000px){.mosaik,.mosaik.hochformat{grid-auto-columns:calc((100% - 2 * 16px) / 2.4);gap:16px}}
+@media (max-width:640px){.mosaik,.mosaik.hochformat{grid-auto-columns:78%;gap:12px}.gal-pfeil{display:none}.mosaik .unterschrift{font-size:13px}}
