@@ -133,7 +133,7 @@ const BEREICHE = {
   ${bereich ? `<div class="fuss-projekt">${bereich.logo ? `<img src="${bereich.logo}" alt="Logo ${esc(bereich.name)}"${bereich.hell ? ' class="hell"' : ""}>` : ""}<div><b>${esc(bereich.name)}</b><br>ein eigenständiges Projekt, begleitet und unterstützt von Dar Al-Rahma</div>${bereich.sozial.length ? `<div class="sozial">${sozialKnoepfe(bereich.sozial, true)}</div>` : ""}</div>` : ""}
     <div class="fuss-raster">
       <div class="fuss-marke"><img src="assets/logo-center-siegel.jpg" alt="Siegel Dar Al-Rahma Center"><p>Dar Al-Rahma ist ein Netzwerk: Wir begleiten und unterstützen bestehende Projekte vor Ort und verbinden sie miteinander – denn gemeinsam ist man stark.</p></div>
-      <div><h4>Projekte im Netzwerk</h4>${spalte("Projekte")}</div>
+      <div><h4>Projekte</h4>${spalte("Projekte")}</div>
       <div><h4>Über uns</h4>${spalte("Über uns")}</div>
       <div><h4>Helfen</h4>${spalte("Helfen")}<a href="aktuelles.html">Aktuelles</a><a href="gala.html">Gala 2027</a></div>
     </div>
@@ -427,4 +427,20 @@ const BEREICHE = {
       if (zaehler) zaehler.textContent = anzahl;
     });
   });
+})();
+
+// Quellen-Sprung: Verweise auf Quellen (#q1 …) öffnen den zugeklappten Quellenbereich
+(function () {
+  function oeffne(id) {
+    const ziel = id && document.getElementById(id);
+    const klapp = ziel && ziel.closest("details");
+    if (!klapp) return;
+    klapp.open = true;
+    setTimeout(() => ziel.scrollIntoView({ block: "center", behavior: "instant" }), 30);
+  }
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (a && a.getAttribute("href").length > 1) oeffne(a.getAttribute("href").slice(1));
+  });
+  if (location.hash) window.addEventListener("load", () => oeffne(location.hash.slice(1)));
 })();
