@@ -1,0 +1,3 @@
+# Entwurf – noch nicht öffentlich: Suchmaschinen bitte nicht aufnehmen
+User-agent: *
+Disallow: /
